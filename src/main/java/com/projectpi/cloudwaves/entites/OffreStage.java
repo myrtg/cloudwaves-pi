@@ -2,7 +2,6 @@ package com.projectpi.cloudwaves.entites;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.extern.apachecommons.CommonsLog;
 
 import java.util.Date;
 import java.util.Set;
@@ -28,4 +27,6 @@ public class OffreStage {
     @OneToMany(mappedBy = "offreStage",cascade = CascadeType.ALL)
     private Set<Condidature> condidatures;
 
+    @ManyToMany
+    private Set<TestTechnique> testTechniques;
 }
