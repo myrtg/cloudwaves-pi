@@ -7,21 +7,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
-@Table(name="utilisateur")
+@Table(name="condidature")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class utilisateur {
+public class Condidature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_user")
+    @Column(name="id_condidature")
     private long id;
-    private String nom;
-    private String prenom;
-    private String email;
-    private String motdepasse;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private String statut;
+    private int score;
+
+    @ManyToOne
+    private Utilisateur utilisateur;
+
+    @ManyToOne
+    private OffreStage offreStage;
 }
