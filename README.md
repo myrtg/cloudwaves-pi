@@ -9,9 +9,9 @@
 - [X] Condidature
 - [X] TestTechnique
 - [X] OffreStage
-- [ ] Sous Catégorie
-- [ ] Catégorie]
-- [ ] Modele Rapport
-- [ ] Forum
-- [ ] FAQ
-- [ ] Message
+- [X] Sous Catégorie
+- [X] Catégorie]
+- [X] Modele Rapport
+- [X] Forum
+- [X] FAQ
+- [X] Message
