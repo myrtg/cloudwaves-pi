@@ -30,5 +30,8 @@ public class Utilisateur {
     @OneToMany(mappedBy = "utilisateur",cascade = CascadeType.ALL)
     private Set<Condidature> condidatures;
 
+    @OneToMany(mappedBy = "utilisateur",cascade = CascadeType.ALL)
+    private Set<Evenement> evenements;
+
 
 }
