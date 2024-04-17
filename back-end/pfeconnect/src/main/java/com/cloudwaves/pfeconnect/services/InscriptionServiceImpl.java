@@ -1,7 +1,7 @@
 package com.cloudwaves.pfeconnect.services;
 
-import com.projectpi.cloudwaves.entites.Inscription;
-import com.projectpi.cloudwaves.repositories.InscriptionsRepository;
+import com.cloudwaves.pfeconnect.entities.Inscription;
+import com.cloudwaves.pfeconnect.repositories.InscriptionsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

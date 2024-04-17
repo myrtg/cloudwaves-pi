@@ -1,7 +1,7 @@
 package com.cloudwaves.pfeconnect.controllers;
 
-import com.projectpi.cloudwaves.entites.Evenement;
-import com.projectpi.cloudwaves.services.EvenementsService;
+import com.cloudwaves.pfeconnect.entities.Evenement;
+import com.cloudwaves.pfeconnect.services.EvenementsService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

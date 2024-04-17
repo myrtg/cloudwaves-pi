@@ -1,9 +1,10 @@
 package com.cloudwaves.pfeconnect.services;
 
 import com.lowagie.text.*;
+import com.lowagie.text.Font;
 import com.lowagie.text.pdf.*;
-import com.projectpi.cloudwaves.entites.Evenement;
-import com.projectpi.cloudwaves.repositories.EvenementsRepository;
+import com.cloudwaves.pfeconnect.entities.Evenement;
+import com.cloudwaves.pfeconnect.repositories.EvenementsRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

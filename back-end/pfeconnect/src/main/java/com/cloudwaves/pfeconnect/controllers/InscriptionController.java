@@ -1,7 +1,7 @@
 package com.cloudwaves.pfeconnect.controllers;
 
-import com.projectpi.cloudwaves.entites.Inscription;
-import com.projectpi.cloudwaves.services.InscriptionService;
+import com.cloudwaves.pfeconnect.entities.Inscription;
+import com.cloudwaves.pfeconnect.services.InscriptionService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;

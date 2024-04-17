@@ -1,6 +1,6 @@
 package com.cloudwaves.pfeconnect.services;
 
-import com.projectpi.cloudwaves.entites.Inscription;
+import com.cloudwaves.pfeconnect.entities.Inscription;
 
 import java.util.List;
 
