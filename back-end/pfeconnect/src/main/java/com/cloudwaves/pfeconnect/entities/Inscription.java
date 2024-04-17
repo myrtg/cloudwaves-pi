@@ -22,7 +22,7 @@ public class Inscription {
     private long id;
 
     @OneToOne
-    private Utilisateur utilisateur;
+    private User user;
     @ManyToOne
     private Evenement evenement;
 

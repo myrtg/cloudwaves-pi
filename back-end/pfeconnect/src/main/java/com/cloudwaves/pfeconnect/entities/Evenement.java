@@ -33,7 +33,7 @@ public class Evenement {
 
     @ManyToOne
     @JsonIgnore
-    private Utilisateur utilisateur;
+    private User user;
 
     @OneToMany(mappedBy = "evenement",cascade = CascadeType.ALL)
     @JsonIgnore

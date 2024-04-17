@@ -22,7 +22,7 @@ public class Condidature {
     private int score;
 
     @ManyToOne
-    private Utilisateur utilisateur;
+    private User user;
 
     @ManyToOne
     private OffreStage offreStage;
