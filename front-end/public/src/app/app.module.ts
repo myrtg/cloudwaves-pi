@@ -14,6 +14,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { BloceventsComponent } from './components/blocevents/blocevents.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,12 @@ import { ForumComponent } from './components/forum/forum.component';
     ContactusComponent,
     BloceventsComponent,
     ChatComponent,
-    ForumComponent
+    ForumComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
