@@ -7,7 +7,10 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -20,6 +23,9 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
+@CrossOrigin(origins = "http://localhost:4200")
+
 @RequestMapping("api/evenements")
 public class EvenementsController {
     EvenementsService evenementsService;
@@ -65,6 +71,8 @@ public class EvenementsController {
     {
         return evenementsService.addEvenement(evenement);
     }
+
+
     @PutMapping("/update")
     public Evenement updateEvenement(@RequestBody Evenement evenement)
     {

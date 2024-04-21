@@ -15,6 +15,7 @@ import { BloceventsComponent } from './components/blocevents/blocevents.componen
 import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

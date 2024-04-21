@@ -25,11 +25,16 @@ public class Evenement {
     @Column(name = "id_evenement")
     private long id;
     private String titre;
+    public String nom;
     private String description;
     private Date DateDebut;
     private Date DateFin;
     private int nbPlace;
     private String tutor;
+
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    byte[] image;
 
     @ManyToOne
     @JsonIgnore
