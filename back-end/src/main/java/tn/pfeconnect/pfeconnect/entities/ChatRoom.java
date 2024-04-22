@@ -3,6 +3,7 @@ package tn.pfeconnect.pfeconnect.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import tn.pfeconnect.pfeconnect.user.User;
 
 import java.io.Serializable;
 import java.util.List;
