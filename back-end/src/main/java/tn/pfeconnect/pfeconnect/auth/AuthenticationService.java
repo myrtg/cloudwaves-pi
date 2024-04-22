@@ -1,23 +1,24 @@
 package tn.pfeconnect.pfeconnect.auth;
 
 
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import org.springframework.messaging.MessagingException;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+
+import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
 import tn.pfeconnect.pfeconnect.user.User;
 import tn.pfeconnect.pfeconnect.role.RoleRepository;
 import tn.pfeconnect.pfeconnect.user.TokenRepository;
 import tn.pfeconnect.pfeconnect.user.UserRepository;
 import tn.pfeconnect.pfeconnect.security.JwtService;
 import tn.pfeconnect.pfeconnect.email.EmailService;
-import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
 import tn.pfeconnect.pfeconnect.user.Token;
+import jakarta.mail.MessagingException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
@@ -36,12 +37,11 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final TokenRepository tokenRepository;
 
-@Value("${application.mailing.frontend.activation-url}")
+    @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
 
-    public void register(RegistrationRequest request) throws MessagingException, jakarta.mail.MessagingException {
+    public void register(RegistrationRequest request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
-                // todo - better exception handling
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
         var user = User.builder()
                 .firstName(request.getFirstname())
@@ -75,7 +75,7 @@ public class AuthenticationService {
     }
 
     @Transactional
-    public void activateAccount(String token) throws MessagingException, jakarta.mail.MessagingException {
+    public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
                 // todo exception has to be defined
                 .orElseThrow(() -> new RuntimeException("Invalid token"));
@@ -107,7 +107,7 @@ public class AuthenticationService {
         return generatedToken;
     }
 
-    private void sendValidationEmail(User user) throws MessagingException, jakarta.mail.MessagingException {
+    private void sendValidationEmail(User user) throws MessagingException {
         var newToken = generateAndSaveActivationToken(user);
 
         emailService.sendEmail(
