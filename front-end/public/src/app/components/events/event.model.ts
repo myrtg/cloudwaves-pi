@@ -7,5 +7,5 @@ export interface Event{
     dateFin: Date;
     nb_places: number;
     tutor: string;
-    image: any;
+    image: File;
 }

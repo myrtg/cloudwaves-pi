@@ -38,7 +38,8 @@ public class EvenementsServiceImpl implements EvenementsService{
 
     @Override
     public void removeEvenements(Long IdEvenement) {
-        evenementsRepository.deleteById(IdEvenement);
+        Evenement evenement = evenementsRepository.findById(IdEvenement).get();
+        evenementsRepository.delete(evenement);
 
     }
 

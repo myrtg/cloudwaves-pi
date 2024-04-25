@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -67,9 +68,36 @@ public class EvenementsController {
         return evenementsService.getDuree(idEvenement);
     }
     @PostMapping("/add")
-    public Evenement addEvenements(@RequestBody Evenement evenement)
+    public Evenement addEvenements(@RequestParam("image")MultipartFile imageFile,@RequestParam("name")String nom,@RequestParam("titre")String titre,
+                                   @RequestParam("description")String description,@RequestParam("date_debut")String dateDebut,
+                                   @RequestParam("date_fin")String dateFin,@RequestParam("nb_places")int nbPlaces,@RequestParam("tutor")String tutor)
     {
-        return evenementsService.addEvenement(evenement);
+        try {
+            Evenement evenement = new Evenement();
+
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            Date date_debut = df.parse(dateDebut);
+            Date date_fin = df.parse(dateFin);
+
+            if (!imageFile.isEmpty()) {
+                // Convert MultipartFile to byte[]
+                byte[] imageBytes = imageFile.getBytes();
+                // Set the byte[] to the Evenement object
+                evenement.setImage(imageBytes);
+                evenement.setTitre(titre);
+                evenement.setNom(nom);
+                evenement.setDescription(description);
+                evenement.setDateDebut(date_debut);
+                evenement.setDateFin(date_fin);
+                evenement.setNbPlace(nbPlaces);
+                evenement.setTutor(tutor);
+            }
+            return evenementsService.addEvenement(evenement);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -78,8 +106,8 @@ public class EvenementsController {
     {
         return evenementsService.updateEvenement(evenement);
     }
-    @DeleteMapping("/delete")
-    public void deleteEvenement(@RequestBody Long idEvenement)
+    @DeleteMapping("/delete/{id}")
+    public void deleteEvenement(@PathVariable(name="id") Long idEvenement)
     {
         evenementsService.removeEvenements(idEvenement);
     }
