@@ -13,6 +13,7 @@ import { EventsComponent } from './components/events/events.component';
 import { PfebookComponent } from './components/pfebook/pfebook.component';
 import { InternshipComponent } from './components/internship/internship.component';
 import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserComponent } from './components/user/user.component';
         EventsComponent,
         PfebookComponent,
         InternshipComponent,
-        UserComponent
+        UserComponent,
+        LoginComponent
   ],
   imports: [
     BrowserModule,
