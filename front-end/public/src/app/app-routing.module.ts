@@ -7,6 +7,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { EventsComponent } from './components/events/events.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { ForumComponent } from './components/forum/forum.component';
+import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'faq', component: FaqComponent},
   {path:'events', component: EventsComponent},
   {path:'contactus', component: ContactusComponent},
-  {path:'forum', component: ForumComponent}
+  {path:'forum', component: ForumComponent},
+  {path:'login', component:LoginComponent}
 
 ];
 

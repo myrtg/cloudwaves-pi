@@ -14,6 +14,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { BloceventsComponent } from './components/blocevents/blocevents.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ForumComponent } from './components/forum/forum.component';
     ContactusComponent,
     BloceventsComponent,
     ChatComponent,
-    ForumComponent
+    ForumComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
