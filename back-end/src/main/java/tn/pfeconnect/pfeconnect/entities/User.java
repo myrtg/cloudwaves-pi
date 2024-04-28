@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.pfeconnect.pfeconnect.enums.Roles;
+import tn.pfeconnect.pfeconnect.enums.Status;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -26,9 +26,15 @@ public class User implements Serializable {
     private String username;
     @Enumerated(EnumType.STRING)
     private Roles role;
-    @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
-    Set<ChatMessage> messages;
 
-    @ManyToMany(mappedBy = "users")
-    private List<ChatRoom> chatRooms;
+    private String fullName;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @OneToMany(mappedBy = "sender")
+    private List<ChatMessage> sentMessages;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<ChatMessage> receivedMessages;
 }

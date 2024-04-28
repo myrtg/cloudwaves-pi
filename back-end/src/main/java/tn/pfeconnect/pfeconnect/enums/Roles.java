@@ -4,3 +4,4 @@ public enum Roles {
     ADMIN,
     ETUDIANT
 }
+

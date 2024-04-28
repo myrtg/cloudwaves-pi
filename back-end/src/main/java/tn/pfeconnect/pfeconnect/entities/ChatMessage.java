@@ -1,35 +1,38 @@
 package tn.pfeconnect.pfeconnect.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 import java.io.Serializable;
+import java.sql.Time;
 import java.time.LocalDateTime;
-
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Table(name="chat_message")
-public class ChatMessage implements Serializable {
+@NoArgsConstructor
+@Builder
+
+public class ChatMessage {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idChat", nullable = false)
-    private Long id;
-    private String content;
-    private LocalDateTime timestamp;
+    private String id;
+    private Long chatId;
+
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "sender_id_user")
     private User sender;
+
     @JsonIgnore
     @ManyToOne
-    private User recipient; // Champ pour spécifier le destinataire (admin)
-    @JsonIgnore
-    @ManyToOne
-    private ChatRoom chatRoom;
+    @JoinColumn(name = "recipient_id_user")
+    private User recipient;
+
+    private String content;
+    private Date timestamp;
+
 }

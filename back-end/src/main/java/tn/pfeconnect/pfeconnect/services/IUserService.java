@@ -9,5 +9,13 @@ import java.util.Optional;
 public interface IUserService {
 
 
+    void saveUser(User user);
 
+    void disconnect(User user);
+
+    List<User> findConnectedUsers();
+
+    User findUserById(long l);
+
+    User findByUserName(String userName);
 }
