@@ -16,7 +16,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { LoginComponent } from './components/login/login.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -34,13 +34,14 @@ import {FormsModule} from "@angular/forms";
     ForumComponent,
     LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
 
-  ],
+    ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
