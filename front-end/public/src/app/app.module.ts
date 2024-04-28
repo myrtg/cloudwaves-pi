@@ -15,6 +15,8 @@ import { BloceventsComponent } from './components/blocevents/blocevents.componen
 import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { LoginComponent } from './components/login/login.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -34,9 +36,12 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
