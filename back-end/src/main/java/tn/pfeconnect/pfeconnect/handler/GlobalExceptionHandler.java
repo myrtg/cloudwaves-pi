@@ -122,7 +122,7 @@ public class GlobalExceptionHandler {
                 .status(INTERNAL_SERVER_ERROR)
                 .body(
                         ExceptionResponse.builder()
-                                .businessErrorDescription("Internal error, please contact the admin")
+                                .businessErrorDescription("Internal error")
                                 .error(exp.getMessage())
                                 .build()
                 );
