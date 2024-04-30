@@ -1,14 +1,19 @@
 package tn.pfeconnect.pfeconnect.user;
 
 import jakarta.persistence.*;
-import lombok.*;
+import tn.pfeconnect.pfeconnect.role.Role;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tn.pfeconnect.pfeconnect.role.Role;
 
 import java.security.Principal;
 import java.time.LocalDate;
@@ -17,6 +22,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static jakarta.persistence.FetchType.EAGER;
+
 
 @Entity
 @Getter
@@ -24,7 +31,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="user")
-@Builder
+@SuperBuilder
 @EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails, Principal {
     @Id
@@ -39,7 +46,7 @@ public class User implements UserDetails, Principal {
     private LocalDate dateOfBirth;
     private boolean accountLocked;
     private boolean enabled;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = EAGER)
     private List<Role> roles;
     @CreatedDate
     @Column(updatable = false, nullable = false)
@@ -49,10 +56,7 @@ public class User implements UserDetails, Principal {
     private LocalDateTime lastModifiedDate;
 
 
-    @Override
-    public String getName() {
-        return email;
-    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -92,7 +96,16 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    public String getFullName(){
+    public String fullName() {
+        return getFirstName() + " " + getLastName();
+    }
+
+    @Override
+    public String getName() {
+        return email;
+    }
+
+    public String getFullName() {
         return firstName + " " + lastName;
     }
 }

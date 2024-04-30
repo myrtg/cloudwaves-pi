@@ -2,6 +2,7 @@ package tn.pfeconnect.pfeconnect.auth;
 
 
 
+import lombok.Value;
 import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
 import tn.pfeconnect.pfeconnect.user.User;
 import tn.pfeconnect.pfeconnect.role.RoleRepository;
@@ -12,7 +13,7 @@ import tn.pfeconnect.pfeconnect.email.EmailService;
 import tn.pfeconnect.pfeconnect.user.Token;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,11 +38,12 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final TokenRepository tokenRepository;
 
-    @Value("${application.mailing.frontend.activation-url}")
+//    @Value(staticConstructor = "application.mailing.frontend.activation-url")
     private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
+                // todo - better exception handling
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
         var user = User.builder()
                 .firstName(request.getFirstname())
@@ -77,14 +79,14 @@ public class AuthenticationService {
     @Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
-
+                // todo exception has to be defined
                 .orElseThrow(() -> new RuntimeException("Invalid token"));
         if (LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
             sendValidationEmail(savedToken.getUser());
             throw new RuntimeException("Activation token has expired. A new token has been send to the same email address");
         }
 
-        var user = userRepository.findById(Long.valueOf(savedToken.getUser().getId()))
+        var user = userRepository.findById(savedToken.getUser().getId())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         user.setEnabled(true);
         userRepository.save(user);
@@ -94,6 +96,7 @@ public class AuthenticationService {
     }
 
     private String generateAndSaveActivationToken(User user) {
+        // Generate a token
         String generatedToken = generateActivationCode(6);
         var token = Token.builder()
                 .token(generatedToken)

@@ -1,9 +1,6 @@
 package tn.pfeconnect.pfeconnect.config;
 
 
-
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +19,6 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.Collections;
-
-import static org.springframework.http.HttpHeaders.*;
 
 @Configuration
 @RequiredArgsConstructor
@@ -61,16 +56,16 @@ public class BeansConfig {
         config.setAllowCredentials(true);
         config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
         config.setAllowedHeaders(Arrays.asList(
-                ORIGIN,
-                CONTENT_TYPE,
-                ACCEPT,
-                AUTHORIZATION
+                HttpHeaders.ORIGIN,
+                HttpHeaders.CONTENT_TYPE,
+                HttpHeaders.ACCEPT,
+                HttpHeaders.AUTHORIZATION
         ));
         config.setAllowedMethods(Arrays.asList(
                 "GET",
                 "POST",
-                "PUT",
                 "DELETE",
+                "PUT",
                 "PATCH"
         ));
         source.registerCorsConfiguration("/**", config);

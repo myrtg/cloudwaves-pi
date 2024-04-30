@@ -11,7 +11,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tn.pfeconnect.pfeconnect.user.User;
 
 import java.time.LocalDateTime;
 

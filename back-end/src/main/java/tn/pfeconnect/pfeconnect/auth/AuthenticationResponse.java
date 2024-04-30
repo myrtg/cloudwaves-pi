@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter@Builder
+@Setter
+@Builder
 
 public class AuthenticationResponse {
     private String token;
+
 }

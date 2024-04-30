@@ -1,22 +1,24 @@
 package tn.pfeconnect.pfeconnect;
 
+import tn.pfeconnect.pfeconnect.role.Role;
+import tn.pfeconnect.pfeconnect.role.RoleRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
-import tn.pfeconnect.pfeconnect.role.Role;
-import tn.pfeconnect.pfeconnect.role.RoleRepository;
 
-@SpringBootApplication
-@EnableAsync
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-public class PfeConnectApplication {
+@EnableAsync
+@SpringBootApplication
+public class PfeConnectApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(PfeConnectApplication.class, args);
 	}
+
 	@Bean
 	public CommandLineRunner runner(RoleRepository roleRepository) {
 		return args -> {
@@ -25,5 +27,4 @@ public class PfeConnectApplication {
 			}
 		};
 	}
-
 }
