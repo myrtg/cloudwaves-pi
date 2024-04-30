@@ -1,10 +1,11 @@
 package tn.pfeconnect.pfeconnect.config;
+import tn.pfeconnect.pfeconnect.user.User;
+
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import tn.pfeconnect.pfeconnect.user.User;
 
 import java.util.Optional;
 

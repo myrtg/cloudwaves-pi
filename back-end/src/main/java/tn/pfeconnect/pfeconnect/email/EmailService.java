@@ -53,7 +53,7 @@ public class EmailService {
         Context context = new Context();
         context.setVariables(properties);
 
-        helper.setFrom("cloudwaves@esprit.tn");
+        helper.setFrom("admin@pfeconnect.com");
         helper.setTo(to);
         helper.setSubject(subject);
 
@@ -62,5 +62,4 @@ public class EmailService {
         helper.setText(template, true);
 
         mailSender.send(mimeMessage);
-    }
-}
+    }}

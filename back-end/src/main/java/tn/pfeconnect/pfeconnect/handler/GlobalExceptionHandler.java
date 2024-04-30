@@ -1,6 +1,8 @@
 package tn.pfeconnect.pfeconnect.handler;
 
 
+import tn.pfeconnect.pfeconnect.exception.ActivationTokenException;
+import tn.pfeconnect.pfeconnect.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -9,16 +11,18 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import tn.pfeconnect.pfeconnect.exception.ActivationTokenException;
-import tn.pfeconnect.pfeconnect.exception.OperationNotPermittedException;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
 import static tn.pfeconnect.pfeconnect.handler.BusinessErrorCodes.ACCOUNT_DISABLED;
 import static tn.pfeconnect.pfeconnect.handler.BusinessErrorCodes.ACCOUNT_LOCKED;
 import static tn.pfeconnect.pfeconnect.handler.BusinessErrorCodes.BAD_CREDENTIALS;
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -122,7 +126,7 @@ public class GlobalExceptionHandler {
                 .status(INTERNAL_SERVER_ERROR)
                 .body(
                         ExceptionResponse.builder()
-                                .businessErrorDescription("Internal error")
+                                .businessErrorDescription("Internal error, please contact the admin")
                                 .error(exp.getMessage())
                                 .build()
                 );

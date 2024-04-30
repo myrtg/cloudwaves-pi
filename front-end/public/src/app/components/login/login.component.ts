@@ -2,10 +2,9 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/services/authentication.service';
 import {AuthenticationRequest} from '../../services/models/authentication-request';
+import {TokenService} from '../../services/token/token.service';
 
-
-@Component
-  ({
+@Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -18,26 +17,27 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-
+    private tokenService: TokenService
   ) {
   }
 
   login() {
-    console.log(this.authRequest);
     this.errorMsg = [];
     this.authService.authenticate({
       body: this.authRequest
     }).subscribe({
       next: (res) => {
-
-        this.router.navigate(['home']);
+        console.log(res)
+        this.tokenService.token = res.token as string;
+        sessionStorage.setItem('token',this.tokenService.token);
+        this.router.navigate(['books']);
       },
       error: (err) => {
         console.log(err);
         if (err.error.validationErrors) {
           this.errorMsg = err.error.validationErrors;
         } else {
-          this.errorMsg.push(err.error.errorMsg);
+          this.errorMsg.push(err.error.error);
         }
       }
     });
