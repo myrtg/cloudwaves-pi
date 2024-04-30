@@ -15,6 +15,7 @@ export class EventsComponent implements OnInit {
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
+    dateClick: (arg) => this.handleDateClick(arg),
     plugins: [dayGridPlugin, interactionPlugin],
   };
   constructor(private eventService: EventService) { }
@@ -33,6 +34,10 @@ export class EventsComponent implements OnInit {
       tutor: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required,])
     })
+  }
+
+  handleDateClick(arg:any){
+    alert("Date Click : "+arg.dateStr)
   }
   onFileSelected(event: any): void {
     if (event.target.files.length > 0) {
