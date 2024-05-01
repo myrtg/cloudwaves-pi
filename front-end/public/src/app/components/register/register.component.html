@@ -6,24 +6,23 @@
     </div>
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
       <div class="card login-card">
-<!--        <h3 class="text-center mb-4">Login</h3>-->
-<!--        <hr class="divider">-->
         <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
           <p *ngFor="let msg of errorMsg">{{msg}}</p>
         </div>
         <div class="mb-4">
-          <input [(ngModel)]="authRequest.email" type="email" class="form-control form-control-lg text-center" id="login" placeholder="EMAIL ADDRESS">
+          <input [(ngModel)]="registerRequest.email" type="email" class="form-control form-control-lg text-center" id="email" placeholder="EMAIL ADDRESS">
         </div>
         <div class="mb-3">
-          <input [(ngModel)]="authRequest.password" type="password" class="form-control form-control-lg text-center" id="password" placeholder="PASSWORD">
+          <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control form-control-lg text-center" id="firstname" placeholder="FIRST NAME">
         </div>
-        <div class="d-flex justify-content-center">
-<!--          <div class="divider mx-3"></div>-->
-<!--          <p class="text-center fw-bold mx-3 mb-0">Or</p>-->
-<!--          <div class="divider mx-3"></div>-->
+        <div class="mb-3">
+          <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control form-control-lg text-center" id="lastname" placeholder="LAST NAME">
+        </div>
+        <div class="mb-3">
+          <input [(ngModel)]="registerRequest.password" type="password" class="form-control form-control-lg text-center" id="password" placeholder="PASSWORD">
         </div>
         <div class="d-flex flex-column align-items-center justify-content-center mb-4">
-          <p class="lead fw-normal mb-0">Sign in with</p>
+          <p class="lead fw-normal mb-0">Sign up with</p>
           <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-primary btn-floating mx-1">
               <i class="fab fa-facebook-f"></i>
@@ -37,11 +36,10 @@
           </div>
         </div>
         <div class="text-center mt-4">
-          <button (click)="login()" type="button" class="btn btn-primary btn-lg">Login</button>
-          <p   class="small fw-bold mt-2 mb-0">Don't have an account?> <button (click)="register()" type="button" class="btn btn-link">Register</button></p>
+          <button (click)="register()" type="button" class="btn btn-primary btn-lg">Register</button>
+          <p class="small fw-bold mt-2 mb-0">Already have an account? <a href="http://localhost:4200/login" class="link-danger">Login</a></p>
         </div>
       </div>
     </div>
   </div>
-
 </div>

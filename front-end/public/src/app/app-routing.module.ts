@@ -9,6 +9,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { ForumComponent } from './components/forum/forum.component';
 import {LoginComponent} from "./components/login/login.component";
 import {CustomRoute} from "./custom-route";
+import {RegisterComponent} from "./components/register/register.component";
+import {ActivateAccountComponent} from "./components/activate-account/activate-account.component";
 
 
 const routes: Routes = [
@@ -22,7 +24,10 @@ const routes: Routes = [
   {path:'contactus', component: ContactusComponent},
   {path:'forum', component: ForumComponent},
 
-  {path:'home', component:HomeComponent}
+  {path:'home', component:HomeComponent},
+  {path:'register', component:RegisterComponent},
+  {path:'activate-account', component:ActivateAccountComponent},
+
 
 ];
 
