@@ -1,4 +1,4 @@
-package tn.pfeconnect.pfeconnect.user;
+package tn.pfeconnect.pfeconnect.entities;
 
 import jakarta.persistence.*;
 import tn.pfeconnect.pfeconnect.role.Role;

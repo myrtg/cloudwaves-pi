@@ -1,4 +1,4 @@
-package tn.pfeconnect.pfeconnect.user;
+package tn.pfeconnect.pfeconnect.security;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.pfeconnect.pfeconnect.entities.User;
 
 import java.time.LocalDateTime;
 

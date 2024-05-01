@@ -2,15 +2,14 @@ package tn.pfeconnect.pfeconnect.auth;
 
 
 
-import lombok.Value;
 import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
-import tn.pfeconnect.pfeconnect.user.User;
+import tn.pfeconnect.pfeconnect.entities.User;
 import tn.pfeconnect.pfeconnect.role.RoleRepository;
-import tn.pfeconnect.pfeconnect.user.TokenRepository;
-import tn.pfeconnect.pfeconnect.user.UserRepository;
+import tn.pfeconnect.pfeconnect.repositories.TokenRepository;
+import tn.pfeconnect.pfeconnect.repositories.UserRepository;
 import tn.pfeconnect.pfeconnect.security.JwtService;
 import tn.pfeconnect.pfeconnect.email.EmailService;
-import tn.pfeconnect.pfeconnect.user.Token;
+import tn.pfeconnect.pfeconnect.security.Token;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 

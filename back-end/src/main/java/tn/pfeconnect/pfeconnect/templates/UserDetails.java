@@ -1,4 +1,4 @@
-package tn.pfeconnect.pfeconnect.entities;
+package tn.pfeconnect.pfeconnect.templates;
 
 import org.springframework.security.core.GrantedAuthority;
 

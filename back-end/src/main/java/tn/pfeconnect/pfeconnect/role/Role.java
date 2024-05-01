@@ -1,6 +1,6 @@
 package tn.pfeconnect.pfeconnect.role;
 
-import tn.pfeconnect.pfeconnect.user.User;
+import tn.pfeconnect.pfeconnect.entities.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

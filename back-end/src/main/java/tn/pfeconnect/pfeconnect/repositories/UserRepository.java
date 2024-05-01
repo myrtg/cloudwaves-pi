@@ -1,7 +1,8 @@
-package tn.pfeconnect.pfeconnect.user;
+package tn.pfeconnect.pfeconnect.repositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import tn.pfeconnect.pfeconnect.entities.User;
 
 import java.util.Optional;
 

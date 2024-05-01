@@ -1,5 +1,5 @@
 package tn.pfeconnect.pfeconnect.config;
-import tn.pfeconnect.pfeconnect.user.User;
+import tn.pfeconnect.pfeconnect.entities.User;
 
 
 import org.springframework.data.domain.AuditorAware;

@@ -1,7 +1,7 @@
 package tn.pfeconnect.pfeconnect.security;
 
 
-import tn.pfeconnect.pfeconnect.user.UserRepository;
+import tn.pfeconnect.pfeconnect.repositories.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
