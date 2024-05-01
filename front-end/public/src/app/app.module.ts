@@ -17,6 +17,9 @@ import { ForumComponent } from './components/forum/forum.component';
 import { LoginComponent } from './components/login/login.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
+import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import {CodeInputModule} from "angular-code-input";
 
 @NgModule({
   declarations: [
@@ -32,16 +35,19 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BloceventsComponent,
     ChatComponent,
     ForumComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    ActivateAccountComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CodeInputModule
 
-    ],
+  ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
