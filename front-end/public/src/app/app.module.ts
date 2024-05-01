@@ -14,6 +14,12 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { BloceventsComponent } from './components/blocevents/blocevents.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { LoginComponent } from './components/login/login.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
+import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import {CodeInputModule} from "angular-code-input";
 
 @NgModule({
   declarations: [
@@ -28,13 +34,21 @@ import { ForumComponent } from './components/forum/forum.component';
     ContactusComponent,
     BloceventsComponent,
     ChatComponent,
-    ForumComponent
+    ForumComponent,
+    LoginComponent,
+    RegisterComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CodeInputModule
+
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
