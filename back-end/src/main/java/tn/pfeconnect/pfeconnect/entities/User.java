@@ -17,12 +17,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="TUser")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUser", nullable = false)
     private Long id;
+    @Column(unique = true)
     private String username;
     @Enumerated(EnumType.STRING)
     private Roles role;

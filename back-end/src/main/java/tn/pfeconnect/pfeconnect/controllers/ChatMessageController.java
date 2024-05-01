@@ -24,7 +24,7 @@ public class ChatMessageController {
     private final IChatMessageService chatMessageService;
     private final IUserService userService;
 
-    @MessageMapping("/pfeconnect")
+    @MessageMapping("/chat")
     public void processMessage(@Payload Map<String,Object> payload) {
         // Extract senderID, recipientID, and content from the payload
         String senderId = (String) payload.get("senderId");
