@@ -17,7 +17,7 @@ public class IUserServiceImpl implements IUserService {
     @Override
     public void saveUser(User user) {
         // Check if the user already exists by userName or fullName
-        User existingUser = repository.findByUsername(user.getUsername());
+        User existingUser = repository.findByNickname(user.getNickname());
 
         if (existingUser != null) {
             // Update the existing user
@@ -32,7 +32,7 @@ public class IUserServiceImpl implements IUserService {
 
     @Override
     public void disconnect(User user) {
-        var storedUser = repository.findByUsername(user.getUsername());
+        var storedUser = repository.findByNickname(user.getNickname());
         if (storedUser != null) {
             storedUser.setStatus(Status.OFFLINE);
             repository.save(storedUser);
@@ -49,8 +49,9 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public User findByUserName(String n){
-        return repository.findByUsername(n);
+    public User findByNickname(String userName) {
+        return repository.findByNickname(userName);
     }
+
 
 }

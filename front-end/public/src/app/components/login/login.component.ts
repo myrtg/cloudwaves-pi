@@ -27,10 +27,16 @@ export class LoginComponent {
       body: this.authRequest
     }).subscribe({
       next: (res) => {
-        console.log(res)
+        console.log('login response ', res)
         this.tokenService.token = res.token as string;
         sessionStorage.setItem('token',this.tokenService.token);
-        this.router.navigate(['books']);
+        if(res.user){
+          localStorage.setItem('nickname', res.user.nickname)
+          localStorage.setItem('fullName', res.user.fullName)
+        }else{
+          console.log("user is null in Login response")
+        }
+        this.router.navigate(['home']);
       },
       error: (err) => {
         console.log(err);

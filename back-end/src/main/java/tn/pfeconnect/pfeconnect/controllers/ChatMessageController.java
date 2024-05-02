@@ -34,8 +34,8 @@ public class ChatMessageController {
         System.out.println(" (String) payload.get(\"message\") "+  (String) payload.get("message") + senderId +"  "+ recipientId+ "payload"+ payload);
 
         // Fetch sender and recipient users from their IDs
-        User sender = userService.findByUserName(senderId);
-        User recipient = userService.findByUserName(recipientId);
+        User sender = userService.findByNickname(senderId);
+        User recipient = userService.findByNickname(recipientId);
 
         // Create a new ChatMessage object
         ChatMessage chatMessage = new ChatMessage();
@@ -65,8 +65,8 @@ public class ChatMessageController {
                                                                  @PathVariable String recipientId) {
         System.out.println("senderId "+ senderId+"  "+ recipientId);
         // Fetch sender and recipient users from the repository
-        User sender = userService.findByUserName(senderId);
-        User recipient = userService.findByUserName(recipientId);
+        User sender = userService.findByNickname(senderId);
+        User recipient = userService.findByNickname(recipientId);
 
         // Check if sender and recipient exist
         if (sender == null || recipient == null) {

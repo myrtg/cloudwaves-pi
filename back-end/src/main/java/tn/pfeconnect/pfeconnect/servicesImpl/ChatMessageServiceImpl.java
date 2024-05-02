@@ -74,8 +74,8 @@ public class ChatMessageServiceImpl implements IChatMessageService {
                     .map(message -> new ChatMessageDTO(
                             message.getId(),
                             message.getChatId(),
-                            message.getSender().getUsername(),
-                            message.getRecipient().getUsername(),
+                            message.getSender().getNickname(),
+                            message.getRecipient().getNickname(),
                             message.getContent(),
                             message.getTimestamp(),
                             message.getSender()

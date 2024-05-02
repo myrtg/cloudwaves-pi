@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import tn.pfeconnect.pfeconnect.entities.User;
 import tn.pfeconnect.pfeconnect.enums.Status;
 
+import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(String email);
 
@@ -15,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findAllByStatus(Status status);
 
 
-    User findByUsername(String userName);
+    User findByNickname(String nickName);
 
     User findUserById(Long id);
 }

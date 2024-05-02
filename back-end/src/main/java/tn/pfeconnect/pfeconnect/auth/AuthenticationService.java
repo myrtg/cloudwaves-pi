@@ -4,6 +4,7 @@ package tn.pfeconnect.pfeconnect.auth;
 
 import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
 import tn.pfeconnect.pfeconnect.entities.User;
+import tn.pfeconnect.pfeconnect.enums.Status;
 import tn.pfeconnect.pfeconnect.role.RoleRepository;
 import tn.pfeconnect.pfeconnect.repositories.TokenRepository;
 import tn.pfeconnect.pfeconnect.repositories.UserRepository;
@@ -48,6 +49,9 @@ public class AuthenticationService {
                 .firstName(request.getFirstname())
                 .lastName(request.getLastname())
                 .email(request.getEmail())
+                .username(request.getEmail())
+                .nickname(request.getNickname())
+                .fullName(request.getFirstname()+" "+request.getLastname())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)
                 .enabled(false)
@@ -67,11 +71,14 @@ public class AuthenticationService {
 
         var claims = new HashMap<String, Object>();
         var user = ((User) auth.getPrincipal());
+        user.setStatus(Status.ONLINE);
+        userRepository.save(user);
         claims.put("fullName", user.getFullName());
 
         var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .user(user)
                 .build();
     }
 

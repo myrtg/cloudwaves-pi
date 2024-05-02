@@ -16,6 +16,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import tn.pfeconnect.pfeconnect.enums.Status;
 
+import java.io.Serializable;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -61,16 +62,16 @@ public class User implements UserDetails, Principal, Serializable {
     private String fullName;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status=Status.OFFLINE;
 
     @OneToMany(mappedBy = "sender")
     private List<ChatMessage> sentMessages;
 
     @OneToMany(mappedBy = "recipient")
     private List<ChatMessage> receivedMessages;
-
-    @Column(unique = true)
     private String username;
+    @Column(unique = true)
+    private String nickname;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles
@@ -78,6 +79,8 @@ public class User implements UserDetails, Principal, Serializable {
                 .map(r -> new SimpleGrantedAuthority(r.getName()))
                 .collect(Collectors.toList());
     }
+
+
 
     @Override
     public String getPassword() {
@@ -121,4 +124,6 @@ public class User implements UserDetails, Principal, Serializable {
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
+
 }

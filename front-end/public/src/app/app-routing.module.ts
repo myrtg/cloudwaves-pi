@@ -11,11 +11,12 @@ import {LoginComponent} from "./components/login/login.component";
 import {CustomRoute} from "./custom-route";
 import {RegisterComponent} from "./components/register/register.component";
 import {ActivateAccountComponent} from "./components/activate-account/activate-account.component";
+import { ChatComponent } from './components/chat/chat.component';
 
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
-  {path:'login', component:LoginComponent},
+  {path:'home', component: HomeComponent},
+  {path:'', component:LoginComponent},
 
   {path:'pfebook', component: PfebookComponent},
   {path:'internship', component: InternshipComponent},
@@ -23,10 +24,9 @@ const routes: Routes = [
   {path:'events', component: EventsComponent},
   {path:'contactus', component: ContactusComponent},
   {path:'forum', component: ForumComponent},
-
-  {path:'home', component:HomeComponent},
+  {path:'chat', component: ChatComponent},
   {path:'register', component:RegisterComponent},
-  {path:'activate-account', component:ActivateAccountComponent},
+  {path:'activate-account', component:ActivateAccountComponent}
 
 
 ];
