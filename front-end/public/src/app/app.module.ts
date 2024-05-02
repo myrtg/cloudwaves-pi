@@ -19,7 +19,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './components/register/register.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
-import {CodeInputModule} from "angular-code-input";
+import { CodeInputModule } from 'angular-code-input';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 
@@ -47,7 +48,9 @@ import {CodeInputModule} from "angular-code-input";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CodeInputModule,
+    NgxCaptchaModule,
+    CodeInputModule
+
 
   ],
   providers: [HttpClient],
