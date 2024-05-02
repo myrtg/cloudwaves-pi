@@ -1,9 +1,11 @@
 package com.projectpi.cloudwaves.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,15 +20,18 @@ public class OffreStage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_offre")
-    private long id;
+    private long idOffre;
     private String titre;
     private String description;
     private Date datePublication;
     private Date dateLimite;
+    @Enumerated(EnumType.STRING)
+    private Domaine domaine;
 
-    @OneToMany(mappedBy = "offreStage",cascade = CascadeType.ALL)
-    private Set<Condidature> condidatures;
+    @OneToMany(mappedBy = "OffreStage",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"description","datePublication","dateLimite","candidatures","testTechniques"})
+    private Set<Candidature> candidatures;
 
-    @ManyToMany
-    private Set<TestTechnique> testTechniques;
+    @OneToOne
+    private Quiz Quiz;
 }
