@@ -10,6 +10,7 @@ import {TokenService} from '../../services/token/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  siteKey: string;
 
   authRequest: AuthenticationRequest = {email: '', password: ''};
   errorMsg: Array<string> = [];
@@ -19,6 +20,7 @@ export class LoginComponent {
     private authService: AuthenticationService,
     private tokenService: TokenService
   ) {
+    this.siteKey = '6Le8lc4pAAAAAPGfvO0rw_oml3DIReJqt9HTLAMo';
   }
 
   login() {
