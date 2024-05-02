@@ -21,6 +21,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
 import {CodeInputModule} from "angular-code-input";
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,7 @@ import {CodeInputModule} from "angular-code-input";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CodeInputModule
+    CodeInputModule,
 
   ],
   providers: [HttpClient],

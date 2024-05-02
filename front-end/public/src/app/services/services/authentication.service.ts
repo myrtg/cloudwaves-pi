@@ -16,9 +16,11 @@ import { confirm } from '../fn/authentication/confirm';
 import { Confirm$Params } from '../fn/authentication/confirm';
 import { register } from '../fn/authentication/register';
 import { Register$Params } from '../fn/authentication/register';
+import {VerificationRequest} from "../models/verification-response";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService extends BaseService {
+  private baseUrl: string = 'http://localhost:8080/api/v1/auth';
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
@@ -100,6 +102,10 @@ export class AuthenticationService extends BaseService {
     return this.confirm$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
+  }
+  verifyCode(verificationRequest: VerificationRequest) {
+    return this.http.post<AuthenticationResponse>
+    (`${this.baseUrl}/verify`, verificationRequest);
   }
 
 }

@@ -10,5 +10,9 @@ import lombok.Setter;
 
 public class AuthenticationResponse {
     private String token;
+    private String refreshToken;
+    private boolean mfaEnabled;
+    private String secretImageUri;
+
 
 }

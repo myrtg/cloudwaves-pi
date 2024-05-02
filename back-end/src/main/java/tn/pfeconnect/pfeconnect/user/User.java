@@ -42,10 +42,17 @@ public class User implements UserDetails, Principal {
     @Column(unique = true)
     private String email;
     private String password;
+
+    public String getMobile() {
+        return mobile;
+    }
+
     private String mobile;
     private LocalDate dateOfBirth;
     private boolean accountLocked;
     private boolean enabled;
+    private boolean mfaEnabled;
+    private String secret;
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
     @CreatedDate
@@ -93,7 +100,7 @@ public class User implements UserDetails, Principal {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return this.enabled;
     }
 
     public String fullName() {

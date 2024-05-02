@@ -21,6 +21,8 @@ public class JwtService {
     private String secretKey;
     @Value("86400000")
     private long jwtExpiration;
+    @Value("604800000")
+    private long refreshExpiration;
 
 
     public String extractUsername(String token) {
@@ -83,6 +85,12 @@ public class JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public String generateRefreshToken(
+            UserDetails userDetails
+    ) {
+        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
     }
 
     private Key getSignInKey() {

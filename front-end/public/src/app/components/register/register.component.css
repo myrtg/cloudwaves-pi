@@ -1,27 +1,25 @@
-.bg-image-vertical {
-  position: relative;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: auto 100%;
+.container {
+  padding-top: 50px;
 }
 
-@media (min-width: 1025px) {
-  .h-custom-2 {
-    height: 100%;
-  }
-  .form-control {
-    background-color: #f0f0f0; /* Grey background */
-    color: #000000; /* Black text color */
-    border: none;
-  }
-  .text-center {
-    text-align: center;
-  }
-  .login-card {
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-  }
+.card {
+  border: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.link-danger {
+  color: #dc3545;
+}
+
+.link-danger:hover {
+  color: #bd2130;
 }

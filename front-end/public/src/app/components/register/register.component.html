@@ -1,43 +1,38 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-<div class="container-fluid login-container">
-  <div class="row d-flex justify-content-center align-items-center vh-100">
-    <div class="col-md-9 col-lg-6 col-xl-5">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
-    </div>
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-      <div class="card login-card">
-        <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
-          <p *ngFor="let msg of errorMsg">{{msg}}</p>
-        </div>
-        <div class="mb-4">
-          <input [(ngModel)]="registerRequest.email" type="email" class="form-control form-control-lg text-center" id="email" placeholder="EMAIL ADDRESS">
-        </div>
-        <div class="mb-3">
-          <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control form-control-lg text-center" id="firstname" placeholder="FIRST NAME">
-        </div>
-        <div class="mb-3">
-          <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control form-control-lg text-center" id="lastname" placeholder="LAST NAME">
-        </div>
-        <div class="mb-3">
-          <input [(ngModel)]="registerRequest.password" type="password" class="form-control form-control-lg text-center" id="password" placeholder="PASSWORD">
-        </div>
-        <div class="d-flex flex-column align-items-center justify-content-center mb-4">
-          <p class="lead fw-normal mb-0">Sign up with</p>
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-linkedin-in"></i>
-            </button>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Register</h2>
+          <form (submit)="register()">
+            <div class="mb-3">
+              <input [(ngModel)]="registerRequest.email" type="email" class="form-control" id="email" placeholder="Email Address" required>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control" id="firstname" placeholder="First Name" required>
+              </div>
+              <div class="col">
+                <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input [(ngModel)]="registerRequest.password" type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+              <input [(ngModel)]="registerRequest.mobile" type="tel" class="form-control" id="mobile" placeholder="Mobile" required>
+            </div>
+<!--            <ngx-recaptcha2 [siteKey]="siteKey">-->
+<!--            </ngx-recaptcha2>-->
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+          </form>
+
+          <div class="text-center">
+            <p class="small">Already have an account? <a href="http://localhost:4200/login" class="link-danger">Login</a></p>
           </div>
-        </div>
-        <div class="text-center mt-4">
-          <button (click)="register()" type="button" class="btn btn-primary btn-lg">Register</button>
-          <p class="small fw-bold mt-2 mb-0">Already have an account? <a href="http://localhost:4200/login" class="link-danger">Login</a></p>
         </div>
       </div>
     </div>
