@@ -1,15 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/services/authentication.service';
 import {RegistrationRequest} from '../../services/models/registration-request';
 import {AuthenticationResponse} from "../../services/models/authentication-response";
-
-
+// import { MatSlideToggleChange } from "@angular/material";
+// import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
   siteKey: string;

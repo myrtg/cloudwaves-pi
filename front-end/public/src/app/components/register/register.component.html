@@ -1,4 +1,15 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Include Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Include your custom styles here -->
+</head>
+<body>
 <div class="container-fluid login-container">
   <div class="row d-flex justify-content-center align-items-center vh-100">
     <div class="col-md-9 col-lg-6 col-xl-5">
@@ -10,41 +21,41 @@
         <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
           <p *ngFor="let msg of errorMsg">{{ msg }}</p>
         </div>
-        <div class="mb-4">
-          <input [(ngModel)]="registerRequest.email" type="email" class="form-control form-control-lg text-center"
-                 id="email" placeholder="EMAIL ADDRESS">
-        </div>
         <div class="mb-3">
-          <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control form-control-lg text-center"
-                 id="firstname" placeholder="FIRST NAME">
-        </div>
-        <div class="mb-3">
-          <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control form-control-lg text-center"
-                 id="lastname" placeholder="LAST NAME">
-        </div>
-        <div class="mb-3">
-          <input [(ngModel)]="registerRequest.password" type="password" class="form-control form-control-lg text-center"
-                 id="password" placeholder="PASSWORD">
-        </div>
-        <div class="mb-3">
-          <input [(ngModel)]="registerRequest.mobile" type="text" class="form-control form-control-lg text-center"
-                 id="mobile" placeholder="MOBILE">
-        </div>
-        <ngx-recaptcha2 [siteKey]="siteKey"></ngx-recaptcha2>
-        <div class="d-flex flex-column align-items-center justify-content-center mb-4">
-          <p class="lead fw-normal mb-0">Sign up with</p>
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-linkedin-in"></i>
-            </button>
+          <div class="input-wrapper">
+            <input [(ngModel)]="registerRequest.email" type="email" class="form-control form-control-lg text-center"
+                   id="email" placeholder="EMAIL ADDRESS">
           </div>
         </div>
+        <div class="mb-3">
+          <div class="input-wrapper">
+            <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control form-control-lg text-center"
+                   id="firstname" placeholder="FIRST NAME">
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-wrapper">
+            <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control form-control-lg text-center"
+                   id="lastname" placeholder="LAST NAME">
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-wrapper">
+            <input [(ngModel)]="registerRequest.password" type="password"
+                   class="form-control form-control-lg text-center" id="password" placeholder="PASSWORD">
+            <mat-password-strength [password]="registerRequest.password"></mat-password-strength>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-wrapper">
+            <input [(ngModel)]="registerRequest.mobile" type="text" class="form-control form-control-lg text-center"
+                   id="mobile" placeholder="MOBILE">
+          </div>
+        </div>
+        <div class="recaptcha-container">
+          <ngx-recaptcha2 [siteKey]="siteKey"></ngx-recaptcha2>
+        </div>
+
         <div class="text-center mt-4">
           <button (click)="register()" type="button" class="btn btn-primary btn-lg">Register</button>
           <p class="small fw-bold mt-2 mb-0">Already have an account? <a href="http://localhost:4200/login"
@@ -54,3 +65,9 @@
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Include your custom scripts here -->
+</body>
+</html>

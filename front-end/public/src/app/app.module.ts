@@ -21,6 +21,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
 import { CodeInputModule } from 'angular-code-input';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { MatPasswordStrengthModule } from "@angular-material-extensions/password-strength";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -49,7 +52,10 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
-    CodeInputModule
+    CodeInputModule,
+    MatPasswordStrengthModule.forRoot(),
+    MatInputModule,
+    MatIconModule
 
 
   ],
