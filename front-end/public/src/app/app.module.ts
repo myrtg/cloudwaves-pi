@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,14 +13,16 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { BloceventsComponent } from './components/blocevents/blocevents.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { LoginComponent } from './components/login/login.component';
-import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { RegisterComponent } from './components/register/register.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
-import {CodeInputModule} from "angular-code-input";
-import { ChatService } from './chat.service';
-import { UserService } from './user.service';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { CodeInputModule } from 'angular-code-input';
+import { BetterDatePipe } from './better-date.pipe';
 import { AuthInterceptor } from './jwt-interceptor';
 
 @NgModule({
@@ -40,7 +41,9 @@ import { AuthInterceptor } from './jwt-interceptor';
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
-    ChatComponent
+    NotFoundComponent,
+    BetterDatePipe,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,11 +52,8 @@ import { AuthInterceptor } from './jwt-interceptor';
     FormsModule,
     ReactiveFormsModule,
     CodeInputModule
-
   ],
   providers: [
-    HttpClient,ChatService, 
-    UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
 
   ],

@@ -49,8 +49,6 @@ public class AuthenticationService {
                 .firstName(request.getFirstname())
                 .lastName(request.getLastname())
                 .email(request.getEmail())
-                .username(request.getEmail())
-                .nickname(request.getNickname())
                 .fullName(request.getFirstname()+" "+request.getLastname())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)

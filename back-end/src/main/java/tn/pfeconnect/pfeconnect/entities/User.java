@@ -1,12 +1,9 @@
 package tn.pfeconnect.pfeconnect.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 import tn.pfeconnect.pfeconnect.role.Role;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,23 +23,23 @@ import java.util.stream.Collectors;
 
 import static jakarta.persistence.FetchType.EAGER;
 
-
+@Data
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="user")
+@Table(name = "user")
 @SuperBuilder
 @EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails, Principal, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUser", nullable = false)
-    private Long id;
+    @Column(name = "id_user", nullable = false)
+    private int id;
     private String firstName;
     private String lastName;
-    @Column(unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     private String password;
     private String mobile;
@@ -64,14 +61,6 @@ public class User implements UserDetails, Principal, Serializable {
     @Enumerated(EnumType.STRING)
     private Status status=Status.OFFLINE;
 
-    @OneToMany(mappedBy = "sender")
-    private List<ChatMessage> sentMessages;
-
-    @OneToMany(mappedBy = "recipient")
-    private List<ChatMessage> receivedMessages;
-    private String username;
-    @Column(unique = true)
-    private String nickname;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles

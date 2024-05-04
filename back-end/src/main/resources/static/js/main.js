@@ -38,7 +38,7 @@ function onConnected() {
     // register the connected user
     stompClient.send("/app/user.addUser",
         {},
-        JSON.stringify({username: userName, fullName: fullname, status: 'ONLINE'})
+        JSON.stringify({nickname: userName, fullName: fullname, status: 'ONLINE'})
     );
     document.querySelector('#connected-user-fullname').textContent = fullname;
     findAndDisplayConnectedUsers().then();
@@ -47,7 +47,7 @@ function onConnected() {
 async function findAndDisplayConnectedUsers() {
     const connectedUsersResponse = await fetch('/users');
     let connectedUsers = await connectedUsersResponse.json();
-    connectedUsers = connectedUsers.filter(user => user.username !== userName);
+    connectedUsers = connectedUsers.filter(user => user.nickname !== userName);
     const connectedUsersList = document.getElementById('connectedUsers');
     connectedUsersList.innerHTML = '';
 
@@ -64,7 +64,7 @@ async function findAndDisplayConnectedUsers() {
 function appendUserElement(user, connectedUsersList) {
     const listItem = document.createElement('li');
     listItem.classList.add('user-item');
-    listItem.id = user.username;
+    listItem.id = user.nickname;
 
     const userImage = document.createElement('img');
     userImage.src = '../img/user_icon.png';
@@ -128,7 +128,7 @@ async function fetchAndDisplayUserChat() {
     chatArea.innerHTML = '';
 
     userChat.forEach(chat => {
-        displayMessage(chat.sender.username, chat.content);
+        displayMessage(chat.sender.nickname, chat.content);
     });
     chatArea.scrollTop = chatArea.scrollHeight;
 }
@@ -198,7 +198,7 @@ async function onMessageReceived(payload) {
 function onLogout() {
     stompClient.send("/app/user.disconnectUser",
         {},
-        JSON.stringify({username: userName, fullName: fullname, status: 'OFFLINE'})
+        JSON.stringify({nickname: userName, fullName: fullname, status: 'OFFLINE'})
     );
     window.location.reload();
 }

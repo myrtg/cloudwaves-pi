@@ -17,7 +17,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
   ) {
   }
 
@@ -31,8 +31,9 @@ export class LoginComponent {
         this.tokenService.token = res.token as string;
         sessionStorage.setItem('token',this.tokenService.token);
         if(res.user){
-          localStorage.setItem('nickname', res.user.nickname)
-          localStorage.setItem('fullName', res.user.fullName)
+          localStorage.setItem('user', JSON.stringify(res.user));
+
+       // this.chatservice.connect( res.user.nickname, res.user.fullName)
         }else{
           console.log("user is null in Login response")
         }
