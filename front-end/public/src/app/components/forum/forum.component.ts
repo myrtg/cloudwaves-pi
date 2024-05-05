@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ForumService } from 'src/app/services/forum.service';
+import { CommentaireService } from 'src/app/services/commentaire.service';
+
 
 
 interface Forum {
@@ -20,16 +22,30 @@ interface Forum {
 })
 export class ForumComponent implements OnInit {
 
-  
+
  
     listForums: Forum[] = [];
   newForum: Forum = { idForum: 0, titre: '', message: '', email: '', likes: 0, dislikes: 0 };
   
-  constructor(private forumService: ForumService) {}
+  constructor(private forumService: ForumService,private commentaireService: CommentaireService ) {}
+ 
+
+  chargerForums() {
+    this.forumService.getAllForums().subscribe(
+      (forums: Forum[]) => {
+        this.listForums = forums;
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des forums:', error);
+      }
+    );
+  }
 
   ngOnInit() {
     this.loadForums();
+    
   }
+
 
   loadForums() {
     this.forumService.getAllForums().subscribe(
@@ -180,5 +196,54 @@ getTranslatedForumMessage(forumId: number) {
     }
   );
 }
+
+addCommentToForum(forumId: number) {
+  Swal.fire({
+    title: 'Add Comment',
+    input: 'text',
+    inputLabel: 'Your comment',
+    showCancelButton: true,
+    confirmButtonText: 'Add Comment',
+    cancelButtonText: 'Cancel',
+    inputValidator: (value) => {
+      if (!value) {
+        return 'Please enter your comment!';
+      }
+      return undefined;
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const comment = result.value;
+      // Appel à la méthode addCommentaire de CommentaireService
+      this.commentaireService.addCommentaire({ commentaire: comment }).subscribe(
+        (response) => {
+          console.log('Comment added successfully:', response);
+          // Après l'ajout, rechargez la liste des forums pour refléter le nouveau commentaire
+          this.loadForums();
+        },
+        (error) => {
+          console.error('Error adding comment:', error);
+        }
+      );
+    }
+  });
+}
+
+
+
+shareForumOnTwitter(forumId: number) {
+  this.forumService.tweetForum(forumId).subscribe(
+    (twitterIntentUrl: string) => {
+      // Ouvrir l'URL d'intention Twitter dans une nouvelle fenêtre/onglet
+      window.open(twitterIntentUrl, '_blank');
+    },
+    (error) => {
+      console.error('Erreur lors du partage du forum sur Twitter:', error);
+      // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
+    }
+  );
+}
+
+
 
 }

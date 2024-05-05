@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
+import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -61,5 +60,21 @@ export class ForumService {
   getTranslatedForum(forumId: number): Observable<string> {
     return this.http.get(`${this.BASE_URL}/forum/forums/forums/${forumId}/translate`, { responseType: 'text' });
   }
+
+
+  tweetForum(forumId: number): Observable<string> {
+    return this.http.get(`${this.BASE_URL}/forum/forums/forum/${forumId}`, { responseType: 'arraybuffer' }).pipe(
+      map((buffer: ArrayBuffer) => new TextDecoder().decode(buffer)), // Convertit ArrayBuffer en string
+      catchError((error) => {
+        console.error('Erreur lors du partage du forum sur Twitter:', error);
+        return throwError('Erreur lors du partage du forum sur Twitter');
+      })
+    );
+  }
   
-}
+  }
+  
+  
+ 
+  
+  

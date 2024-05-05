@@ -35,10 +35,12 @@
         </div>
         <!-- /.answer-action -->
 
-        <div class="post-header forums-header">
+        <div class="post-header forums-header" routlink="['/commentaire']" >
           <div class="col-md-6 col-sm-6 support-info">
+          
             <span> Forum </span>
           </div>
+        
 
           <!-- /.support-info -->
           <div class="col-md-6 col-sm-6 support-category-menus">
@@ -61,17 +63,24 @@
                 <img src="assets/forum/img/home_support/rc1.png" alt="community post">
               </div>
               <div class="entry-content">
-                
+                <div *ngFor="let forum of listForums" (click)="addCommentToForum(forum.idForum)"></div>
                 <h3 class="post-title">
                   <a href="forum-topics.html"> {{ forum.titre }}</a>
                 </h3>
+               
                 <p>{{ forum.message }}</p>
+                <button (click)="shareForumOnTwitter(123)">Partager sur Twitter</button>
               
                 <p *ngIf="forum.translatedMessage">{{ forum.translatedMessage }}</p>
+                <button (click)="addCommentToForum(forum.idForum)" class="btn btn-secondary">Add comment </button>
+
+                
+                
 
               </div>
               
             </div>
+            
             <div class="col-md-6 post-meta-wrapper">
               <ul class="forum-titles">
                 <li class="forum-topic-count">10</li>

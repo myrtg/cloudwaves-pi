@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForumAddComponent } from './components/forum-add/forum-add.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommentaireComponent } from './components/commentaire/commentaire.component';
 
 
 
@@ -35,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     BloceventsComponent,
     ChatComponent,
     ForumComponent,
-    ForumAddComponent
+    ForumAddComponent,
+    CommentaireComponent
     
   ],
   imports: [
