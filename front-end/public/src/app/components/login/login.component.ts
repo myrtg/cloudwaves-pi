@@ -12,6 +12,8 @@ import {TokenService} from '../../services/token/token.service';
 export class LoginComponent {
   siteKey: string;
 
+  captchaChecked: boolean = false;
+
   authRequest: AuthenticationRequest = {email: '', password: ''};
   errorMsg: Array<string> = [];
 
@@ -23,6 +25,10 @@ export class LoginComponent {
     this.siteKey = '6Le8lc4pAAAAAPGfvO0rw_oml3DIReJqt9HTLAMo';
   }
 
+
+  handleCaptchaVerify() {
+    this.captchaChecked = true;
+  }
   login() {
     this.errorMsg = [];
     this.authService.authenticate({

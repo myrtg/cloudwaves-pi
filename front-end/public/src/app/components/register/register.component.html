@@ -52,15 +52,16 @@
                    id="mobile" placeholder="MOBILE">
           </div>
         </div>
+
         <div class="recaptcha-container">
-          <ngx-recaptcha2 [siteKey]="siteKey"></ngx-recaptcha2>
+          <ngx-recaptcha2 [siteKey]="siteKey" [(ngModel)]="captchaChecked"></ngx-recaptcha2>
         </div>
 
         <div class="text-center mt-4">
-          <button (click)="register()" type="button" class="btn btn-primary btn-lg">Register</button>
-          <p class="small fw-bold mt-2 mb-0">Already have an account? <a href="http://localhost:4200/login"
-                                                                         class="link-danger">Login</a></p>
+          <button (click)="register()" type="button" class="btn btn-primary btn-lg" [disabled]="!captchaChecked">Register</button>
+          <p class="small fw-bold mt-2 mb-0">Already have an account? <a href="http://localhost:4200/login" class="link-danger">Login</a></p>
         </div>
+
       </div>
     </div>
   </div>

@@ -3,8 +3,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/services/authentication.service';
 import {RegistrationRequest} from '../../services/models/registration-request';
 import {AuthenticationResponse} from "../../services/models/authentication-response";
-// import { MatSlideToggleChange } from "@angular/material";
-// import { Title } from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-register',
@@ -15,6 +14,7 @@ import {AuthenticationResponse} from "../../services/models/authentication-respo
 })
 export class RegisterComponent implements OnInit {
   siteKey: string;
+  captchaChecked: boolean = false;
 
   registerRequest: RegistrationRequest = {
     email: '',
@@ -34,6 +34,11 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
   ) {
     this.siteKey = '6Le8lc4pAAAAAPGfvO0rw_oml3DIReJqt9HTLAMo';
+
+  }
+
+  handleCaptchaVerify() {
+    this.captchaChecked = true;
   }
 
   ngOnInit(): void {
@@ -45,7 +50,12 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+
   register() {
+    if (!this.captchaChecked) {
+      console.log("Please complete the captcha before registering.");
+      return;
+    }
     this.errorMsg = [];
     this.authService.register({
       body: this.registerRequest

@@ -17,9 +17,11 @@
         <div class="mb-3">
           <input [(ngModel)]="authRequest.password" style="border-radius: 28px" type="password" class="form-control form-control-lg text-center" id="password" placeholder="PASSWORD">
         </div>
-        <ngx-recaptcha2 [siteKey]="siteKey"></ngx-recaptcha2>
+        <div class="recaptcha-container">
+          <ngx-recaptcha2 [siteKey]="siteKey" [(ngModel)]="captchaChecked"></ngx-recaptcha2>
+        </div>
         <div class="text-center mb-3 mt-1">
-          <button (click)="login()" type="button" class="btn btn-primary btn-lg">Login</button>
+          <button (click)="login()" type="button" class="btn btn-primary btn-lg" [disabled]="!captchaChecked">Login</button>
         </div>
         <div class="d-flex justify-content-center">
 <!--          <div class="divider mx-3"></div>-->

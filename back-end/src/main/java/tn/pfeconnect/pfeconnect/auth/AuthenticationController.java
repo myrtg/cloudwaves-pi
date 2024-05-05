@@ -8,11 +8,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Map;
 
 
 @RestController
@@ -23,9 +22,6 @@ public class AuthenticationController {
 
 
     private final AuthenticationService service;
-
-
-
 
 
     @PostMapping("/register")
@@ -44,8 +40,6 @@ public class AuthenticationController {
     ) {
         return ResponseEntity.ok(service.authenticate(request));
     }
-
-
 
 
     @GetMapping("/activate-account")
