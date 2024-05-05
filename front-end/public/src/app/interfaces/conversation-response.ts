@@ -4,4 +4,5 @@ export interface ConversationResponse {
   otherUserName: string;
   lastMessage: string;
   lastMessageTimestamp: string;
+  
 }

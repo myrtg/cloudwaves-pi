@@ -36,6 +36,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   selectedConversationId: number = -1;
   selectedConversationReceiverId: number = -1;
   selectedConversationReceiverName: string = '';
+  selectedUserlastname!: string;
   // selected conversation messages
   selectedConversation: MessageResponse[] = [];
   // selected conversation messages subscription
@@ -58,6 +59,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     // Subscribe to id websocket to get updated conversation when gets new messages
     this.subscribeToCurrentUserConversation();
     this.onShowHideUserConversation();
+    this.filterMessages(); // Add this line to initialize filteredMessages
+
   }
 
   ngOnDestroy(): void {
@@ -121,9 +124,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   // When new or exiting user selected Then set the variables and get the two users
   // conversationId from the database
-  onUserSelected(receiverId: number, receiverName: string) {
+  onUserSelected(receiverId: number, receiverName: string,recieverlastname:string) {
     this.selectedConversationReceiverId = receiverId;
     this.selectedConversationReceiverName = receiverName;
+    this.selectedUserlastname= recieverlastname;
     this.userService
       .getConversationIdByUser1IdAndUser2Id(receiverId, this.currentUser.id)
       .subscribe((res: ApiResponse) => {
@@ -206,7 +210,31 @@ export class ChatComponent implements OnInit, OnDestroy {
       user2Id: this.selectedConversationReceiverId,
     });
   }
+  searchQuery: string = '';
 
+  filteredMessages: MessageResponse[] = [];
+
+  filterMessages() {
+    console.log('Filtering messages...');
+
+    if (!this.searchQuery) {
+        console.log('Search query is empty. Showing all messages.');
+        // If the search query is empty, show all messages in the selected conversation
+        this.filteredMessages = this.selectedConversation;
+    } else {
+        console.log('Search query:', this.searchQuery);
+        const lowerCaseQuery = this.searchQuery.toLowerCase();
+        this.filteredMessages = this.selectedConversation.filter(message =>
+            message.message.toLowerCase().includes(lowerCaseQuery)
+        );
+    }
+
+    console.log('Filtered messages:', this.filteredMessages);
+}
+
+onSearchQueryChange() {
+  this.filterMessages();
+}
   // When click delete on a message menu Then delete from database Then refresh
   // conversation list
   onDeleteMessage(messageId: number) {

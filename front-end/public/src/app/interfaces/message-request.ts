@@ -4,4 +4,6 @@ export interface MessageRequest {
   receiverId: number;
   message: string;
   timestamp: Date;
+  // notificationMessage: string; // Add this line
+
 }

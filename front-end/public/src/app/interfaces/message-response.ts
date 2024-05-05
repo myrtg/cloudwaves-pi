@@ -4,4 +4,8 @@ export interface MessageResponse {
   receiverId: number;
   message: string;
   timestamp: Date;
+  readStatus: boolean; // Add this property
+
+  // notificationMessage: string;
+
 }

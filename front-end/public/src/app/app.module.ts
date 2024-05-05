@@ -44,6 +44,7 @@ import { AuthInterceptor } from './jwt-interceptor';
     NotFoundComponent,
     BetterDatePipe,
     ChatComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,9 @@ import { AuthInterceptor } from './jwt-interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CodeInputModule
+    CodeInputModule,
+ 
+   
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
