@@ -61,6 +61,8 @@ public class User implements UserDetails, Principal {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
+    @Column(name="forgotpassword", columnDefinition = "int default 0")
+    private int forgotpassword;
 
 
 

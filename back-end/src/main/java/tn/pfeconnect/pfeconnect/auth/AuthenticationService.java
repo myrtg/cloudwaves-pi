@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.BadCredentialsException;
 import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
+import tn.pfeconnect.pfeconnect.sms.SmsRequest;
+import tn.pfeconnect.pfeconnect.sms.twilioService;
 import tn.pfeconnect.pfeconnect.tfa.TwoFactorAuthenticationService;
 import tn.pfeconnect.pfeconnect.user.User;
 import tn.pfeconnect.pfeconnect.role.RoleRepository;
@@ -47,6 +49,7 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final TokenRepository tokenRepository;
     private final TwoFactorAuthenticationService tfaService;
+    private final twilioService twilioService;
 
 
 
@@ -68,7 +71,9 @@ public class AuthenticationService {
                 .roles(List.of(userRole))
                 .mfaEnabled(request.isMfaEnabled())
                 .build();
-
+        String mobile = "+216" + user.getMobile();
+        SmsRequest s = new SmsRequest( mobile, "Your account has been created successfully" );
+        twilioService.sendsms(s);
         if (request.isMfaEnabled()) {
             user.setSecret("");
 
