@@ -1,0 +1,29 @@
+---
+- name: Deploy CloudWaves Application on OpenStack cluster
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create MySQL Secret
+      ansible.builtin.shell: kubectl apply -f ./mysql-secrets.yaml
+      register: output_secrets
+    - debug: var=output_secrets.stdout_lines
+
+    - name: Create MySQL ConfigMap
+      ansible.builtin.shell: kubectl apply -f ./mysql-configMap.yaml
+      register: output_config
+    - debug: var=output_config.stdout_lines
+
+    - name: Create MySQL Deployment
+      ansible.legacy.shell: kubectl apply -f ./db-deployment.yaml
+      register: output_db_deployment
+    - debug: var=output_db_deployment.stdout_lines
+
+    - name: Create BackEnd Deployment
+      ansible.builtin.shell: kubectl apply -f ./app-deployment.yaml
+      register: output_app_deployment
+    - debug: var=output_app_deployment.stdout_lines
+
+    - name: Create FrontEnd Deployment
+      ansible.builtin.shell: kubectl apply -f ./front-deployment.yaml
+      register: output_front_deployment
+    - debug: var=output_front_deployment.stdout_lines
