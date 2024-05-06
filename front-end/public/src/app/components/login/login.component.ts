@@ -36,9 +36,10 @@ export class LoginComponent {
     }).subscribe({
       next: (res) => {
         console.log(res)
+
         this.tokenService.token = res.token as string;
         sessionStorage.setItem('token',this.tokenService.token);
-        this.router.navigate(['books']);
+        this.router.navigate(['home']);
       },
       error: (err) => {
         console.log('Error');

@@ -24,6 +24,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { MatPasswordStrengthModule } from "@angular-material-extensions/password-strength";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -43,7 +44,8 @@ import {MatIconModule} from "@angular/material/icon";
     ForumComponent,
     LoginComponent,
     RegisterComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

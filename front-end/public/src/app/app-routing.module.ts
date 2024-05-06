@@ -11,6 +11,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {CustomRoute} from "./custom-route";
 import {RegisterComponent} from "./components/register/register.component";
 import {ActivateAccountComponent} from "./components/activate-account/activate-account.component";
+import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'register', component:RegisterComponent},
   {path:'activate-account', component:ActivateAccountComponent},
+  {path:'forgot-password', component:ForgotPasswordComponent},
 
 
 ];

@@ -10,8 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
+import tn.pfeconnect.pfeconnect.dto.ResetPasswordRequest;
+import tn.pfeconnect.pfeconnect.user.User;
+import tn.pfeconnect.pfeconnect.user.UserService;
 
 import java.io.IOException;
+import java.util.Map;
 
 
 @RestController
@@ -20,6 +24,8 @@ import java.io.IOException;
 @Tag(name = "Authentication")
 public class AuthenticationController {
 
+
+    private final UserService userService;
 
     private final AuthenticationService service;
 
@@ -65,7 +71,23 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.verifyCode(verificationRequest));
     }
 
+    @PostMapping("/forgot-password")
+    public User getreclamationbyuser(@RequestBody Map<String, String> requestBody) throws MessagingException {
+        String useremail = requestBody.get("email");
+        return userService.forgotPassword(useremail);
+    }
 
-
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+        try {
+            userService.resetPassword(resetPasswordRequest.getEmail(), resetPasswordRequest.getNewPassword());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error resetting password");
+        }
+    }
 
 }
+
+
+
