@@ -31,4 +31,5 @@ public class User implements Serializable {
 
     @ManyToMany(mappedBy = "users")
     private List<ChatRoom> chatRooms;
+
 }

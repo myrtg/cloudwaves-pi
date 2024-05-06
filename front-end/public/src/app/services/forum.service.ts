@@ -71,10 +71,18 @@ export class ForumService {
       })
     );
   }
-  
+  uploadImage(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post('URL_SERVICE_TIERS', formData).pipe(
+      catchError(error => {
+        console.error('Error uploading image:', error);
+        return throwError('Error uploading image');
+      })
+    );
   }
   
-  
+}
  
   
   

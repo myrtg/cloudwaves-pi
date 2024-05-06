@@ -243,7 +243,23 @@ shareForumOnTwitter(forumId: number) {
     }
   );
 }
+badWords = ['zabour', 'tahan', 'nayk']; // Liste des mots interdits
 
+replaceBadWordsWithStars(message: string): string {
+  return this.badWords.reduce((acc, word) => acc.replace(new RegExp('\\b' + word + '\\b', 'gi'), '★'), message);
+}
 
+onFileSelected(event: any): void {
+  const file = event.target.files[0];
+  this.forumService.uploadImage(file).subscribe(
+    (response) => {
+      console.log('Upload réussi:', response);
+      // Vous pouvez ici mettre à jour votre liste de forums ou effectuer d'autres actions après l'upload
+    },
+    (error) => {
+      console.error('Erreur lors de l\'upload:', error);
+    }
+  );
+}
 
 }

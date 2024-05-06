@@ -1,0 +1,5 @@
+.fa {
+    font-size: 24px; /* Ajuster la taille de l'icône */
+    color: #000; /* Ajuster la couleur de l'icône */
+    cursor: pointer; /* Changer le curseur lors du survol */
+}

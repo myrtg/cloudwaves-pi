@@ -5,7 +5,7 @@ import tn.pfeconnect.pfeconnect.entities.User;
 
 import java.util.List;
 
-public interface UserRepository  extends JpaRepository<User, String> {
+public interface UserRepository  extends JpaRepository<User, Long> {
 
 
 }

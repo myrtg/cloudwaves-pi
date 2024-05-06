@@ -1,6 +1,11 @@
 <div class="page-banner-area bg-1">
   <div class="container">
     <div class="page-banner-content">
+      <head>
+        <!-- Ajouter la bibliothèque Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
       <h1>Forum</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -66,14 +71,15 @@
                 <div *ngFor="let forum of listForums" (click)="addCommentToForum(forum.idForum)"></div>
                 <h3 class="post-title">
                   <a href="forum-topics.html"> {{ forum.titre }}</a>
+                  <p>{{ replaceBadWordsWithStars(forum.message) }}</p>
+                 
                 </h3>
-               
-                <p>{{ forum.message }}</p>
-                <button (click)="shareForumOnTwitter(123)">Partager sur Twitter</button>
               
                 <p *ngIf="forum.translatedMessage">{{ forum.translatedMessage }}</p>
-                <button (click)="addCommentToForum(forum.idForum)" class="btn btn-secondary">Add comment </button>
+                <button (click)="shareForumOnTwitter(123)">Partager sur Twitter</button>
 
+                <button (click)="addCommentToForum(forum.idForum)" class="btn btn-secondary">Add comment </button>
+                
                 
                 
 
@@ -107,12 +113,23 @@
                 </li>
               </ul>
               <div class="like-dislike-buttons">
-                <button class="btn btn-primary" (click)="likeForum(forum.idForum)">Like ({{ forum.likes }})</button>
-                <button class="btn btn-danger" (click)="dislikeForum(forum.idForum)">Dislike ({{ forum.dislikes }})</button>
-              </div>
-              <button class="btn btn-danger" (click)="deleteForum(forum)">Delete</button>
+                <!-- Bouton de Like avec icône -->
+                <button  (click)="likeForum(forum.idForum)">
+                    <i class="fa fa-thumbs-up"> </i> 
+                </button>
+            
+                <!-- Bouton de Dislike avec icône -->
+                <button  (click)="dislikeForum(forum.idForum)">
+                    <i class="fa fa-thumbs-down"></i> 
+                </button>
+            </div>
+            
+             <!-- Icône de suppression -->
+<i class="fa fa-trash" aria-hidden="true" (click)="deleteForum(forum)"></i>
 
-              <button class="btn btn-primary" (click)="updateForum(forum)">Update</button>
+<!-- Icône de mise à jour -->
+<i class="fa fa-pencil" aria-hidden="true" (click)="updateForum(forum)"></i>
+
             </div>
           </div>
           <!-- /.forum-item  -->
@@ -128,6 +145,8 @@
             <p class="status">Support is <span class="offline">Offline</span></p>
 
             <div class="open-hours">
+              <input type="file" (change)="onFileSelected($event)" />
+
               <h4 class="title-sm">Our office hours</h4>
               <p>Monday - Friday / 10am - 6pm (UTC +4) NewYork</p>
               <ul class="current-time list-unstyled">
