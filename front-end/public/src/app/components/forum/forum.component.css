@@ -3,3 +3,13 @@
     color: #000; /* Ajuster la couleur de l'icône */
     cursor: pointer; /* Changer le curseur lors du survol */
 }
+/* styles.css ou styles.scss */
+.share-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .share-icon:hover {
+    transform: scale(1.1);
+  }
+  

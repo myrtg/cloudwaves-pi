@@ -4,6 +4,7 @@
       <head>
         <!-- Ajouter la bibliothèque Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
     </head>
     
       <h1>Forum</h1>
@@ -76,9 +77,10 @@
                 </h3>
               
                 <p *ngIf="forum.translatedMessage">{{ forum.translatedMessage }}</p>
-                <button (click)="shareForumOnTwitter(123)">Partager sur Twitter</button>
+                <button (click)="shareForumOnTwitter(forum.idForum)">Partager sur Twitter</button>
 
                 <button (click)="addCommentToForum(forum.idForum)" class="btn btn-secondary">Add comment </button>
+                
                 
                 
                 

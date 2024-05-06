@@ -243,7 +243,7 @@ shareForumOnTwitter(forumId: number) {
     }
   );
 }
-badWords = ['zabour', 'tahan', 'nayk']; // Liste des mots interdits
+badWords = ['mots', 'words', 'bad']; // Liste des mots interdits
 
 replaceBadWordsWithStars(message: string): string {
   return this.badWords.reduce((acc, word) => acc.replace(new RegExp('\\b' + word + '\\b', 'gi'), '★'), message);
