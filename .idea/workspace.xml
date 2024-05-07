@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/CandidatureRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/OffreStageRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/QuestionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/CandidatureService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/StorageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/CandidatureServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/EmailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/FileSystemStorageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/QuestionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/QuizService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/StorageException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/StorageFileNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/StorageProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +86,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="tn.pfeconnect.pfeconnect.servicesImpl" />
       <recent name="tn.pfeconnect.pfeconnect.twilio" />
       <recent name="tn.pfeconnect.pfeconnect.handler" />
     </key>
@@ -154,7 +163,7 @@
       <workItem from="1714991845019" duration="246000" />
       <workItem from="1714994292360" duration="105000" />
       <workItem from="1714994436813" duration="9946000" />
-      <workItem from="1715089856503" duration="1644000" />
+      <workItem from="1715089856503" duration="3057000" />
     </task>
     <servers />
   </component>
