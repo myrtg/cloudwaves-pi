@@ -1,0 +1,4 @@
+{
+  "businessErrorDescription": "Internal error, please contact the admin",
+  "error": "could not execute statement [Duplicate entry 'alibou1111@mail.com' for key 'UK_ob8kqyqqgmefl0aco34akdtpe'] [insert into user (account_locked,date_created,date_of_birth,email,enabled,first_name,last_name,mfa_enabled,mobile,password,secret) values (?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into user (account_locked,date_created,date_of_birth,email,enabled,first_name,last_name,mfa_enabled,mobile,password,secret) values (?,?,?,?,?,?,?,?,?,?,?)]; constraint [UK_ob8kqyqqgmefl0aco34akdtpe]"
+}

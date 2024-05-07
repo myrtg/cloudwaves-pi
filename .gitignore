@@ -15,7 +15,6 @@ mvnw
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
 *.iws
 *.iml
 *.ipr
@@ -42,6 +41,10 @@ dist/
 tmp/
 out-tsc
 bazel-out
+dist/
+tmp/
+out-tsc
+bazel-out
 
 # Node
 node_modules/
@@ -59,10 +62,12 @@ yarn-error.log
 
 # Visual Studio Code
 **/.vscode/*
+**/.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/
 .history/
 
 # Miscellaneous

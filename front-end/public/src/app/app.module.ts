@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +11,26 @@ import { InternshipComponent } from './components/internship/internship.componen
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { BloceventsComponent } from './components/blocevents/blocevents.component';
-import { ChatComponent } from './components/chat/chat.component';
 import { ForumComponent } from './components/forum/forum.component';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { BetterDatePipe } from './better-date.pipe';
+import { AuthInterceptor } from './jwt-interceptor';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
+import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import { CodeInputModule } from 'angular-code-input';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { MatPasswordStrengthModule } from "@angular-material-extensions/password-strength";
+import { MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+
+
 
 @NgModule({
   declarations: [
@@ -27,14 +44,35 @@ import { ForumComponent } from './components/forum/forum.component';
     FaqComponent,
     ContactusComponent,
     BloceventsComponent,
+    ForumComponent,
+    LoginComponent,
+    RegisterComponent,
+    ActivateAccountComponent,
+    NotFoundComponent,
+    BetterDatePipe,
     ChatComponent,
-    ForumComponent
+    ForumComponent,
+    LoginComponent,
+    RegisterComponent,
+    ActivateAccountComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule,
+    CodeInputModule,
+    MatPasswordStrengthModule.forRoot(),
+    MatInputModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,10 +10,29 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
  
-  constructor(private router: Router) { }
+  loginForm!: FormGroup;
 
- redirectToHome() {
-      // Redirige vers la page d'accueil
-      this.router.navigate(['home']);
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
+
+  onSubmit(): void {
+    if (!this.loginForm.invalid) {
+          
+    const username = this.loginForm.value.username;
+    const password = this.loginForm.value.password;
+    localStorage.setItem("username", username)   
+     
+    // Your login logic here (e.g., call an authentication service)
+    console.log('Login submitted with username:', username, 'and password:', password);
+    this.router.navigate(['home']);
+
+    }
+  }
+
 }
