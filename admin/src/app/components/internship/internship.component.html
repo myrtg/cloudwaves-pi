@@ -1,0 +1,51 @@
+<app-aside></app-aside>
+<button routerLink="/ajoutOffre" style="margin-top: 150px; margin-left: 1350px;" type="button" class="btn btn-secondary">+</button>
+<div style="margin-top: 20px; margin-left: 300px; width: 1950px;" class="row">
+    <div class="col-xl-7">
+        <div class="card card-height-100">
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table table-nowrap table-centered align-middle">
+                        <thead class="bg-light text-muted">
+                            <tr>
+                                <th scope="col">titre</th>
+                                <th scope="col">domaine</th>
+                                <th scope="col">quiz title</th>
+                                <th scope="col">description</th>
+                                <th scope="col">date_publication</th>
+                                <th scope="col">date_limite</th>
+                                <th scope="col">action</th>
+                                
+                            </tr><!-- end tr -->
+                        </thead><!-- thead -->
+
+                        <tbody *ngFor="let offre of offre">
+                            <tr>
+                                <td class="fw-medium">{{offre.titre}}</td>
+                                <td>
+                                    <a href="javascript: void(0);" class="text-reset">{{offre.domaine}}</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-1 text-muted fs-13">{{offre?.quiz?.title}}</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{offre.description}}</a>
+                                    </div>
+                                </td>
+                                <td class="text-muted">{{offre.datePublication}}</td>
+                                <td class="text-muted">{{offre.dateLimite}}</td>
+                                <td class="text-muted">
+                                    <button (click)="delete(offre.idOffre)" class="btn btn-danger">X</button>
+                                </td>
+                            </tr><!-- end tr -->
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div>
+
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+</div>

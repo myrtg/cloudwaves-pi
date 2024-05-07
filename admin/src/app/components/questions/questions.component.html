@@ -1,0 +1,66 @@
+<app-aside></app-aside>
+
+<button routerLink="/ajoutQuestion" style="margin-top: 150px; margin-left: 1350px;" type="button" class="btn btn-secondary">+</button>
+<div style="margin-top: 20px; margin-left: 300px; width: 1950px;" class="row">
+    <div class="col-xl-7">
+        <div class="card card-height-100">
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table table-nowrap table-centered align-middle">
+                        <thead class="bg-light text-muted">
+                            <tr>
+                                <th scope="col">titre</th>
+                                <th scope="col">category</th>
+                                <th scope="col">correct answer</th>
+                                <th scope="col">opt1</th>
+                                <th scope="col">opt2</th>
+                                <th scope="col">opt3</th>
+                                <th scope="col">opt4</th>
+                                <th scope="col">action</th>
+                                
+                            </tr><!-- end tr -->
+                        </thead><!-- thead -->
+
+                        <tbody *ngFor="let question of question">
+                            <tr>
+                                <td class="fw-medium">{{question.questionTitle}}</td>
+                                <td>
+                                    <a href="javascript: void(0);" class="text-reset">{{question.category}}</a>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{question.correctAnswer}}</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{question.option1}}</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{question.option2}}</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{question.option3}}</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{question.option4}}</a>
+                                    </div>
+                                </td>
+                                <td class="text-muted">
+                                    <button (click)="delete(question.id)" class="btn btn-danger">X</button>
+                                </td>
+                            </tr><!-- end tr -->
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div>
+
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+</div>

@@ -1,0 +1,54 @@
+<div class="page-banner-area bg-1">
+    <div class="container">
+        <div class="page-banner-content">
+            <h1>Academics</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Page</li>
+                <li>Academics</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="academics-area pt-100 pb-70" style="padding-top: 50px;">
+    <div class="container" style="max-width: 1447px;">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="academics-left-content">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-sm-6" *ngFor="let offre of offre">
+                            <div class="single-academics-card3">
+                                <div class="icon">
+                                    <i class="flaticon-blueprint"></i>
+                                </div>
+                                <a href="academics-details.html">
+                                    <h3>{{offre.titre}}</h3>
+                                </a>
+                                <p>{{offre.domaine}}</p>
+                                <p>{{offre.description}}</p>
+                                
+                                <a [routerLink]="['/quiz',offre?.quiz?.id]" class="read-more-btn">Go to quiz<i
+                                        class="flaticon-next"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="acdemics-right-content">
+                    <div class="serch-content">
+                        <h3>Search</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Find Your Course">
+                            <button type="submit" class="src-btn">
+                                <i class="flaticon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
