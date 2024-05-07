@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,7 @@ import { EventsComponent } from './components/events/events.component';
 import { PfebookComponent } from './components/pfebook/pfebook.component';
 import { InternshipComponent } from './components/internship/internship.component';
 import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { UserComponent } from './components/user/user.component';
         EventsComponent,
         PfebookComponent,
         InternshipComponent,
-        UserComponent
+        UserComponent,
+        LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

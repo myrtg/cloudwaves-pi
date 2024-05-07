@@ -1,0 +1,5 @@
+{
+  "businessErrorCode": 303,
+  "businessErrorDescription": "User account is disabled",
+  "error": "User is disabled"
+}

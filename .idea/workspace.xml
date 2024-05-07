@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/ProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/ProjetRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/SousCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/SousCategoryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="TypeScript File" />
+        <option value="HTTP Request" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2fj94CZRB4OPWJ4jxNQlFxffkN8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.All in change-pw.executor": "Run",
+    "HTTP Request.generated-requests | #11.executor": "Run",
+    "Maven.chat [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.PfeConnectApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/bytesudoer/AllDev/integration",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/souhaibbenfarhat/Desktop/cloudwaves-pi/front-end/public/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="tn.pfeconnect.pfeconnect.controllers" />
+      <recent name="tn.pfeconnect.pfeconnect.servicesImpl" />
+      <recent name="tn.pfeconnect.pfeconnect.twilio" />
+      <recent name="tn.pfeconnect.pfeconnect.handler" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/front-end/public/src/openapi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/front-end/public/src/app/components" />
+      <recent name="$PROJECT_DIR$/front-end/public/src/app/services/services" />
+      <recent name="$PROJECT_DIR$/front-end/public/src/app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.PfeConnectApplication">
+    <configuration name="generated-requests | #11" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="11" requestIdentifier="#11" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="PfeConnectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="chat" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="tn.pfeconnect.pfeconnect.PfeConnectApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.generated-requests | #11" />
+      <item itemvalue="Spring Boot.PfeConnectApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #11" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-graalvm-jdk-17.0.9-4caba194b151-f46c831a" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="" />
+      <created>1714303434677</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714303434677</updated>
+      <workItem from="1714303436693" duration="12490000" />
+      <workItem from="1714318912354" duration="810000" />
+      <workItem from="1714321551980" duration="364000" />
+      <workItem from="1714336677667" duration="88000" />
+      <workItem from="1714336991509" duration="6078000" />
+      <workItem from="1714380104081" duration="1457000" />
+      <workItem from="1714386660315" duration="9913000" />
+      <workItem from="1714419340086" duration="2999000" />
+      <workItem from="1714422656839" duration="10369000" />
+      <workItem from="1714463162220" duration="587000" />
+      <workItem from="1714465579686" duration="170000" />
+      <workItem from="1714465758184" duration="14000" />
+      <workItem from="1714465788344" duration="754000" />
+      <workItem from="1714473111024" duration="5000" />
+      <workItem from="1714473148177" duration="1156000" />
+      <workItem from="1714566990909" duration="10035000" />
+      <workItem from="1714594926087" duration="8849000" />
+      <workItem from="1714652732367" duration="5592000" />
+      <workItem from="1714660272376" duration="9087000" />
+      <workItem from="1714681817081" duration="1009000" />
+      <workItem from="1714736005987" duration="3962000" />
+      <workItem from="1714912886795" duration="4498000" />
+      <workItem from="1714991845019" duration="246000" />
+      <workItem from="1714994292360" duration="105000" />
+      <workItem from="1714994436813" duration="9946000" />
+      <workItem from="1715089856503" duration="5584000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

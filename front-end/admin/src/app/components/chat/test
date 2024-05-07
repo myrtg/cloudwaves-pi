@@ -1,0 +1,16 @@
+Fonction Recherche_Tabou(Initialisation, Critère_Arrêt)
+    Meilleure_Solution ← Initialisation  // Initialise la meilleure solution connue
+    Tabou ← liste vide  // Initialise la liste tabou, contenant les solutions interdites
+    Tant que le Critère_Arrêt n'est pas atteint faire
+        Voisinage ← Générer_Voisinage(Meilleure_Solution)  // Génère le voisinage de la meilleure solution
+        Meilleur_Voisin ← Sélectionner_Meilleur_Voisin(Voisinage, Tabou)  // Sélectionne le meilleur voisin non tabou
+        Si Meilleur_Voisin est meilleur que Meilleure_Solution alors
+            Meilleure_Solution ← Meilleur_Voisin  // Met à jour la meilleure solution connue
+        Fin Si
+        Ajouter Meilleur_Voisin à Tabou  // Ajoute le meilleur voisin à la liste tabou
+        Si la taille de Tabou dépasse une certaine limite alors
+            Supprimer le plus ancien élément de Tabou  // Supprime l'élément le plus ancien de la liste tabou
+        Fin Si
+    Fin Tant que
+    Retourner Meilleure_Solution  // Retourne la meilleure solution trouvée
+Fin Fonction
