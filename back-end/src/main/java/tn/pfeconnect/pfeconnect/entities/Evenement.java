@@ -36,10 +36,6 @@ public class Evenement {
     @Column(columnDefinition = "LONGBLOB")
     byte[] image;
 
-    @ManyToOne
-    @JsonIgnore
-    private User utilisateur;
-
     @OneToMany(mappedBy = "evenement",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Inscription> inscriptionSet;
