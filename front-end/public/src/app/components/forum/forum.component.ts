@@ -203,6 +203,9 @@ addCommentToForum(forumId: number) {
     title: 'Add Comment',
     input: 'text',
     inputLabel: 'Your comment',
+    inputAttributes: {
+      style: 'margin-left: inherit;' // Add custom style to the input field
+    },
     showCancelButton: true,
     confirmButtonText: 'Add Comment',
     cancelButtonText: 'Cancel',
