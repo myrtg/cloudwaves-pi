@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,12 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private activatedroute: ActivatedRoute) {
+  constructor(private activatedroute: ActivatedRoute , private router: Router) {
+
+
+  }
+  isLoginPageOrRegisterPage(): boolean {
+    return this.router.url.includes('/login') || this.router.url.includes('/register') ;
   }
   title = 'PFEConnectFront';
 
