@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Categorie, Projet } from 'src/app/classes/Classes';
-import { ProjectService } from '../../projects.service';
+import { ProjectService } from 'src/app/components/projects.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ViewMoreProjectComponent } from '../../view-more-project/view-more-project.component';
-
-
+import { ViewMoreProjectComponent } from '../view-more-project/view-more-project.component';
 
 @Component({
   selector: 'app-projects',
