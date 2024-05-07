@@ -54,13 +54,16 @@ public class User implements UserDetails, Principal, Serializable {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
-
+    private boolean mfaEnabled;
+    private String secret;
 
     private String fullName;
 
     @Enumerated(EnumType.STRING)
     private Status status=Status.OFFLINE;
 
+    @Column(name="forgotpassword", columnDefinition = "int default 0")
+    private int forgotpassword;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles
@@ -114,5 +117,8 @@ public class User implements UserDetails, Principal, Serializable {
         return firstName + " " + lastName;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
 
 }

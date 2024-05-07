@@ -2,15 +2,25 @@ package tn.pfeconnect.pfeconnect.auth;
 
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.BadCredentialsException;
 import tn.pfeconnect.pfeconnect.email.EmailTemplateName;
 import tn.pfeconnect.pfeconnect.entities.User;
 import tn.pfeconnect.pfeconnect.enums.Status;
-import tn.pfeconnect.pfeconnect.role.RoleRepository;
-import tn.pfeconnect.pfeconnect.repositories.TokenRepository;
 import tn.pfeconnect.pfeconnect.repositories.UserRepository;
+import tn.pfeconnect.pfeconnect.sms.SmsRequest;
+import tn.pfeconnect.pfeconnect.sms.twilioService;
+import tn.pfeconnect.pfeconnect.tfa.TwoFactorAuthenticationService;
+import tn.pfeconnect.pfeconnect.role.RoleRepository;
+import tn.pfeconnect.pfeconnect.user.TokenRepository;
 import tn.pfeconnect.pfeconnect.security.JwtService;
 import tn.pfeconnect.pfeconnect.email.EmailService;
-import tn.pfeconnect.pfeconnect.security.Token;
+import tn.pfeconnect.pfeconnect.user.Token;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 
@@ -21,6 +31,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -29,7 +41,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-
+    @Autowired
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -37,29 +49,69 @@ public class AuthenticationService {
     private final RoleRepository roleRepository;
     private final EmailService emailService;
     private final TokenRepository tokenRepository;
+    private final TwoFactorAuthenticationService tfaService;
+    private final twilioService twilioService;
 
-//    @Value(staticConstructor = "application.mailing.frontend.activation-url")
+
+
+    //    @Value(staticConstructor = "application.mailing.frontend.activation-url")
     private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
-                // todo - better exception handling
+
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
         var user = User.builder()
                 .firstName(request.getFirstname())
                 .lastName(request.getLastname())
                 .email(request.getEmail())
-                .fullName(request.getFirstname()+" "+request.getLastname())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .mobile(request.getMobile())
                 .accountLocked(false)
                 .enabled(false)
                 .roles(List.of(userRole))
+                .mfaEnabled(request.isMfaEnabled())
                 .build();
+        String mobile = "+216" + user.getMobile();
+        SmsRequest s = new SmsRequest( mobile, "Your account has been created successfully" );
+        twilioService.sendsms(s);
+        if (request.isMfaEnabled()) {
+            user.setSecret("");
+
+
+        }
+
         userRepository.save(user);
         sendValidationEmail(user);
     }
 
+    //    public void register(RegistrationRequest request) throws MessagingException {
+//        var userRole = roleRepository.findByName("USER")
+//
+//                .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
+//        var user = User.builder()
+//                .firstName(request.getFirstname())
+//                .lastName(request.getLastname())
+//                .email(request.getEmail())
+//                .password(passwordEncoder.encode(request.getPassword()))
+//                .mobile(request.getMobile())
+//                .accountLocked(false)
+//                .enabled(false)
+//                .roles(List.of(userRole))
+//                .mfaEnabled(request.isMfaEnabled())
+//                .build();
+//
+//        if (request.isMfaEnabled()) {
+//            user.setSecret("");
+//
+//
+//        }
+//
+//        userRepository.save(user);
+//        sendValidationEmail(user);
+//    }
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
+        System.out.println("email in authenticate "+request.getEmail());
         var auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -69,7 +121,7 @@ public class AuthenticationService {
 
         var claims = new HashMap<String, Object>();
         var user = ((User) auth.getPrincipal());
-        user.setStatus(Status.ONLINE);
+        //user.setStatus(Status.ONLINE);
         userRepository.save(user);
         claims.put("fullName", user.getFullName());
 
@@ -83,7 +135,7 @@ public class AuthenticationService {
     @Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
-                // todo exception has to be defined
+
                 .orElseThrow(() -> new RuntimeException("Invalid token"));
         if (LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
             sendValidationEmail(savedToken.getUser());
@@ -126,6 +178,17 @@ public class AuthenticationService {
         );
     }
 
+    private String resetPassword(String email) throws MessagingException {
+        var user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        var token = generateAndSaveActivationToken(user);
+
+        return token;
+    }
+
+
+
+
     private String generateActivationCode(int length) {
         String characters = "0123456789";
         StringBuilder codeBuilder = new StringBuilder();
@@ -139,4 +202,51 @@ public class AuthenticationService {
 
         return codeBuilder.toString();
     }
+
+
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String refreshToken;
+        final String userEmail;
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return;
+        }
+        refreshToken = authHeader.substring(7);
+        userEmail = jwtService.extractUsername(refreshToken);
+        if (userEmail != null) {
+            var user = this.userRepository.findByEmail(userEmail)
+                    .orElseThrow();
+            if (jwtService.isTokenValid(refreshToken, user)) {
+                var accessToken = jwtService.generateToken(user);
+                var authResponse = AuthenticationResponse.builder()
+                        .token(accessToken)
+                        .refreshToken(refreshToken)
+                        .mfaEnabled(false)
+                        .build();
+                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+            }
+        }
+    }
+    public AuthenticationResponse verifyCode(
+            VerificationRequest verificationRequest
+    ) {
+        User user = userRepository
+                .findByEmail(verificationRequest.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("No user found with %S", verificationRequest.getEmail()))
+                );
+        if (tfaService.isOtpNotValid(user.getSecret(), verificationRequest.getCode())) {
+
+            throw new BadCredentialsException("Code is not correct");
+        }
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .mfaEnabled(user.isMfaEnabled())
+                .build();
+    }
+
 }

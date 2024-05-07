@@ -5,5 +5,8 @@ export interface RegistrationRequest {
   firstname: string;
   lastname: string;
   password: string;
+  mobile: string;
+  mfaEnabled?: string;
   nickname: string;
+
 }

@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-05-05T13:15:51.550+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/api/v1/demo-controller"
+}

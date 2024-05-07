@@ -25,14 +25,7 @@ public class EmailService {
     private final SpringTemplateEngine templateEngine;
 
     @Async
-    public void sendEmail(
-            String to,
-            String username,
-            EmailTemplateName emailTemplate,
-            String confirmationUrl,
-            String activationCode,
-            String subject
-    ) throws MessagingException {
+    public void sendEmail(String to, String username, EmailTemplateName emailTemplate, String confirmationUrl, String activationCode, String subject) throws MessagingException {
         String templateName;
         if (emailTemplate == null) {
             templateName = "confirm-email";
@@ -40,11 +33,7 @@ public class EmailService {
             templateName = emailTemplate.name();
         }
         MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(
-                mimeMessage,
-                MULTIPART_MODE_MIXED,
-                UTF_8.name()
-        );
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, MULTIPART_MODE_MIXED, UTF_8.name());
         Map<String, Object> properties = new HashMap<>();
         properties.put("username", username);
         properties.put("confirmationUrl", confirmationUrl);
@@ -62,4 +51,33 @@ public class EmailService {
         helper.setText(template, true);
 
         mailSender.send(mimeMessage);
-    }}
+
+    }
+    public void sendOtp(String to, String username, String otp) throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, MULTIPART_MODE_MIXED, UTF_8.name());
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("username", username);
+        properties.put("otp", otp); // Include the OTP in the properties
+
+        Context context = new Context();
+        context.setVariables(properties);
+
+        helper.setFrom("admin@pfeconnect.com");
+        helper.setTo(to);
+        helper.setSubject("OTP for Password Reset");
+
+        // Customize the email content to include the OTP
+        String emailContent = "Hello " + username + ",\n\n"
+                + "Your OTP for password reset is: " + otp + "\n\n"
+                + "Please use this OTP to reset your password.\n\n"
+                + "Regards,\n"
+                + "Admin";
+
+        helper.setText(emailContent, false); // Set HTML to false since it's plaintext
+
+        mailSender.send(mimeMessage);
+    }
+
+
+}

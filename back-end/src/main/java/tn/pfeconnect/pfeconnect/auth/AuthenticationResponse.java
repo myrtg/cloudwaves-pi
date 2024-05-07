@@ -1,9 +1,9 @@
 package tn.pfeconnect.pfeconnect.auth;
+import tn.pfeconnect.pfeconnect.entities.User;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import tn.pfeconnect.pfeconnect.entities.User;
 
 @Getter
 @Setter
@@ -11,6 +11,11 @@ import tn.pfeconnect.pfeconnect.entities.User;
 
 public class AuthenticationResponse {
     private String token;
-    private User user;
+    private String refreshToken;
+    private boolean mfaEnabled;
+    private String secretImageUri;
+        private User user;
+
+
 
 }

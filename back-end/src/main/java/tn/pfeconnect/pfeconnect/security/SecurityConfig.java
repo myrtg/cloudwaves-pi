@@ -30,19 +30,20 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(
+                                        "/**",
+                                        "/api/v1/**",
                                         "/auth/**",
                                         "/v2/api-docs",
                                         "/v3/api-docs",
                                         "/v3/api-docs/**",
                                         "/swagger-resources",
                                         "/swagger-resources/**",
-                                        "/swagger-ui.html",
                                         "/configuration/ui",
-                                        "/swagger-ui/**",
                                         "/configuration/security",
-
+                                        "/swagger-ui/**",
                                         "/webjars/**",
-                                         "/stomp-endpoint/**"
+                                        "/swagger-ui.html",
+                                          "/stomp-endpoint/**"
                                 )
                                 .permitAll()
                                 .anyRequest()
@@ -51,6 +52,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
 
         return http.build();
     }

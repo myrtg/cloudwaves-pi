@@ -1,0 +1,42 @@
+### Register User
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "firstname": "Ali",
+  "lastname": "Bouali",
+  "email":  "alibou111111@mail.com",
+  "password": "password",
+  "mobile": "123456789"
+}
+
+> {% client.global.set("token", response.body.token);  %}
+
+
+
+### Change the password
+PATCH http://localhost:8080/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "currentPassword": "password",
+  "newPassword": "newPassword",
+  "confirmationPassword":  "newPassword"
+}
+
+### Login again and update the token
+POST http://localhost:8080/auth/authenticate
+Content-Type: application/json
+
+{
+  "email":  "alibou@mail.com",
+  "password": "newPassword"
+}
+
+> {% client.global.set("new-auth-token", response.body.access_token);  %}
+
+
+### Query the Demo endpoint after password change
+GET http://localhost:8080/demo-controller
+Authorization: Bearer {{new-auth-token}}

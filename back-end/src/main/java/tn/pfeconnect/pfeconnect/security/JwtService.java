@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import static io.jsonwebtoken.Jwts.parserBuilder;
 
 @Service
 public class JwtService {
@@ -21,12 +22,13 @@ public class JwtService {
     private String secretKey;
     @Value("86400000")
     private long jwtExpiration;
+    @Value("604800000")
+    private long refreshExpiration;
 
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
-
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
@@ -84,6 +86,12 @@ public class JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public String generateRefreshToken(
+            UserDetails userDetails
+    ) {
+        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
     }
 
     private Key getSignInKey() {

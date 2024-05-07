@@ -24,4 +24,28 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
   }
+
+  .recaptcha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Adjust based on your needs */
+  }
+  .input-wrapper {
+    padding: 10px;
+    background-color: #f0f0f0; /* Grey background */
+    border-radius: 4px; /* Rounded corners */
+  }
+
+  .form-control {
+    border: none;
+    box-shadow: none; /* Remove default Bootstrap shadow */
+    outline: none; /* Remove focus outline */
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Custom focus style */
+  }
+
+
 }

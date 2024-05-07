@@ -3,13 +3,16 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/services/authentication.service';
 import {AuthenticationRequest} from '../../services/models/authentication-request';
 import {TokenService} from '../../services/token/token.service';
-import{connected_users} from '../../global';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  siteKey: string;
+
+  captchaChecked: boolean = false;
 
   authRequest: AuthenticationRequest = {email: '', password: ''};
   errorMsg: Array<string> = [];
@@ -17,10 +20,15 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private tokenService: TokenService,
+    private tokenService: TokenService
   ) {
+    this.siteKey = '6Le8lc4pAAAAAPGfvO0rw_oml3DIReJqt9HTLAMo';
   }
 
+
+  handleCaptchaVerify() {
+    this.captchaChecked = true;
+  }
   login() {
     this.errorMsg = [];
     this.authService.authenticate({
@@ -31,9 +39,9 @@ export class LoginComponent {
         this.tokenService.token = res.token as string;
         sessionStorage.setItem('token',this.tokenService.token);
         if(res.user){
+          console.log('res.user', res.user)
           localStorage.setItem('user', JSON.stringify(res.user));
 
-          console.log("connected users in login", connected_users)
        // this.chatservice.connect( res.user.nickname, res.user.fullName)
         }else{
           console.log("user is null in Login response")

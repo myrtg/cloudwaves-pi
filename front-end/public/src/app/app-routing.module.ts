@@ -8,11 +8,14 @@ import { EventsComponent } from './components/events/events.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { ForumComponent } from './components/forum/forum.component';
 import {LoginComponent} from "./components/login/login.component";
-import {RegisterComponent} from "./components/register/register.component";
-import {ActivateAccountComponent} from "./components/activate-account/activate-account.component";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './auth.guard';
+
+import {CustomRoute} from "./custom-route";
+import {RegisterComponent} from "./components/register/register.component";
+import {ActivateAccountComponent} from "./components/activate-account/activate-account.component";
+import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
 
 
 const routes: Routes = [
@@ -21,6 +24,8 @@ const routes: Routes = [
   {path: 'chat',
   canActivate: [AuthGuard],
   component: ChatComponent},
+  {path:'login', component:LoginComponent},
+
   {path:'pfebook', component: PfebookComponent},
   {path:'internship', component: InternshipComponent},
   {path:'faq', component: FaqComponent},
@@ -29,6 +34,8 @@ const routes: Routes = [
   {path:'forum', component: ForumComponent},
   {path:'register', component:RegisterComponent},
   {path:'activate-account', component:ActivateAccountComponent},
+  {path:'forgot-password', component:ForgotPasswordComponent},
+
   { path: '**', component: NotFoundComponent },
 
 

@@ -1,4 +1,4 @@
-package tn.pfeconnect.pfeconnect.security;
+package tn.pfeconnect.pfeconnect.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

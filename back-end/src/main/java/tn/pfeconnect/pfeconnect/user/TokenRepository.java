@@ -1,8 +1,8 @@
-package tn.pfeconnect.pfeconnect.repositories;
+package tn.pfeconnect.pfeconnect.user;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import tn.pfeconnect.pfeconnect.security.Token;
+import tn.pfeconnect.pfeconnect.user.Token;
 
 
 import java.util.Optional;

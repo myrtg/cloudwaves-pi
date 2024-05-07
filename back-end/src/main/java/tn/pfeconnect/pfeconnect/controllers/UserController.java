@@ -44,6 +44,7 @@ public class UserController {
      */
     @PostMapping("/login")
     public ResponseEntity<ApiResponse> login(@RequestBody LoginRequest loginRequest) {
+        System.out.println("login email" + loginRequest.getEmail());
         return userService.findUserByEmail(loginRequest.getEmail());
     }
 
