@@ -1,0 +1,35 @@
+<app-aside></app-aside>
+<button routerLink="/ajoutQuiz" style="margin-top: 150px; margin-left: 1350px;" type="button" class="btn btn-secondary">+</button>
+<div style=" margin-top: 20px; margin-left: 300px; width: 1950px;" class="row">
+    <div class="col-xl-7">
+        <div class="card card-height-100">
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table table-nowrap table-centered align-middle">
+                        <thead class="bg-light text-muted">
+                            <tr>
+                                <th scope="col">id quiz</th>
+                                <th scope="col">titre</th>
+                                <th style="justify-content: end; display: flex;" scope="col">action</th>
+                                
+                            </tr><!-- end tr -->
+                        </thead><!-- thead -->
+
+                        <tbody *ngFor="let quiz of quiz">
+                            <tr>
+                                <td class="fw-medium"># {{quiz.id}}</td>
+                                <td>
+                                    <a href="javascript: void(0);" class="text-reset">{{quiz.title}}</a>
+                                </td>
+                                <td style="justify-content: end; display: flex;" class="text-muted">
+                                    <button type="button" class="btn btn-danger">X</button>
+                                </td>
+                            </tr><!-- end tr -->
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div>
+
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+</div>

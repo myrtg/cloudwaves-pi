@@ -1,0 +1,33 @@
+<app-aside></app-aside>
+<div style="display: flex; justify-content: center;">
+    <form #form="ngForm" (ngSubmit)="addQuiz(form.value.category, form.value.numQ, form.value.title)" style=" margin-top: 100px; margin-left: 300px; width: 550px">
+        <h1>Ajout Quiz</h1>
+        <br>
+        <div class="form-group">
+            <label>titre</label>
+            <input type="text" class="form-control" name="title" ngModel id="title" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">title is required</small>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select type="text" class="form-control" name="category" ngModel id="category" required #inputname="ngModel">
+                <option value="Cloud">Cloud</option>
+                <option value="Developement_mobile">Developement_mobile</option>
+                <option value="Developement_web">Developement_web</option>
+                <option value="Business_Intelligence">Business_Intelligence</option>
+                <option value="Data_Science">Data_Science</option>
+            </select>
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">category is required</small>
+        </div>
+        <div class="form-group">
+            <label>Questions numbr</label>
+            <input type="number" class="form-control" name="numQ" ngModel id="numQ" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">Questions numbr is required</small>
+        </div>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-secondary">ADD</button>
+        <br>
+        <br>
+        <br>
+    </form>
+
+</div>

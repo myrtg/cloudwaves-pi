@@ -1,0 +1,53 @@
+<app-aside></app-aside>
+<div style="display: flex; justify-content: center;">
+    <form style=" margin-top: 100px; margin-left: 300px; width: 550px" #form="ngForm" (ngSubmit)="addQuestion(form.value)">
+        <h1>Ajout Question</h1>
+        <br>
+        <div class="form-group">
+            <label>titre</label>
+            <input type="text" class="form-control" name="questionTitle" ngModel id="questionTitle" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">title is required</small>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select type="text" class="form-control" name="category" ngModel id="category" required #inputname="ngModel">
+                <option value="Cloud">Cloud</option>
+                <option value="Developement_mobile">Developement_mobile</option>
+                <option value="Developement_web">Developement_web</option>
+                <option value="Business_Intelligence">Business_Intelligence</option>
+                <option value="Data_Science">Data_Science</option>
+            </select>
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">category is required</small>
+        </div>
+        <div class="form-group">
+            <label>correct answer</label>
+            <input type="text" class="form-control" name="correctAnswer" ngModel id="correctAnswer" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">correctAnswer is required</small>
+        </div>
+        <div class="form-group">
+            <label>option 1</label>
+            <input type="text" class="form-control" name="option1" ngModel id="option1" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">option1 is required</small>
+        </div>
+        <div class="form-group">
+            <label>option 2</label>
+            <input type="text" class="form-control" name="option2" ngModel id="option2" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">option2 is required</small>
+        </div>
+        <div class="form-group">
+            <label>option 3</label>
+            <input type="text" class="form-control" name="option3" ngModel id="option3" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">option3 is required</small>
+        </div>
+        <div class="form-group">
+            <label>option 4</label>
+            <input type="text" class="form-control" name="option4" ngModel id="option4" required #inputname="ngModel">
+            <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">option4 is required</small>
+        </div>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-secondary">ADD</button>
+        <br>
+        <br>
+        <br>
+    </form>
+
+</div>
