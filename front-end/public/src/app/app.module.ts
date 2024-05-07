@@ -32,6 +32,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AjoutCandidatureComponent } from './components/ajout-candidature/ajout-candidature.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 
 
@@ -60,7 +61,8 @@ import { QuizComponent } from './components/quiz/quiz.component';
     ActivateAccountComponent,
     ForgotPasswordComponent,
     AjoutCandidatureComponent,
-    QuizComponent
+    QuizComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

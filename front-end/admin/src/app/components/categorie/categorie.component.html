@@ -1,1 +1,221 @@
-<p>categorie works!</p>
+<app-aside></app-aside>
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card-body">
+            <div class="table-responsive table-card">
+              <table class="table table-nowrap table-centered align-middle">
+                <thead class="bg-light text-muted">
+                  <tr>
+                    <th scope="col">Category ID</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let category of categories; let i = index">
+                    <td class="fw-medium">{{ category.idCategorie }}</td>
+                    <td class="text-muted" contenteditable="true" (keyup.enter)="editCategory(category, $event)">
+                      {{ category.nomCategorie }}
+                    </td>
+                    <td>
+                      <div class="d-flex">
+                        <i (click)="deleteCategory(category.idCategorie)" class="material-icons">delete</i>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr *ngIf="categories.length === 0">
+                    <td class="text-center" colspan="3">
+                      No categories available.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="mt-4">
+                <h5>Add New Category</h5>
+                <form (ngSubmit)="addCategory()" #categoryForm="ngForm">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label for="categoryName" class="form-label required">Category Name</label>
+                        <input type="text" class="form-control" id="categoryName" name="categoryName"
+                          [(ngModel)]="categoryName" required />
+
+                        <div *ngIf="categoryForm.submitted && categoryForm.invalid" class="invalid-feedback d-block">
+                          Please enter a category name.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-primary">
+                      Add Category
+                    </button>
+                  </div>
+                </form>
+                <!-- Display subcategories within each category -->
+                <div *ngFor="let category of categories" class="mt-4">
+                  <h5>{{ category.nomCategorie }} Subcategories</h5>
+                  <div class="table-responsive table-card">
+                    <table class="table table-nowrap table-centered align-middle">
+                      <thead class="bg-light text-muted">
+                        <tr>
+                          <th scope="col">SubCategory ID</th>
+                          <th scope="col">SubCategory Name</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let subCategory of category.sousCategories">
+                          <td class="fw-medium">
+                            {{ subCategory.idSousCategorie }}
+                          </td>
+                          <td class="text-muted" contenteditable="true"
+                            (keyup.enter)="editSubCategory(subCategory, $event)">
+                            {{ subCategory.nomSousCategorie }}
+                          </td>
+                          <td>
+                            <i (click)="
+                                deleteSubCategory(subCategory.idSousCategorie)
+                              " class="material-icons">delete</i>
+                          </td>
+                        </tr>
+                        <tr *ngIf="category.sousCategories.length === 0">
+                          <td class="text-center" colspan="3">
+                            No subcategories available.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="mt-4">
+                    <h6>Add New Subcategory</h6>
+                    <form (ngSubmit)="addSubCategory(category.idCategorie)" #subCategoryForm="ngForm">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="mb-3">
+                            <label for="subCategoryName" class="form-label required">Subcategory Name</label>
+                            <input type="text" class="form-control" id="subCategoryName" name="subCategoryName"
+                              [(ngModel)]="subCategoryName" required />
+
+                            <div *ngIf="
+                                subCategoryForm.submitted &&
+                                subCategoryForm.invalid
+                              " class="invalid-feedback d-block">
+                              Please enter a subcategory name.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button type="submit" class="btn btn-primary">
+                          Add Subcategory
+                        </button>
+                      </div>
+                    </form>
+                    <!-- Display projects within each subcategory -->
+                    <div *ngFor="let subCategory of category.sousCategories" class="mt-3">
+                      <h6>{{ subCategory.nomSousCategorie }} Projects</h6>
+                      <div class="table-responsive table-card">
+                        <table class="table table-nowrap table-centered align-middle">
+                          <thead class="bg-light text-muted">
+                            <tr>
+                              <th scope="col">Project ID</th>
+                              <th scope="col">Project Title</th>
+                              <th scope="col">Project Description</th>
+                              <th scope="col">Project Report</th>
+                              <th scope="col">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let project of subCategory.projets">
+                              <td class="fw-medium">{{ project.idProjet }}</td>
+                              <td class="text-muted" contenteditable="true" (keyup.enter)="
+                                  editProjectTitle(project, $event)
+                                ">
+                                {{ project.titre }}
+                              </td>
+                              <td class="text-muted" contenteditable="true" (keyup.enter)="
+                                  editProjectDescription(project, $event)
+                                ">
+                                {{ project.description }}
+                              </td>
+                              <td class="text-muted">
+                                <button mat-raised-button color="primary" (click)="downloadReport(project.idProjet, project.titre)">Download Report</button>
+                              </td>
+                              <td>
+                                <i (click)="deleteProject(project.idProjet)" class="material-icons">delete</i>
+                              </td>
+                            </tr>
+                            <tr *ngIf="subCategory.projets.length === 0">
+                              <td class="text-center" colspan="5">
+                                No projects available.
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="mt-4">
+                        <h6>Add New Project</h6>
+                        <form (ngSubmit)="addProject(subCategory.idSousCategorie)" #projectForm="ngForm">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="mb-3">
+                                <label for="projectTitle" class="form-label required">Project Title</label>
+                                <input type="text" class="form-control" id="projectTitle" name="projectTitle"
+                                  [(ngModel)]="projectTitle" required />
+                                <div *ngIf="
+                                    projectForm.submitted && projectForm.invalid
+                                  " class="invalid-feedback d-block">
+                                  Please enter a project title.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="mb-3">
+                                <label for="projectDescription" class="form-label required">Project Description</label>
+                                <input type="text" class="form-control" id="projectDescription"
+                                  name="projectDescription" [(ngModel)]="projectDescription" required />
+                                <div *ngIf="
+                                    projectForm.submitted && projectForm.invalid
+                                  " class="invalid-feedback d-block">
+                                  Please enter a project description.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="mb-3">
+                                <label for="projectReport" class="form-label required">Project Report</label>
+                                <input type="file" class="form-control" id="projectReport" name="projectReport"
+                                  (change)="onFileSelected($event)" required />
+                                <div *ngIf="
+                                    projectForm.submitted && projectForm.invalid
+                                  " class="invalid-feedback d-block">
+                                  Please enter a project report.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <button type="submit" class="btn btn-primary">
+                              Add Project
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
