@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -23,8 +24,8 @@ public class OffreStage {
     private long idOffre;
     private String titre;
     private String description;
-    private Date datePublication;
-    private Date dateLimite;
+    private LocalDate datePublication;
+    private LocalDate dateLimite;
     @Enumerated(EnumType.STRING)
     private Domaine domaine;
 

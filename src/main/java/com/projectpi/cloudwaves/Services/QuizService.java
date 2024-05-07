@@ -71,20 +71,44 @@ public class QuizService {
 
     }
 
-
-
-    public ResponseEntity<Integer> calculateQuizScore(Long id, List<Responses> responses) {
-        Quiz quiz = quizRepository.findById(id).get();
-        List<Questions> questions = quiz.getQuestions();
-        int i = 0;
-        int correct = 0;
-        for(Responses response: responses){
-            if(response.getResponse().equals(questions.get(i).getCorrectAnswer())){
-                correct += 1;
-            }
-            i+=1;
+    public ResponseEntity<List<Quiz>> getAllQuizs() {
+        try {
+            return new ResponseEntity<>(quizRepository.findAll(), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return new ResponseEntity<>(correct,HttpStatus.OK);
+        return new ResponseEntity<>(new ArrayList<>() , BAD_REQUEST);
+    }
+
+
+
+    public ResponseEntity<Integer> calculateQuizScore(Long id, List<String> responses) {
+        // Retrieve the quiz by id
+        Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+
+        if (!optionalQuiz.isPresent()) {
+            // Handle case when quiz with given id doesn't exist
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Quiz quiz = optionalQuiz.get();
+        List<Questions> questions = quiz.getQuestions();
+
+        if (questions.size() != responses.size()) {
+            // Handle case when number of responses doesn't match number of questions
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        int correct = 0;
+
+        for (int i = 0; i < questions.size(); i++) {
+            Questions question = questions.get(i);
+            String response = responses.get(i);
+
+            if (response.equals(question.getCorrectAnswer())) {
+                correct++;
+            }
+        }
+        // Calculate and return the score
+        return new ResponseEntity<>(correct, HttpStatus.OK);
     }
     public static byte[] generateQRCode(int correct, int width, int height) {
         Logger logger = LoggerFactory.getLogger(QuizService.class);
@@ -102,5 +126,9 @@ public class QuizService {
             logger.error("Error generating QR code", e);
         }
         return null;
+    }
+
+    public void deleteById(long id) {
+        offreStageRepository.deleteById(id);
     }
 }

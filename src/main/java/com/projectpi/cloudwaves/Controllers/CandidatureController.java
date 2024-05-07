@@ -21,6 +21,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/candidature")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4300"})
 public class CandidatureController {
     ICandidatureService candidatureService;
     CandidatureRepository candidatureRepository;
@@ -40,6 +41,7 @@ public class CandidatureController {
         candidatureService.removeCandidature(idCandidature);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/create")
     public ResponseEntity<Candidature> createCandidate(@RequestParam String name,
                                                        @RequestParam String email,

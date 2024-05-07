@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("Question")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4300"})
 public class QuestionController {
     @Autowired
     QuestionService questionService;
@@ -24,6 +25,11 @@ public class QuestionController {
     @GetMapping("category/{category}")
     public ResponseEntity<List<Questions>> getQuestionByCategory(@PathVariable String category){
         return questionService.getQuestionsByCategory(category);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void remove(@PathVariable long id) {
+        questionService.deleteById(id);
     }
 
     @PostMapping("add")
