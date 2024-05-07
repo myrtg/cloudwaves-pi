@@ -69,17 +69,17 @@ public class MessageSocketController {
         socketService.sendUserConversationByUserId(user1);
         socketService.sendUserConversationByUserId(user2);
     }
-
     /**
-     * Delete a message by its unique message ID within a conversation using a web socket.
+     * Mark messages as read in a given room for a specific receiver using a web socket.
      *
-     * @param payload A Map containing the conversationId and messageId for the message
-     *                to be deleted and notify listener.
+     * @param payload A Map containing the roomId and receiverUserId for marking messages as read.
      */
-    @MessageMapping("/deleteMessage")
-    public void deleteMessage(Map<String, Object> payload) {
-        int conversationId = (int) payload.get("conversationId");
-        int messageId = (int) payload.get("messageId");
-        socketService.deleteMessageByMessageId(conversationId, messageId);
+    @MessageMapping("/markAsRead")
+    public void markMessagesAsReadInRoomForReceiver(Map<String, Integer> payload) {
+        int roomId = payload.get("roomId");
+        int receiverUserId = payload.get("receiverUserId");
+        socketService.markMessagesAsReadInRoomForReceiver(roomId, receiverUserId);
     }
+
+
 }

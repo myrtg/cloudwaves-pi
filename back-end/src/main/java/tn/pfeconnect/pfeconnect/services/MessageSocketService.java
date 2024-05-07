@@ -1,5 +1,6 @@
 package tn.pfeconnect.pfeconnect.services;
 
+import org.springframework.web.multipart.MultipartFile;
 import tn.pfeconnect.pfeconnect.dtos.MessageRequest;
 
 /**
@@ -26,8 +27,7 @@ public interface MessageSocketService {
      *
      * @param msg The MessageRequest object containing the message details to be saved.
      */
-    void saveMessage(MessageRequest msg);
-
+    public void saveMessage(MessageRequest msg);
     /**
      * Delete a conversation by its unique conversation ID using a web socket.
      *
@@ -42,4 +42,11 @@ public interface MessageSocketService {
      * @param messageId      The ID of the message to be deleted.
      */
     void deleteMessageByMessageId(int conversationId, int messageId);
+    /**
+     * Mark messages as read in a given room for a specific receiver using a web socket.
+     *
+     * @param roomId         The ID of the room (conversation) containing the messages to be marked as read.
+     * @param receiverUserId The ID of the receiver for whom the messages will be marked as read.
+     */
+    public void markMessagesAsReadInRoomForReceiver(int roomId, int receiverUserId);
 }

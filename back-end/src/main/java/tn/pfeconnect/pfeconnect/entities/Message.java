@@ -38,4 +38,13 @@ public class Message {
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
+    @Column(name = "is_read")
+    private boolean read=false;
+
+    //@Column(name = "file_name")
+    //private String fileName;
+
+   // @Column(name = "file_path")
+   // private String filePath;
+
 }

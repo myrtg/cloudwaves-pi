@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/services/authentication.service';
 import {AuthenticationRequest} from '../../services/models/authentication-request';
 import {TokenService} from '../../services/token/token.service';
-
+import{connected_users} from '../../global';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,6 +33,7 @@ export class LoginComponent {
         if(res.user){
           localStorage.setItem('user', JSON.stringify(res.user));
 
+          console.log("connected users in login", connected_users)
        // this.chatservice.connect( res.user.nickname, res.user.fullName)
         }else{
           console.log("user is null in Login response")

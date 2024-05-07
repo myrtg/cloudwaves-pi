@@ -10,6 +10,8 @@ import { StompService } from 'src/app/services/stomp.service';
 import { Subscription } from 'rxjs';
 import { WebSocketResponse } from 'src/app/interfaces/web-socket-response';
 import { StompSubscription } from '@stomp/stompjs';
+import { ChatService } from 'src/app/services/chat.service';
+import{connected_users} from '../../global';
 
 @Component({
   selector: 'app-chat',
@@ -22,6 +24,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     firstName: '',
     lastName: '',
     email: '',
+    online:true,
   };
   // all users except current user
   users: User[] = [];
@@ -46,10 +49,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   showUserState: boolean = false;
   // Input field for send message
   message: string = '';
-
+  roomId!: number;
+  receiverUserId!: number;
   constructor(
     private router: Router,
     private userService: UserService,
+    private chatService: ChatService,
     private stomp: StompService
   ) {
     this.currentUser = userService.currentUser();
@@ -58,40 +63,96 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Subscribe to id websocket to get updated conversation when gets new messages
     this.subscribeToCurrentUserConversation();
-    this.onShowHideUserConversation();
+    this.getAllUsers();
     this.filterMessages(); // Add this line to initialize filteredMessages
-
+    this.subscribeToUserPresence();
   }
+  subscribeToUserPresence() {
+    this.stomp.subscribe(
+      'userPresence',
+      (payload: any) => {
+        const { userId, presence } = payload;
+        // Update the online status of the user
+        const user = this.users.find(u => u.id === userId);
+        if (user) {
+          user.online = presence === 'online';
+        }
+      }
+    );
+  }
+  // Déclarez la propriété filteredUsers dans votre composant
+filteredUsers: User[] = [];
+userSearchQuery: string = '';
+
+// Créez une méthode pour filtrer les utilisateurs en fonction de la requête de recherche
+filterUsers() {
+    if (!this.userSearchQuery) {
+        // Si la requête de recherche sur les utilisateurs est vide, affichez tous les utilisateurs
+        this.filteredUsers = this.users;
+    } else {
+        // Filtrer les utilisateurs en fonction de la requête de recherche
+        const lowerCaseQuery = this.userSearchQuery.toLowerCase();
+        this.filteredUsers = this.users.filter(user =>
+            (user.firstName.toLowerCase().includes(lowerCaseQuery) || user.lastName.toLowerCase().includes(lowerCaseQuery))
+        );
+    }
+}
+
+// Appelez cette méthode lorsque la requête de recherche sur les utilisateurs change
+onUserSearchQueryChange() {
+    this.filterUsers();
+}
 
   ngOnDestroy(): void {
     // Unsubscribe from all channels onDestroy
     //this.stompUserSub?.unsubscribe();
     this.stompConvSub?.unsubscribe();
   }
+  searchUsers() {
+    if (!this.userSearchQuery) {
+        // Si la requête de recherche est vide, affichez tous les utilisateurs
+        this.filteredUsers = this.users;
+    } else {
+        // Filtrer les utilisateurs en fonction de la requête de recherche
+        const lowerCaseQuery = this.userSearchQuery.toLowerCase();
+        this.filteredUsers = this.users.filter(user =>
+            user.firstName.toLowerCase().includes(lowerCaseQuery) ||
+            user.lastName.toLowerCase().includes(lowerCaseQuery)
+        );
+    }
+}
 
   // When click the new/add button Then get all users and set users list
-  onShowHideUserConversation() {
+  
+  getAllUsers() {
     this.userService
     .getAllUsersExceptCurrentUser()
     .subscribe((res: ApiResponse) => {
       this.users = res.data;
+      console.log('connected users', this.users)
+
     });
 
-    // this.showUserState = !this.showUserState;
-    // if (this.showUserState) {
-    //   this.userService
-    //     .getAllUsersExceptCurrentUser()
-    //     .subscribe((res: ApiResponse) => {
-    //       this.users = res.data;
-    //     });
-    // }
   }
+  // Créez une méthode pour filtrer les messages avant de les envoyer
+filterMessage(message: string): string {
+  // Vérifiez si le message contient des mots indésirables
+  for (const badWord of this.badWords) {
+      if (message.toLowerCase().includes(badWord)) {
+          // Si un mot indésirable est trouvé, remplacez-le par des astérisques
+          message = message.replace(new RegExp(badWord, 'ig'), '*'.repeat(badWord.length));
+      }
+  }
+  // Retournez le message filtré
+  return message;
+}
 
   // Close a chat from dropdown menu
   onCloseChat() {
     this.stompConvSub?.unsubscribe();
     this.selectedConversationId = -1;
   }
+  badWords: string[] = ['test', 'test2', 'test3'];
 
   // When click logout button Then remove user from localStorage and navigate to homepage
   onUserLogout() {
@@ -122,6 +183,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
+
+
   // When new or exiting user selected Then set the variables and get the two users
   // conversationId from the database
   onUserSelected(receiverId: number, receiverName: string,recieverlastname:string) {
@@ -133,7 +196,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       .subscribe((res: ApiResponse) => {
         console.log('getConversationIdByUser1IdAndUser2Id', res.data)
         this.selectedConversationId = res.data;
-        this.onShowHideUserConversation();
+        this.getAllUsers();
         this.setConversation();
       });
   }
@@ -147,6 +210,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.userConversations[index].otherUserName;
 
     this.setConversation();
+    this.markMessagesAsRead( this.selectedConversationId ,  this.selectedConversationReceiverId)
   }
 
   // Set a conversation of selected conversationId
@@ -182,24 +246,31 @@ export class ChatComponent implements OnInit, OnDestroy {
       return 0;
   });
   }
-
+  markMessagesAsRead(room:number, receiverId:number): void {
+    this.chatService.markMessagesAsRead(room, receiverId);
+  }
   // Send message to other user
-  onSendMessage() {
-    // If message field is empty then return
-    if (this.message.trim().length == 0) return;
+onSendMessage() {
+  // If message field is empty then return
+  if (this.message.trim().length == 0) return;
 
-    const timestamp = new Date();
-    let body: MessageRequest = {
+  // Filtrer le message avant de l'envoyer
+  const filteredMessage = this.filterMessage(this.message.trim());
+
+  const timestamp = new Date();
+  let body: MessageRequest = {
       conversationId: this.selectedConversationId,
       senderId: this.userService.currentUser().id,
       receiverId: this.selectedConversationReceiverId,
-      message: this.message.trim(),
+      message: filteredMessage, // Utiliser le message filtré
       timestamp: timestamp,
-    };
-    console.log("body ", body)
-    this.stomp.send('sendMessage', body);
-    this.message = '';
-  }
+  };
+
+  console.log("body ", body);
+  this.stomp.send('sendMessage', body);
+  this.message = '';
+}
+
 
   // When click Delete chat from the dropdown menu Then delete the conversation
   // with it's all messages
@@ -209,6 +280,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       user1Id: this.currentUser.id,
       user2Id: this.selectedConversationReceiverId,
     });
+    window.location.reload();
   }
   searchQuery: string = '';
 

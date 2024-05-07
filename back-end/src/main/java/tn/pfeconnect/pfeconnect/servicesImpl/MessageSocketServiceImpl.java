@@ -1,5 +1,6 @@
 package tn.pfeconnect.pfeconnect.servicesImpl;
 
+import org.springframework.web.multipart.MultipartFile;
 import tn.pfeconnect.pfeconnect.dtos.*;
 import tn.pfeconnect.pfeconnect.entities.Conversation;
 import tn.pfeconnect.pfeconnect.entities.Message;
@@ -13,9 +14,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.pfeconnect.pfeconnect.services.MessageSocketService;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Implementation of the MessageSocketService interface that handles real-time messaging functionality using web sockets.
@@ -45,6 +52,7 @@ public class MessageSocketServiceImpl implements MessageSocketService {
         );
     }
 
+
     /**
      * Send messages of a specific conversation to the connected users through a web socket.
      *
@@ -71,6 +79,7 @@ public class MessageSocketServiceImpl implements MessageSocketService {
         );
     }
 
+
     /**
      * Save a new message using a web socket.
      *
@@ -83,11 +92,32 @@ public class MessageSocketServiceImpl implements MessageSocketService {
         User receiver = userRepository.findById(msg.getReceiverId()).get();
         Conversation conversation = conversationRepository.findConversationByUsers(sender, receiver).get();
         Message newMessage = new Message();
+
         newMessage.setMessage(msg.getMessage());
         newMessage.setTimestamp(msg.getTimestamp());
         newMessage.setConversation(conversation);
         newMessage.setSender(sender);
         newMessage.setReceiver(receiver);
+
+        // Handle file upload (if applicable)
+       /* if (file != null && !file.isEmpty()) {
+            try {
+                // Save the file to a designated folder on the server
+                String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                Path filePath = Paths.get("src/main/java/tn/pfeconnect/pfeconnect/storage/" + fileName);
+
+                // Copy the file to the designated folder
+                Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+                newMessage.setFileName(fileName);
+                newMessage.setFilePath(filePath.toString());
+
+            } catch (IOException e) {
+                // Handle exceptions related to file storage
+                e.printStackTrace();
+                // Optionally, you can throw a custom exception or log the error
+            }
+        }*/
         Message savedMessage = messageRepository.save(newMessage);
         // notify listener
         MessageResponse res = MessageResponse.builder()
@@ -105,6 +135,17 @@ public class MessageSocketServiceImpl implements MessageSocketService {
         );
         sendUserConversationByUserId(msg.getSenderId());
         sendUserConversationByUserId(msg.getReceiverId());
+    }
+
+    // Methods to handle file and image saving
+    private String saveFile(MultipartFile file) {
+        // Implement logic to save file to storage and return the file path
+        return "path/to/saved/file";
+    }
+
+    private String saveImage(MultipartFile image) {
+        // Implement logic to save image to storage and return the image path
+        return "path/to/saved/image";
     }
 
     /**
@@ -133,4 +174,24 @@ public class MessageSocketServiceImpl implements MessageSocketService {
         // notify listener
         sendMessagesByConversationId(conversationId);
     }
+    /**
+     * Mark messages as read in a given room for a specific receiver using a web socket.
+     *
+     * @param roomId         The ID of the room (conversation) containing the messages to be marked as read.
+     * @param receiverUserId The ID of the receiver for whom the messages will be marked as read.
+     */
+    @Override
+    public void markMessagesAsReadInRoomForReceiver(int roomId, int receiverUserId) {
+        // Find all messages in the given room for the specific receiver
+        List<Message> messages = messageRepository.findAllByConversationIdAndReceiverId(roomId, receiverUserId);
+
+        // Iterate over each message and mark it as read
+        for (Message message : messages) {
+            message.setRead(true);
+        }
+
+        // Save the updated messages
+        messageRepository.saveAll(messages);
+    }
+
 }

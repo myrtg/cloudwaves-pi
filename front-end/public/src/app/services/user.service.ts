@@ -44,4 +44,10 @@ export class UserService {
   currentUser(): User {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
+  getAll(): Observable<ApiResponse> {
+      return this.http.get<ApiResponse>(
+        this.baseUrl.concat('/all' )
+      );
+    }
+  
 }

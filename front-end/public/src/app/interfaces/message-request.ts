@@ -5,5 +5,5 @@ export interface MessageRequest {
   message: string;
   timestamp: Date;
   // notificationMessage: string; // Add this line
-
+ 
 }

@@ -40,14 +40,24 @@ export class StompService {
 
   subscribe(topic: string, callback: any) {
     return this.stompClient.subscribe('/topic/' + topic, (frame: any): any => {
-      callback(JSON.parse(frame.body));
+      const message = JSON.parse(frame.body);
+      callback(message);
+      // Set user online when subscribing to the channel
+      // Notify other users about the new user's presence
+      this.notifyNewUserPresence(message.userId); 
+    });
+  }
+  notifyNewUserPresence(userId: string) {
+    // Send a message to a topic notifying other users about the new user's presence
+    this.stompClient.publish({
+      destination: '/topic/userPresence',
+      body: JSON.stringify({ userId, presence: 'online' }), 
     });
   }
 
   send(app: string, data: any) {
     this.stompClient.publish({
       destination: `/app/${app}`,
-    
       body: JSON.stringify( data ),
     });
   }
