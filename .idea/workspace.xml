@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/EvenementsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/InscriptionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/EvenementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Candidature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Questions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/QuestionsWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Quiz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Responses.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/enums/Domaine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Condidature.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/OffreStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/OffreStage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +159,7 @@
       <workItem from="1714991845019" duration="246000" />
       <workItem from="1714994292360" duration="105000" />
       <workItem from="1714994436813" duration="9946000" />
-      <workItem from="1715089856503" duration="866000" />
+      <workItem from="1715089856503" duration="1473000" />
     </task>
     <servers />
   </component>
