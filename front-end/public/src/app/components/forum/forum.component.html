@@ -1,12 +1,16 @@
 <div class="page-banner-area bg-1">
   <div class="container">
     <div class="page-banner-content">
+
       <head>
         <!-- Ajouter la bibliothèque Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-    </head>
-    
+        <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.votresite.com/css/styles.css">
+
+
+      </head>
+
       <h1>Forum</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -41,12 +45,12 @@
         </div>
         <!-- /.answer-action -->
 
-        <div class="post-header forums-header" routlink="['/commentaire']" >
+        <div class="post-header forums-header" routlink="['/commentaire']">
           <div class="col-md-6 col-sm-6 support-info">
-          
+
             <span> Forum </span>
           </div>
-        
+
 
           <!-- /.support-info -->
           <div class="col-md-6 col-sm-6 support-category-menus">
@@ -73,22 +77,22 @@
                 <h3 class="post-title">
                   <a href="forum-topics.html"> {{ forum.titre }}</a>
                   <p>{{ replaceBadWordsWithStars(forum.message) }}</p>
-                 
+
                 </h3>
-              
+
                 <p *ngIf="forum.translatedMessage">{{ forum.translatedMessage }}</p>
                 <button (click)="shareForumOnTwitter(forum.idForum)">Partager sur Twitter</button>
 
                 <button (click)="addCommentToForum(forum.idForum)" class="btn btn-secondary">Add comment </button>
-                
-                
-                
-                
+
+
+
+
 
               </div>
-              
+
             </div>
-            
+
             <div class="col-md-6 post-meta-wrapper">
               <ul class="forum-titles">
                 <li class="forum-topic-count">10</li>
@@ -116,21 +120,21 @@
               </ul>
               <div class="like-dislike-buttons">
                 <!-- Bouton de Like avec icône -->
-                <button  (click)="likeForum(forum.idForum)">
-                    <i class="fa fa-thumbs-up"> </i> 
+                <button (click)="likeForum(forum.idForum)">
+                  <i class="fa fa-thumbs-up" style="margin-right: 5px;"> </i>
                 </button>
-            
-                <!-- Bouton de Dislike avec icône -->
-                <button  (click)="dislikeForum(forum.idForum)">
-                    <i class="fa fa-thumbs-down"></i> 
-                </button>
-            </div>
-            
-             <!-- Icône de suppression -->
-<i class="fa fa-trash" aria-hidden="true" (click)="deleteForum(forum)"></i>
 
-<!-- Icône de mise à jour -->
-<i class="fa fa-pencil" aria-hidden="true" (click)="updateForum(forum)"></i>
+                <!-- Bouton de Dislike avec icône -->
+                <button (click)="dislikeForum(forum.idForum)">
+                  <i class="fa fa-thumbs-down"></i>
+                </button>
+              </div>
+
+              <!-- Icône de suppression -->
+              <i class="fa fa-trash" aria-hidden="true" (click)="deleteForum(forum)" style="margin-right: 5px;"></i>
+
+              <!-- Icône de mise à jour -->
+              <i class="fa fa-pencil" aria-hidden="true" (click)="updateForum(forum)"></i>
 
             </div>
           </div>
@@ -143,12 +147,9 @@
       <div class="col-lg-4">
         <div class="forum_sidebar">
           <div class="widget status_widget">
-            <h4 class="c_head">Information</h4>
-            <p class="status">Support is <span class="offline">Offline</span></p>
-
             <div class="open-hours">
               <input type="file" (change)="onFileSelected($event)" />
-
+              <br/>
               <h4 class="title-sm">Our office hours</h4>
               <p>Monday - Friday / 10am - 6pm (UTC +4) NewYork</p>
               <ul class="current-time list-unstyled">
@@ -165,46 +166,27 @@
             <!-- /.open-hours -->
           </div>
 
-          <div class="widget tag_widget">
-            <h4 class="c_head">Tags</h4>
-            <ul class="list-unstyled w_tag_list style-light">
-              <li><a href="#">Swagger</a></li>
-              <li><a href="#">KbDoc</a></li>
-              <li><a href="#">weCare</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Download</a></li>
-              <li><a href="#">Doc</a></li>
-              <li><a href="#">Product board</a></li>
-              <li><a href="#">WordPress</a></li>
-              <li><a href="#">Design</a></li>
-              <li><a href="#">ui/ux</a></li>
-              <li><a href="#">Doc Design</a></li>
-              <li><a href="#">DocAll</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-lg-4 -->
-    </div>
-  </div>
-</section>
 
-<!-- Form to add a new forum -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <form (submit)="addForum()">
-        <div class="form-group">
-          <input [(ngModel)]="newForum.titre" name="newForumTitre" type="text" class="form-control" placeholder="Title" required>
-        </div>
-        <div class="form-group">
-          <textarea [(ngModel)]="newForum.message" name="newForumMessage" placeholder="Message" class="form-control mb-3"></textarea>
-        </div>
-        <div class="form-group">
-          <input [(ngModel)]="newForum.email" name="newForumEmail" type="email" class="form-control" placeholder="Email" required>
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Add Forum</button>
-      </form>
-    </div>
-  </div>
-</div>
+
+          <!-- Form to add a new forum -->
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <form (submit)="addForum()">
+                  <div class="form-group">
+                    <input [(ngModel)]="newForum.titre" name="newForumTitre" type="text" class="form-control"
+                      placeholder="Title" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea [(ngModel)]="newForum.message" name="newForumMessage" placeholder="Message"
+                      class="form-control mb-3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input [(ngModel)]="newForum.email" name="newForumEmail" type="email" class="form-control"
+                      placeholder="Email" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary mb-3">Add Forum</button>
+                </form>
+              </div>
+            </div>
+          </div>

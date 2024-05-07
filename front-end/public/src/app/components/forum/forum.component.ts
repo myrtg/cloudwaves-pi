@@ -23,12 +23,12 @@ interface Forum {
 export class ForumComponent implements OnInit {
 
 
- 
-    listForums: Forum[] = [];
+
+  listForums: Forum[] = [];
   newForum: Forum = { idForum: 0, titre: '', message: '', email: '', likes: 0, dislikes: 0 };
-  
-  constructor(private forumService: ForumService,private commentaireService: CommentaireService ) {}
- 
+
+  constructor(private forumService: ForumService, private commentaireService: CommentaireService) { }
+
 
   chargerForums() {
     this.forumService.getAllForums().subscribe(
@@ -43,7 +43,7 @@ export class ForumComponent implements OnInit {
 
   ngOnInit() {
     this.loadForums();
-    
+
   }
 
 
@@ -94,21 +94,21 @@ export class ForumComponent implements OnInit {
   }
 
 
-  
+
   deleteForum(forum: any) {
     this.forumService.deleteForum(forum.idForum).subscribe(
       () => {
         console.log('Forum deleted successfully');
         this.loadForums();
-  
+
       },
       (error) => {
         console.error('Error deleting forum:', error);
       }
     );
   }
-  
-  
+
+
   addForum() {
     this.forumService.addForum(this.newForum).subscribe(
       (response) => {
@@ -150,8 +150,8 @@ export class ForumComponent implements OnInit {
       }
     );
   }
-  
-  
+
+
 
   dislikeForum(id: number): void {
     this.forumService.dislikeForum(id).subscribe(
@@ -181,85 +181,88 @@ export class ForumComponent implements OnInit {
       }
     );
   }
-  
 
-getTranslatedForumMessage(forumId: number) {
-  this.forumService.getTranslatedForum(forumId).subscribe(
-    (response: any) => {
-      const forumIndex = this.listForums.findIndex(forum => forum.idForum === forumId);
-      if (forumIndex !== -1) {
-        this.listForums[forumIndex].translatedMessage = response;
-      }
-    },
-    (error) => {
-      console.error("Error fetching translated forum:", error);
-    }
-  );
-}
 
-addCommentToForum(forumId: number) {
-  Swal.fire({
-    title: 'Add Comment',
-    input: 'text',
-    inputLabel: 'Your comment',
-    showCancelButton: true,
-    confirmButtonText: 'Add Comment',
-    cancelButtonText: 'Cancel',
-    inputValidator: (value) => {
-      if (!value) {
-        return 'Please enter your comment!';
-      }
-      return undefined;
-    }
-  }).then((result) => {
-    if (result.isConfirmed) {
-      const comment = result.value;
-      // Appel à la méthode addCommentaire de CommentaireService
-      this.commentaireService.addCommentaire({ commentaire: comment }).subscribe(
-        (response) => {
-          console.log('Comment added successfully:', response);
-          // Après l'ajout, rechargez la liste des forums pour refléter le nouveau commentaire
-          this.loadForums();
-        },
-        (error) => {
-          console.error('Error adding comment:', error);
+  getTranslatedForumMessage(forumId: number) {
+    this.forumService.getTranslatedForum(forumId).subscribe(
+      (response: any) => {
+        const forumIndex = this.listForums.findIndex(forum => forum.idForum === forumId);
+        if (forumIndex !== -1) {
+          this.listForums[forumIndex].translatedMessage = response;
         }
-      );
-    }
-  });
-}
+      },
+      (error) => {
+        console.error("Error fetching translated forum:", error);
+      }
+    );
+  }
+
+  addCommentToForum(forumId: number) {
+    Swal.fire({
+      title: 'Add Comment',
+      input: 'text',
+      inputLabel: 'Your comment',
+      inputAttributes: {
+        style: 'margin-left: inherit;' // Add custom style to the input field
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Add Comment',
+      cancelButtonText: 'Cancel',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Please enter your comment!';
+        }
+        return undefined;
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const comment = result.value;
+        // Appel à la méthode addCommentaire de CommentaireService
+        this.commentaireService.addCommentaire({ commentaire: comment }).subscribe(
+          (response) => {
+            console.log('Comment added successfully:', response);
+            // Après l'ajout, rechargez la liste des forums pour refléter le nouveau commentaire
+            this.loadForums();
+          },
+          (error) => {
+            console.error('Error adding comment:', error);
+          }
+        );
+      }
+    });
+  }
 
 
 
-shareForumOnTwitter(forumId: number) {
-  this.forumService.tweetForum(forumId).subscribe(
-    (twitterIntentUrl: string) => {
-      // Ouvrir l'URL d'intention Twitter dans une nouvelle fenêtre/onglet
-      window.open(twitterIntentUrl, '_blank');
-    },
-    (error) => {
-      console.error('Erreur lors du partage du forum sur Twitter:', error);
-      // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
-    }
-  );
-}
-badWords = ['mots', 'words', 'bad']; // Liste des mots interdits
+  shareForumOnTwitter(forumId: number) {
+    this.forumService.tweetForum(forumId).subscribe(
+      (twitterIntentUrl: string) => {
+        // Ouvrir l'URL d'intention Twitter dans une nouvelle fenêtre/onglet
+        window.open(twitterIntentUrl, '_blank');
+      },
+      (error) => {
+        console.error('Erreur lors du partage du forum sur Twitter:', error);
+        // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
+      }
+    );
+  }
+  badWords = ['ohh', 'words', 'bad']; // Liste des mots interdits
 
-replaceBadWordsWithStars(message: string): string {
-  return this.badWords.reduce((acc, word) => acc.replace(new RegExp('\\b' + word + '\\b', 'gi'), '★'), message);
-}
+  replaceBadWordsWithStars(message: string): string {
+    return this.badWords.reduce((acc, word) => acc.replace(new RegExp('\\b' + word + '\\b', 'gi'), '★'), message);
+  }
 
-onFileSelected(event: any): void {
-  const file = event.target.files[0];
-  this.forumService.uploadImage(file).subscribe(
-    (response) => {
-      console.log('Upload réussi:', response);
-      // Vous pouvez ici mettre à jour votre liste de forums ou effectuer d'autres actions après l'upload
-    },
-    (error) => {
-      console.error('Erreur lors de l\'upload:', error);
-    }
-  );
-}
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    this.forumService.uploadImage(file).subscribe(
+      (response) => {
+        console.log('Upload réussi:', response);
+        // Vous pouvez ici mettre à jour votre liste de forums ou effectuer d'autres actions après l'upload
+      },
+      (error) => {
+        console.error('Erreur lors de l\'upload:', error);
+      }
+    );
+  }
 
 }
