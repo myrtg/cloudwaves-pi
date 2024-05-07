@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/ProjectController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/ProjetRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/SousCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/SousCategoryRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/CommentaireController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/ForumController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Commentaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/CommentaireRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/ForumRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/CommentaireService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/ForumService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/CommentaireServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/ForumServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Forum.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Forum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +163,7 @@
       <workItem from="1714991845019" duration="246000" />
       <workItem from="1714994292360" duration="105000" />
       <workItem from="1714994436813" duration="9946000" />
-      <workItem from="1715089856503" duration="5584000" />
+      <workItem from="1715089856503" duration="6822000" />
     </task>
     <servers />
   </component>
