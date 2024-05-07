@@ -29,6 +29,10 @@ import { MatPasswordStrengthModule } from "@angular-material-extensions/password
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ProjectsComponent } from './components/projects/projects/projects.component';
+import { MatDialog, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ViewMoreProjectComponent } from './components/view-more-project/view-more-project.component';
+
 
 
 
@@ -55,7 +59,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ProjectsComponent,
+    ViewMoreProjectComponent
+
   ],
   imports: [
     BrowserModule,
@@ -67,7 +74,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     CodeInputModule,
     MatPasswordStrengthModule.forRoot(),
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

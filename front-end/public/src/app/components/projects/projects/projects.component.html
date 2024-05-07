@@ -1,0 +1,52 @@
+<div class="academics-area pt-100 pb-70" style="padding-top: 50px">
+    <div class="container" style="max-width: 1447px">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="academics-left-content">
+                    <div class="row justify-content-center">
+                        <!-- Check if filteredProjects is empty -->
+                        <div *ngIf="filteredProjects.length === 0" class="col-lg-12 text-center">
+                            <h2>No projects found.</h2>
+                        </div>
+                        <!-- Iterate over filteredProjects if not empty -->
+                        <div *ngFor="let project of filteredProjects" class="col-lg-4 col-sm-6 mb-4">
+                            <div class="single-academics-card3">
+                                <div class="icon">
+                                    <i class="flaticon-pc"></i>
+                                </div>
+                                <a>
+                                    <h3>{{ project.titre || "test" }}</h3>
+                                </a>
+                                <a (click)="openViewMoreDialog(project)" class="read-more-btn">Read More<i class="flaticon-next"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="acdemics-right-content">
+                    <div class="serch-content">
+                        <h3>Search</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Find Your Project"
+                                [(ngModel)]="searchQuery" (keyup)="filterProjects()" />
+                            <button type="submit" class="src-btn">
+                                <i class="flaticon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Select a Category</h3>
+                        <select class="form-select form-control" aria-label="Default select example"
+                            [(ngModel)]="selectedCategory" (change)="filterProjects()">
+                            <option value="">All Categories</option>
+                            <option *ngFor="let category of categories" [value]="category.idCategorie">
+                                {{ category.nomCategorie }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

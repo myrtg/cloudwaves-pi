@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ForgotPasswordService {
-  private forgotPasswordUrl ='http://localhost:8080/api/v1/auth/forgot-password'; // Replace with your API endpoint
+  private forgotPasswordUrl ='http://localhost:8080/auth/forgot-password'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 
