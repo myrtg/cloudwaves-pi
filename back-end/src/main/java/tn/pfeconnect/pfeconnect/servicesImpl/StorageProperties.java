@@ -4,7 +4,7 @@ package tn.pfeconnect.pfeconnect.servicesImpl;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("storage")
-class StorageProperties {
+public class StorageProperties {
 
     /**
      * Folder location for storing files

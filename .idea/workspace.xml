@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/CandidatureController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/OffreStageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/controllers/QuestionController.java" afterDir="false" />
-    </list>
+    <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +150,7 @@
       <workItem from="1714991845019" duration="246000" />
       <workItem from="1714994292360" duration="105000" />
       <workItem from="1714994436813" duration="9946000" />
-      <workItem from="1715089856503" duration="3374000" />
+      <workItem from="1715089856503" duration="3696000" />
     </task>
     <servers />
   </component>
