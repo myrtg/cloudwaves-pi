@@ -1,0 +1,60 @@
+<div class="page-banner-area bg-1">
+    <div class="container">
+        <div class="page-banner-content">
+            <h1>Academics</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Page</li>
+                <li>Academics</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="contact-us-area pt-100 pb-70" style="margin-left: 500px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="contacts-form">
+                    <h3>Leave a message</h3>
+                    <form id="contactForm" (ngSubmit)="createCandidature(inputname.value, inputemail.value, inputPhoneNumber.value, inputcv.files)" #form="ngForm">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Your name</label>
+                                    <input type="text" class="form-control" name="name" ngModel id="name" required #inputname="ngModel">
+                                    <small class="text text-danger" *ngIf="inputname?.errors?.['required'] && inputname.touched">name is required</small>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Your email</label>
+                                    <input type="email"  class="form-control" name="email" ngModel id="email" required #inputemail="ngModel">
+                                    <small class="text text-danger" *ngIf="inputemail?.errors?.['required'] && inputemail.touched">email is required</small>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Your CV</label>
+                                    <input type="file" name="cv" id="cv" accept=".pdf" required #inputcv class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Your phone</label>
+                                    <input class="form-control" cols="30" rows="8" name="phoneNumber" ngModel id="phoneNumber" required #inputPhoneNumber="ngModel">
+                                    <small class="text text-danger" *ngIf="inputPhoneNumber?.errors?.['required'] && inputPhoneNumber.touched">phoneNumber is required</small>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn" [disabled]="form.invalid">
+                                    <span>add candidature</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

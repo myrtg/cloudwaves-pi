@@ -30,6 +30,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AjoutCandidatureComponent } from './components/ajout-candidature/ajout-candidature.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 
 
@@ -56,7 +58,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AjoutCandidatureComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
