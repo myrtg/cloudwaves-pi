@@ -1,0 +1,3862 @@
+<app-aside></app-aside>
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <div
+            class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent"
+          >
+            <h4 class="mb-sm-0">Calendar</h4>
+
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item">
+                  <a href="javascript: void(0);">Apps</a>
+                </li>
+                <li class="breadcrumb-item active">Calendar</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end page title -->
+
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-xl-3">
+              <div class="card card-h-100">
+                <div class="card-body">
+                  <button class="btn btn-primary w-100" id="btn-new-event">
+                    <i class="mdi mdi-plus"></i> Create New Event
+                  </button>
+
+                  <div id="external-events">
+                    <br />
+                    <p class="text-muted">
+                      Drag and drop your event or click in the calendar
+                    </p>
+                    <div
+                      class="external-event fc-event bg-success-subtle text-success"
+                      data-class="bg-success-subtle"
+                    >
+                      <i class="mdi mdi-checkbox-blank-circle me-2"></i>New
+                      Event Planning
+                    </div>
+                    <div
+                      class="external-event fc-event bg-info-subtle text-info"
+                      data-class="bg-info-subtle"
+                    >
+                      <i class="mdi mdi-checkbox-blank-circle me-2"></i>Meeting
+                    </div>
+                    <div
+                      class="external-event fc-event bg-warning-subtle text-warning"
+                      data-class="bg-warning-subtle"
+                    >
+                      <i class="mdi mdi-checkbox-blank-circle me-2"></i
+                      >Generating Reports
+                    </div>
+                    <div
+                      class="external-event fc-event bg-danger-subtle text-danger"
+                      data-class="bg-danger-subtle"
+                    >
+                      <i class="mdi mdi-checkbox-blank-circle me-2"></i>Create
+                      New theme
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h5 class="mb-1">Upcoming Events</h5>
+                <p class="text-muted">Don't miss scheduled events</p>
+                <div
+                  class="pe-2 me-n1 mb-3"
+                  data-simplebar
+                  style="height: 400px"
+                >
+                  <div id="upcoming-event-list"></div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body bg-info-subtle">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <i
+                        data-feather="calendar"
+                        class="text-info icon-dual-info"
+                      ></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="fs-15">Welcome to your Calendar!</h6>
+                      <p class="text-muted mb-0">
+                        Event that applications book will appear here. Click on
+                        an event to see the details and manage applicants event.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end card-->
+            </div>
+            <!-- end col-->
+
+            <div class="col-xl-9">
+              <div class="card card-h-100">
+                <div class="card-body">
+                  <div
+                    id="calendar"
+                    class="fc fc-media-screen fc-direction-ltr fc-theme-standard"
+                  >
+                    <div class="fc-header-toolbar fc-toolbar fc-toolbar-ltr">
+                      <div class="fc-toolbar-chunk">
+                        <div class="fc-button-group">
+                          <button
+                            type="button"
+                            title="Previous month"
+                            aria-pressed="false"
+                            class="fc-prev-button fc-button fc-button-primary"
+                          >
+                            <span
+                              class="fc-icon fc-icon-chevron-left"
+                              role="img"
+                            ></span></button
+                          ><button
+                            type="button"
+                            title="Next month"
+                            aria-pressed="false"
+                            class="fc-next-button fc-button fc-button-primary"
+                          >
+                            <span
+                              class="fc-icon fc-icon-chevron-right"
+                              role="img"
+                            ></span>
+                          </button>
+                        </div>
+                        <button
+                          type="button"
+                          title="This month"
+                          disabled=""
+                          aria-pressed="false"
+                          class="fc-today-button fc-button fc-button-primary"
+                        >
+                          today
+                        </button>
+                      </div>
+                      <div class="fc-toolbar-chunk">
+                        <h2 class="fc-toolbar-title" id="fc-dom-1">
+                          March 2024
+                        </h2>
+                      </div>
+                      <div class="fc-toolbar-chunk">
+                        <div class="fc-button-group">
+                          <button
+                            type="button"
+                            title="month view"
+                            aria-pressed="true"
+                            class="fc-dayGridMonth-button fc-button fc-button-primary fc-button-active"
+                          >
+                            month</button
+                          ><button
+                            type="button"
+                            title="week view"
+                            aria-pressed="false"
+                            class="fc-timeGridWeek-button fc-button fc-button-primary"
+                          >
+                            week</button
+                          ><button
+                            type="button"
+                            title="day view"
+                            aria-pressed="false"
+                            class="fc-timeGridDay-button fc-button fc-button-primary"
+                          >
+                            day</button
+                          ><button
+                            type="button"
+                            title="list view"
+                            aria-pressed="false"
+                            class="fc-listMonth-button fc-button fc-button-primary"
+                          >
+                            list
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      aria-labelledby="fc-dom-1"
+                      class="fc-view-harness fc-view-harness-active"
+                      style="height: 650.37px"
+                    >
+                      <div class="fc-dayGridMonth-view fc-view fc-daygrid">
+                        <table
+                          role="grid"
+                          class="fc-scrollgrid fc-scrollgrid-liquid"
+                        >
+                          <thead role="rowgroup">
+                            <tr
+                              role="presentation"
+                              class="fc-scrollgrid-section fc-scrollgrid-section-header"
+                            >
+                              <th role="presentation">
+                                <div class="fc-scroller-harness">
+                                  <div
+                                    class="fc-scroller"
+                                    style="overflow: hidden"
+                                  >
+                                    <table
+                                      role="presentation"
+                                      class="fc-col-header"
+                                      style="width: 876px"
+                                    >
+                                      <colgroup></colgroup>
+                                      <thead role="presentation">
+                                        <tr role="row">
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-sun"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Sunday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Sun</a
+                                              >
+                                            </div>
+                                          </th>
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-mon"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Monday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Mon</a
+                                              >
+                                            </div>
+                                          </th>
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-tue"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Tuesday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Tue</a
+                                              >
+                                            </div>
+                                          </th>
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-wed"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Wednesday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Wed</a
+                                              >
+                                            </div>
+                                          </th>
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-thu"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Thursday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Thu</a
+                                              >
+                                            </div>
+                                          </th>
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-fri"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Friday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Fri</a
+                                              >
+                                            </div>
+                                          </th>
+                                          <th
+                                            role="columnheader"
+                                            class="fc-col-header-cell fc-day fc-day-sat"
+                                          >
+                                            <div
+                                              class="fc-scrollgrid-sync-inner"
+                                            >
+                                              <a
+                                                aria-label="Saturday"
+                                                class="fc-col-header-cell-cushion"
+                                                >Sat</a
+                                              >
+                                            </div>
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                    </table>
+                                  </div>
+                                </div>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody role="rowgroup">
+                            <tr
+                              role="presentation"
+                              class="fc-scrollgrid-section fc-scrollgrid-section-body fc-scrollgrid-section-liquid"
+                            >
+                              <td role="presentation">
+                                <div
+                                  class="fc-scroller-harness fc-scroller-harness-liquid"
+                                >
+                                  <div
+                                    class="fc-scroller fc-scroller-liquid-absolute"
+                                    style="overflow: hidden auto"
+                                  >
+                                    <div
+                                      class="fc-daygrid-body fc-daygrid-body-unbalanced"
+                                      style="width: 876px"
+                                    >
+                                      <table
+                                        role="presentation"
+                                        class="fc-scrollgrid-sync-table"
+                                        style="width: 876px; height: 612px"
+                                      >
+                                        <colgroup></colgroup>
+                                        <tbody role="presentation">
+                                          <tr role="row">
+                                            <td
+                                              aria-labelledby="fc-dom-202"
+                                              role="gridcell"
+                                              data-date="2024-02-25"
+                                              class="fc-day fc-day-sun fc-day-past fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to February 25, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-202"
+                                                    class="fc-daygrid-day-number"
+                                                    >25</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-204"
+                                              role="gridcell"
+                                              data-date="2024-02-26"
+                                              class="fc-day fc-day-mon fc-day-past fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to February 26, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-204"
+                                                    class="fc-daygrid-day-number"
+                                                    >26</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-206"
+                                              role="gridcell"
+                                              data-date="2024-02-27"
+                                              class="fc-day fc-day-tue fc-day-past fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to February 27, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-206"
+                                                    class="fc-daygrid-day-number"
+                                                    >27</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-208"
+                                              role="gridcell"
+                                              data-date="2024-02-28"
+                                              class="fc-day fc-day-wed fc-day-past fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to February 28, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-208"
+                                                    class="fc-daygrid-day-number"
+                                                    >28</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-210"
+                                              role="gridcell"
+                                              data-date="2024-02-29"
+                                              class="fc-day fc-day-thu fc-day-past fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to February 29, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-210"
+                                                    class="fc-daygrid-day-number"
+                                                    >29</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-212"
+                                              role="gridcell"
+                                              data-date="2024-03-01"
+                                              class="fc-day fc-day-fri fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 1, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-212"
+                                                    class="fc-daygrid-day-number"
+                                                    >1</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-214"
+                                              role="gridcell"
+                                              data-date="2024-03-02"
+                                              class="fc-day fc-day-sat fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 2, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-214"
+                                                    class="fc-daygrid-day-number"
+                                                    >2</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr role="row">
+                                            <td
+                                              aria-labelledby="fc-dom-216"
+                                              role="gridcell"
+                                              data-date="2024-03-03"
+                                              class="fc-day fc-day-sun fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 3, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-216"
+                                                    class="fc-daygrid-day-number"
+                                                    >3</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-218"
+                                              role="gridcell"
+                                              data-date="2024-03-04"
+                                              class="fc-day fc-day-mon fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 4, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-218"
+                                                    class="fc-daygrid-day-number"
+                                                    >4</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-220"
+                                              role="gridcell"
+                                              data-date="2024-03-05"
+                                              class="fc-day fc-day-tue fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 5, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-220"
+                                                    class="fc-daygrid-day-number"
+                                                    >5</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-222"
+                                              role="gridcell"
+                                              data-date="2024-03-06"
+                                              class="fc-day fc-day-wed fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 6, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-222"
+                                                    class="fc-daygrid-day-number"
+                                                    >6</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-224"
+                                              role="gridcell"
+                                              data-date="2024-03-07"
+                                              class="fc-day fc-day-thu fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 7, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-224"
+                                                    class="fc-daygrid-day-number"
+                                                    >7</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-226"
+                                              role="gridcell"
+                                              data-date="2024-03-08"
+                                              class="fc-day fc-day-fri fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 8, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-226"
+                                                    class="fc-daygrid-day-number"
+                                                    >8</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-228"
+                                              role="gridcell"
+                                              data-date="2024-03-09"
+                                              class="fc-day fc-day-sat fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 9, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-228"
+                                                    class="fc-daygrid-day-number"
+                                                    >9</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr role="row">
+                                            <td
+                                              aria-labelledby="fc-dom-230"
+                                              role="gridcell"
+                                              data-date="2024-03-10"
+                                              class="fc-day fc-day-sun fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 10, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-230"
+                                                    class="fc-daygrid-day-number"
+                                                    >10</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-232"
+                                              role="gridcell"
+                                              data-date="2024-03-11"
+                                              class="fc-day fc-day-mon fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 11, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-232"
+                                                    class="fc-daygrid-day-number"
+                                                    >11</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-234"
+                                              role="gridcell"
+                                              data-date="2024-03-12"
+                                              class="fc-day fc-day-tue fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 12, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-234"
+                                                    class="fc-daygrid-day-number"
+                                                    >12</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-236"
+                                              role="gridcell"
+                                              data-date="2024-03-13"
+                                              class="fc-day fc-day-wed fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 13, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-236"
+                                                    class="fc-daygrid-day-number"
+                                                    >13</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-238"
+                                              role="gridcell"
+                                              data-date="2024-03-14"
+                                              class="fc-day fc-day-thu fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 14, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-238"
+                                                    class="fc-daygrid-day-number"
+                                                    >14</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-240"
+                                              role="gridcell"
+                                              data-date="2024-03-15"
+                                              class="fc-day fc-day-fri fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 15, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-240"
+                                                    class="fc-daygrid-day-number"
+                                                    >15</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-242"
+                                              role="gridcell"
+                                              data-date="2024-03-16"
+                                              class="fc-day fc-day-sat fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 16, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-242"
+                                                    class="fc-daygrid-day-number"
+                                                    >16</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr role="row">
+                                            <td
+                                              aria-labelledby="fc-dom-244"
+                                              role="gridcell"
+                                              data-date="2024-03-17"
+                                              class="fc-day fc-day-sun fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 17, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-244"
+                                                    class="fc-daygrid-day-number"
+                                                    >17</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-246"
+                                              role="gridcell"
+                                              data-date="2024-03-18"
+                                              class="fc-day fc-day-mon fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 18, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-246"
+                                                    class="fc-daygrid-day-number"
+                                                    >18</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-248"
+                                              role="gridcell"
+                                              data-date="2024-03-19"
+                                              class="fc-day fc-day-tue fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 19, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-248"
+                                                    class="fc-daygrid-day-number"
+                                                    >19</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-250"
+                                              role="gridcell"
+                                              data-date="2024-03-20"
+                                              class="fc-day fc-day-wed fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 20, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-250"
+                                                    class="fc-daygrid-day-number"
+                                                    >20</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-252"
+                                              role="gridcell"
+                                              data-date="2024-03-21"
+                                              class="fc-day fc-day-thu fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 21, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-252"
+                                                    class="fc-daygrid-day-number"
+                                                    >21</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-254"
+                                              role="gridcell"
+                                              data-date="2024-03-22"
+                                              class="fc-day fc-day-fri fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 22, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-254"
+                                                    class="fc-daygrid-day-number"
+                                                    >22</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-256"
+                                              role="gridcell"
+                                              data-date="2024-03-23"
+                                              class="fc-day fc-day-sat fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 23, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-256"
+                                                    class="fc-daygrid-day-number"
+                                                    >23</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr role="row">
+                                            <td
+                                              aria-labelledby="fc-dom-258"
+                                              role="gridcell"
+                                              data-date="2024-03-24"
+                                              class="fc-day fc-day-sun fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 24, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-258"
+                                                    class="fc-daygrid-day-number"
+                                                    >24</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-260"
+                                              role="gridcell"
+                                              data-date="2024-03-25"
+                                              class="fc-day fc-day-mon fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 25, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-260"
+                                                    class="fc-daygrid-day-number"
+                                                    >25</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-event-harness fc-daygrid-event-harness-abs"
+                                                    style="
+                                                      top: 0px;
+                                                      left: 0px;
+                                                      right: -250.35px;
+                                                    "
+                                                  >
+                                                    <a
+                                                      tabindex="0"
+                                                      class="fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past bg-warning-subtle fc-daygrid-event fc-daygrid-block-event fc-h-event"
+                                                      ><div
+                                                        class="fc-event-main"
+                                                      >
+                                                        <div
+                                                          class="fc-event-main-frame"
+                                                        >
+                                                          <div
+                                                            class="fc-event-title-container"
+                                                          >
+                                                            <div
+                                                              class="fc-event-title fc-sticky"
+                                                            >
+                                                              Visit Online
+                                                              Course
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div
+                                                        class="fc-event-resizer fc-event-resizer-end"
+                                                      ></div
+                                                    ></a>
+                                                  </div>
+                                                  <div
+                                                    class="fc-daygrid-event-harness fc-daygrid-event-harness-abs"
+                                                    style="
+                                                      top: 38px;
+                                                      left: 0px;
+                                                      right: -250.35px;
+                                                    "
+                                                  >
+                                                    <a
+                                                      tabindex="0"
+                                                      class="fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past bg-warning-subtle fc-daygrid-event fc-daygrid-block-event fc-h-event"
+                                                      ><div
+                                                        class="fc-event-main"
+                                                      >
+                                                        <div
+                                                          class="fc-event-main-frame"
+                                                        >
+                                                          <div
+                                                            class="fc-event-title-container"
+                                                          >
+                                                            <div
+                                                              class="fc-event-title fc-sticky"
+                                                            >
+                                                              xxxx
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div
+                                                        class="fc-event-resizer fc-event-resizer-end"
+                                                      ></div
+                                                    ></a>
+                                                  </div>
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 76px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-262"
+                                              role="gridcell"
+                                              data-date="2024-03-26"
+                                              class="fc-day fc-day-tue fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 26, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-262"
+                                                    class="fc-daygrid-day-number"
+                                                    >26</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 76px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-264"
+                                              role="gridcell"
+                                              data-date="2024-03-27"
+                                              class="fc-day fc-day-wed fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 27, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-264"
+                                                    class="fc-daygrid-day-number"
+                                                    >27</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 76px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-266"
+                                              role="gridcell"
+                                              data-date="2024-03-28"
+                                              class="fc-day fc-day-thu fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 28, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-266"
+                                                    class="fc-daygrid-day-number"
+                                                    >28</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-event-harness"
+                                                    style="margin-top: 0px"
+                                                  >
+                                                    <a
+                                                      href="http://google.com/"
+                                                      class="fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past bg-dark-subtle fc-daygrid-event fc-daygrid-block-event fc-h-event"
+                                                      ><div
+                                                        class="fc-event-main"
+                                                      >
+                                                        <div
+                                                          class="fc-event-main-frame"
+                                                        >
+                                                          <div
+                                                            class="fc-event-title-container"
+                                                          >
+                                                            <div
+                                                              class="fc-event-title fc-sticky"
+                                                            >
+                                                              Click for Google
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div
+                                                        class="fc-event-resizer fc-event-resizer-end"
+                                                      ></div
+                                                    ></a>
+                                                  </div>
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-268"
+                                              role="gridcell"
+                                              data-date="2024-03-29"
+                                              class="fc-day fc-day-fri fc-day-past fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 29, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-268"
+                                                    class="fc-daygrid-day-number"
+                                                    >29</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-270"
+                                              role="gridcell"
+                                              data-date="2024-03-30"
+                                              class="fc-day fc-day-sat fc-day-today fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 30, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-270"
+                                                    class="fc-daygrid-day-number"
+                                                    >30</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr role="row">
+                                            <td
+                                              aria-labelledby="fc-dom-272"
+                                              role="gridcell"
+                                              data-date="2024-03-31"
+                                              class="fc-day fc-day-sun fc-day-future fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to March 31, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-272"
+                                                    class="fc-daygrid-day-number"
+                                                    >31</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-event-harness"
+                                                    style="margin-top: 0px"
+                                                  >
+                                                    <a
+                                                      tabindex="0"
+                                                      class="fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-future bg-success-subtle fc-daygrid-event fc-daygrid-block-event fc-h-event"
+                                                      ><div
+                                                        class="fc-event-main"
+                                                      >
+                                                        <div
+                                                          class="fc-event-main-frame"
+                                                        >
+                                                          <div
+                                                            class="fc-event-title-container"
+                                                          >
+                                                            <div
+                                                              class="fc-event-title fc-sticky"
+                                                            >
+                                                              Birthday Party
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div
+                                                        class="fc-event-resizer fc-event-resizer-end"
+                                                      ></div
+                                                    ></a>
+                                                  </div>
+                                                  <div
+                                                    class="fc-daygrid-event-harness"
+                                                    style="margin-top: 0px"
+                                                  >
+                                                    <a
+                                                      tabindex="0"
+                                                      class="fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-future bg-success-subtle fc-daygrid-event fc-daygrid-dot-event"
+                                                      ><div
+                                                        class="fc-daygrid-event-dot"
+                                                      ></div>
+                                                      <div
+                                                        class="fc-event-time"
+                                                      >
+                                                        12p
+                                                      </div>
+                                                      <div
+                                                        class="fc-event-title"
+                                                      >
+                                                        xxxx
+                                                      </div></a
+                                                    >
+                                                  </div>
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-274"
+                                              role="gridcell"
+                                              data-date="2024-04-01"
+                                              class="fc-day fc-day-mon fc-day-future fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to April 1, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-274"
+                                                    class="fc-daygrid-day-number"
+                                                    >1</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-276"
+                                              role="gridcell"
+                                              data-date="2024-04-02"
+                                              class="fc-day fc-day-tue fc-day-future fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to April 2, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-276"
+                                                    class="fc-daygrid-day-number"
+                                                    >2</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 0px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-278"
+                                              role="gridcell"
+                                              data-date="2024-04-03"
+                                              class="fc-day fc-day-wed fc-day-future fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to April 3, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-278"
+                                                    class="fc-daygrid-day-number"
+                                                    >3</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-event-harness fc-daygrid-event-harness-abs"
+                                                    style="
+                                                      top: 0px;
+                                                      left: 0px;
+                                                      right: -376px;
+                                                    "
+                                                  >
+                                                    <a
+                                                      tabindex="0"
+                                                      class="fc-event fc-event-draggable fc-event-start fc-event-future bg-primary-subtle fc-daygrid-event fc-daygrid-block-event fc-h-event"
+                                                      ><div
+                                                        class="fc-event-main"
+                                                      >
+                                                        <div
+                                                          class="fc-event-main-frame"
+                                                        >
+                                                          <div
+                                                            class="fc-event-title-container"
+                                                          >
+                                                            <div
+                                                              class="fc-event-title fc-sticky"
+                                                            >
+                                                              Repeating Event
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div></a
+                                                    >
+                                                  </div>
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 38px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-280"
+                                              role="gridcell"
+                                              data-date="2024-04-04"
+                                              class="fc-day fc-day-thu fc-day-future fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to April 4, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-280"
+                                                    class="fc-daygrid-day-number"
+                                                    >4</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 38px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-282"
+                                              role="gridcell"
+                                              data-date="2024-04-05"
+                                              class="fc-day fc-day-fri fc-day-future fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to April 5, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-282"
+                                                    class="fc-daygrid-day-number"
+                                                    >5</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 38px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                            <td
+                                              aria-labelledby="fc-dom-284"
+                                              role="gridcell"
+                                              data-date="2024-04-06"
+                                              class="fc-day fc-day-sat fc-day-future fc-day-other fc-daygrid-day"
+                                            >
+                                              <div
+                                                class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"
+                                              >
+                                                <div class="fc-daygrid-day-top">
+                                                  <a
+                                                    title="Go to April 6, 2024"
+                                                    data-navlink=""
+                                                    tabindex="0"
+                                                    id="fc-dom-284"
+                                                    class="fc-daygrid-day-number"
+                                                    >6</a
+                                                  >
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-events"
+                                                >
+                                                  <div
+                                                    class="fc-daygrid-day-bottom"
+                                                    style="margin-top: 38px"
+                                                  ></div>
+                                                </div>
+                                                <div
+                                                  class="fc-daygrid-day-bg"
+                                                ></div>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+          <div style="clear: both"></div>
+
+          <!-- Add New Event MODAL -->
+          <div class="modal fade" id="event-modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content border-0">
+                <div class="modal-header p-3 bg-info-subtle">
+                  <h5 class="modal-title" id="modal-title">Event</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-hidden="true"
+                  ></button>
+                </div>
+                <div class="modal-body p-4">
+                  <form
+                    class="needs-validation"
+                    name="event-form"
+                    id="form-event"
+                    novalidate
+                  >
+                    <div class="text-end">
+                      <a
+                        href="#"
+                        class="btn btn-sm btn-soft-primary"
+                        id="edit-event-btn"
+                        data-id="edit-event"
+                        onclick="editEvent(this)"
+                        role="button"
+                        >Edit</a
+                      >
+                    </div>
+                    <div class="event-details">
+                      <div class="d-flex mb-2">
+                        <div class="flex-grow-1 d-flex align-items-center">
+                          <div class="flex-shrink-0 me-3">
+                            <i
+                              class="ri-calendar-event-line text-muted fs-16"
+                            ></i>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h6
+                              class="d-block fw-semibold mb-0"
+                              id="event-start-date-tag"
+                            ></h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center mb-2">
+                        <div class="flex-shrink-0 me-3">
+                          <i class="ri-time-line text-muted fs-16"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h6 class="d-block fw-semibold mb-0">
+                            <span id="event-timepicker1-tag"></span> -
+                            <span id="event-timepicker2-tag"></span>
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center mb-2">
+                        <div class="flex-shrink-0 me-3">
+                          <i class="ri-map-pin-line text-muted fs-16"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h6 class="d-block fw-semibold mb-0">
+                            <span id="event-location-tag"></span>
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <div class="flex-shrink-0 me-3">
+                          <i class="ri-discuss-line text-muted fs-16"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                          <p
+                            class="d-block text-muted mb-0"
+                            id="event-description-tag"
+                          ></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row event-form">
+                      <div class="col-12">
+                        <div class="mb-3">
+                          <label class="form-label">Type</label>
+                          <select
+                            class="form-select d-none"
+                            name="category"
+                            id="event-category"
+                            required
+                          >
+                            <option value="bg-danger-subtle">Danger</option>
+                            <option value="bg-success-subtle">Success</option>
+                            <option value="bg-primary-subtle">Primary</option>
+                            <option value="bg-info-subtle">Info</option>
+                            <option value="bg-dark-subtle">Dark</option>
+                            <option value="bg-warning-subtle">Warning</option>
+                          </select>
+                          <div class="invalid-feedback">
+                            Please select a valid event category
+                          </div>
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <div class="col-12">
+                        <div class="mb-3">
+                          <label class="form-label">Event Name</label>
+                          <input
+                            class="form-control d-none"
+                            placeholder="Enter event name"
+                            type="text"
+                            name="title"
+                            id="event-title"
+                            required
+                            value=""
+                          />
+                          <div class="invalid-feedback">
+                            Please provide a valid event name
+                          </div>
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <div class="col-12">
+                        <div class="mb-3">
+                          <label>Event Date</label>
+                          <div class="input-group d-none">
+                            <input
+                              type="text"
+                              id="event-start-date"
+                              class="form-control flatpickr flatpickr-input"
+                              placeholder="Select date"
+                              readonly
+                              required
+                            />
+                            <span class="input-group-text"
+                              ><i class="ri-calendar-event-line"></i
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <div class="col-12" id="event-time">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="mb-3">
+                              <label class="form-label">Start Time</label>
+                              <div class="input-group d-none">
+                                <input
+                                  id="timepicker1"
+                                  type="text"
+                                  class="form-control flatpickr flatpickr-input"
+                                  placeholder="Select start time"
+                                  readonly
+                                />
+                                <span class="input-group-text"
+                                  ><i class="ri-time-line"></i
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="mb-3">
+                              <label class="form-label">End Time</label>
+                              <div class="input-group d-none">
+                                <input
+                                  id="timepicker2"
+                                  type="text"
+                                  class="form-control flatpickr flatpickr-input"
+                                  placeholder="Select end time"
+                                  readonly
+                                />
+                                <span class="input-group-text"
+                                  ><i class="ri-time-line"></i
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <div class="col-12">
+                        <div class="mb-3">
+                          <label for="event-location">Location</label>
+                          <div>
+                            <input
+                              type="text"
+                              class="form-control d-none"
+                              name="event-location"
+                              id="event-location"
+                              placeholder="Event location"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <input
+                        type="hidden"
+                        id="eventid"
+                        name="eventid"
+                        value=""
+                      />
+                      <div class="col-12">
+                        <div class="mb-3">
+                          <label class="form-label">Description</label>
+                          <textarea
+                            class="form-control d-none"
+                            id="event-description"
+                            placeholder="Enter a description"
+                            rows="3"
+                            spellcheck="false"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <!--end col-->
+                    </div>
+                    <!--end row-->
+                    <div class="hstack gap-2 justify-content-end">
+                      <button
+                        type="button"
+                        class="btn btn-soft-danger"
+                        id="btn-delete-event"
+                      >
+                        <i class="ri-close-line align-bottom"></i> Delete
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-success"
+                        id="btn-save-event"
+                      >
+                        Add Event
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- end modal-content-->
+            </div>
+            <!-- end modal dialog-->
+          </div>
+          <!-- end modal-->
+          <!-- end modal-->
+        </div>
+      </div>
+      <!-- end row-->
+    </div>
+    <!-- container-fluid -->
+  </div>
+  <!-- End Page-content -->
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          © Velzon.
+        </div>
+        <div class="col-sm-6">
+          <div class="text-sm-end d-none d-sm-block">
+            Design & Develop by Themesbrand
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <button
+    onclick="topFunction()"
+    class="btn btn-danger btn-icon"
+    id="back-to-top"
+  >
+    <i class="ri-arrow-up-line"></i>
+  </button>
+</div>
+<div id="preloader">
+  <div id="status">
+    <div class="spinner-border text-primary avatar-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+
+<div class="customizer-setting d-none d-md-block">
+  <div
+    class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#theme-settings-offcanvas"
+    aria-controls="theme-settings-offcanvas"
+  >
+    <i class="mdi mdi-spin mdi-cog-outline fs-22"></i>
+  </div>
+</div>
+
+<!-- Theme Settings -->
+<div
+  class="offcanvas offcanvas-end border-0"
+  tabindex="-1"
+  id="theme-settings-offcanvas"
+>
+  <div
+    class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header"
+  >
+    <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
+
+    <button
+      type="button"
+      class="btn-close btn-close-white ms-auto"
+      id="customizerclose-btn"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body p-0">
+    <div data-simplebar class="h-100">
+      <div class="p-4">
+        <h6 class="mb-0 fw-semibold text-uppercase">Layout</h6>
+        <p class="text-muted">Choose your layout</p>
+
+        <div class="row gy-3">
+          <div class="col-4">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-layout01"
+                name="data-layout"
+                type="radio"
+                value="vertical"
+                class="form-check-input"
+              />
+              <label
+                class="form-check-label p-0 avatar-md w-100 material-shadow"
+                for="customizer-layout01"
+              >
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span
+                        class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <h5 class="fs-13 text-center mt-2">Vertical</h5>
+          </div>
+          <div class="col-4">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-layout02"
+                name="data-layout"
+                type="radio"
+                value="horizontal"
+                class="form-check-input"
+              />
+              <label
+                class="form-check-label p-0 avatar-md w-100 material-shadow"
+                for="customizer-layout02"
+              >
+                <span class="d-flex h-100 flex-column gap-1">
+                  <span class="bg-light d-flex p-1 gap-1 align-items-center">
+                    <span
+                      class="d-block p-1 bg-primary-subtle rounded me-1"
+                    ></span>
+                    <span
+                      class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
+                    ></span>
+                    <span
+                      class="d-block p-1 pb-0 px-2 bg-primary-subtle"
+                    ></span>
+                  </span>
+                  <span class="bg-light d-block p-1"></span>
+                  <span class="bg-light d-block p-1 mt-auto"></span>
+                </span>
+              </label>
+            </div>
+            <h5 class="fs-13 text-center mt-2">Horizontal</h5>
+          </div>
+          <div class="col-4">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-layout03"
+                name="data-layout"
+                type="radio"
+                value="twocolumn"
+                class="form-check-input"
+              />
+              <label
+                class="form-check-label p-0 avatar-md w-100 material-shadow"
+                for="customizer-layout03"
+              >
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1">
+                      <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                      <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                      <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                      <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                    </span>
+                  </span>
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <h5 class="fs-13 text-center mt-2">Two Column</h5>
+          </div>
+          <!-- end col -->
+
+          <div class="col-4">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-layout04"
+                name="data-layout"
+                type="radio"
+                value="semibox"
+                class="form-check-input"
+              />
+              <label
+                class="form-check-label p-0 avatar-md w-100 material-shadow"
+                for="customizer-layout04"
+              >
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0 p-1">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span
+                        class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column pt-1 pe-2">
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <h5 class="fs-13 text-center mt-2">Semi Box</h5>
+          </div>
+          <!-- end col -->
+        </div>
+
+        <div class="form-check form-switch form-switch-md mb-3 mt-4">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="sidebarUserProfile"
+          />
+          <label class="form-check-label" for="sidebarUserProfile"
+            >Sidebar User Profile Avatar</label
+          >
+        </div>
+
+        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Theme</h6>
+        <p class="text-muted">Choose your suitable Theme.</p>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme01"
+                name="data-theme"
+                type="radio"
+                value="default"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme01">
+                <img
+                  src="../../assets/images/demo/default.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Default</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme02"
+                name="data-theme"
+                type="radio"
+                value="saas"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme02">
+                <img
+                  src="../../assets/images/demo/saas.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Sass</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme03"
+                name="data-theme"
+                type="radio"
+                value="corporate"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme03">
+                <img
+                  src="../../assets/images/demo/corporate.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Corporate</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme04"
+                name="data-theme"
+                type="radio"
+                value="galaxy"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme04">
+                <img
+                  src="../../assets/images/demo/galaxy.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Galaxy</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme05"
+                name="data-theme"
+                type="radio"
+                value="material"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme05">
+                <img
+                  src="../../assets/images/demo/material.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Material</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme06"
+                name="data-theme"
+                type="radio"
+                value="creative"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme06">
+                <img
+                  src="../../assets/images/demo/creative.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Creative</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme07"
+                name="data-theme"
+                type="radio"
+                value="minimal"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme07">
+                <img
+                  src="../../assets/images/demo/minimal.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Minimal</h5>
+          </div>
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme08"
+                name="data-theme"
+                type="radio"
+                value="modern"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme08">
+                <img
+                  src="../../assets/images/demo/modern.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Modern</h5>
+          </div>
+          <!-- end col -->
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme09"
+                name="data-theme"
+                type="radio"
+                value="interactive"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme09">
+                <img
+                  src="../../assets/images/demo/interactive.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Interactive</h5>
+          </div>
+          <!-- end col -->
+
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme10"
+                name="data-theme"
+                type="radio"
+                value="classic"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme10">
+                <img
+                  src="../../assets/images/demo/classic.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Classic</h5>
+          </div>
+          <!-- end col -->
+
+          <div class="col-6">
+            <div class="form-check card-radio">
+              <input
+                id="customizer-theme11"
+                name="data-theme"
+                type="radio"
+                value="vintage"
+                class="form-check-input"
+              />
+              <label class="form-check-label p-0" for="customizer-theme11">
+                <img
+                  src="../../assets/images/demo/vintage.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </label>
+            </div>
+            <h5 class="fs-13 text-center fw-medium mt-2">Vintage</h5>
+          </div>
+          <!-- end col -->
+        </div>
+
+        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Color Scheme</h6>
+        <p class="text-muted">Choose Light or Dark Scheme.</p>
+
+        <div class="colorscheme-cardradio">
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-bs-theme"
+                  id="layout-mode-light"
+                  value="light"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="layout-mode-light"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Light</h5>
+            </div>
+
+            <div class="col-4">
+              <div class="form-check card-radio dark">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-bs-theme"
+                  id="layout-mode-dark"
+                  value="dark"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 bg-dark material-shadow"
+                  for="layout-mode-dark"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span
+                        class="bg-white bg-opacity-10 d-flex h-100 flex-column gap-1 p-1"
+                      >
+                        <span
+                          class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-white bg-opacity-10 d-block p-1"></span>
+                        <span
+                          class="bg-white bg-opacity-10 d-block p-1 mt-auto"
+                        ></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Dark</h5>
+            </div>
+          </div>
+        </div>
+
+        <div id="sidebar-visibility">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+            Sidebar Visibility
+          </h6>
+          <p class="text-muted">Choose show or Hidden sidebar.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar-visibility"
+                  id="sidebar-visibility-show"
+                  value="show"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-visibility-show"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0 p-1">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column pt-1 pe-2">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Show</h5>
+            </div>
+            <div class="col-4">
+              <div class="form-check card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar-visibility"
+                  id="sidebar-visibility-hidden"
+                  value="hidden"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 px-2 material-shadow"
+                  for="sidebar-visibility-hidden"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column pt-1 px-2">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Hidden</h5>
+            </div>
+          </div>
+        </div>
+
+        <div id="layout-width">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Layout Width</h6>
+          <p class="text-muted">Choose Fluid or Boxed layout.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-layout-width"
+                  id="layout-width-fluid"
+                  value="fluid"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="layout-width-fluid"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Fluid</h5>
+            </div>
+            <div class="col-4">
+              <div class="form-check card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-layout-width"
+                  id="layout-width-boxed"
+                  value="boxed"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 px-2 material-shadow"
+                  for="layout-width-boxed"
+                >
+                  <span class="d-flex gap-1 h-100 border-start border-end">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Boxed</h5>
+            </div>
+          </div>
+        </div>
+
+        <div id="layout-position">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Layout Position</h6>
+          <p class="text-muted">Choose Fixed or Scrollable Layout Position.</p>
+
+          <div class="btn-group radio" role="group">
+            <input
+              type="radio"
+              class="btn-check"
+              name="data-layout-position"
+              id="layout-position-fixed"
+              value="fixed"
+            />
+            <label class="btn btn-light w-sm" for="layout-position-fixed"
+              >Fixed</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="data-layout-position"
+              id="layout-position-scrollable"
+              value="scrollable"
+            />
+            <label
+              class="btn btn-light w-sm ms-0"
+              for="layout-position-scrollable"
+              >Scrollable</label
+            >
+          </div>
+        </div>
+        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Topbar Color</h6>
+        <p class="text-muted">Choose Light or Dark Topbar Color.</p>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="form-check card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-topbar"
+                id="topbar-color-light"
+                value="light"
+              />
+              <label
+                class="form-check-label p-0 avatar-md w-100 material-shadow"
+                for="topbar-color-light"
+              >
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span
+                        class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <h5 class="fs-13 text-center mt-2">Light</h5>
+          </div>
+          <div class="col-4">
+            <div class="form-check card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-topbar"
+                id="topbar-color-dark"
+                value="dark"
+              />
+              <label
+                class="form-check-label p-0 avatar-md w-100 material-shadow"
+                for="topbar-color-dark"
+              >
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span
+                        class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                      ></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-primary d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <h5 class="fs-13 text-center mt-2">Dark</h5>
+          </div>
+        </div>
+
+        <div id="sidebar-size">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Size</h6>
+          <p class="text-muted">Choose a size of Sidebar.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar-size"
+                  id="sidebar-size-default"
+                  value="lg"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-size-default"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Default</h5>
+            </div>
+
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar-size"
+                  id="sidebar-size-compact"
+                  value="md"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-size-compact"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Compact</h5>
+            </div>
+
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar-size"
+                  id="sidebar-size-small"
+                  value="sm"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-size-small"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1">
+                        <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Small (Icon View)</h5>
+            </div>
+
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar-size"
+                  id="sidebar-size-small-hover"
+                  value="sm-hover"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-size-small-hover"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1">
+                        <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Small Hover View</h5>
+            </div>
+          </div>
+        </div>
+
+        <div id="sidebar-view">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar View</h6>
+          <p class="text-muted">Choose Default or Detached Sidebar view.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-layout-style"
+                  id="sidebar-view-default"
+                  value="default"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-view-default"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Default</h5>
+            </div>
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-layout-style"
+                  id="sidebar-view-detached"
+                  value="detached"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-view-detached"
+                >
+                  <span class="d-flex h-100 flex-column">
+                    <span
+                      class="bg-light d-flex p-1 gap-1 align-items-center px-2"
+                    >
+                      <span
+                        class="d-block p-1 bg-primary-subtle rounded me-1"
+                      ></span>
+                      <span
+                        class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
+                      ></span>
+                      <span
+                        class="d-block p-1 pb-0 px-2 bg-primary-subtle"
+                      ></span>
+                    </span>
+                    <span class="d-flex gap-1 h-100 p-1 px-2">
+                      <span class="flex-shrink-0">
+                        <span
+                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                        >
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                    </span>
+                    <span class="bg-light d-block p-1 mt-auto px-2"></span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Detached</h5>
+            </div>
+          </div>
+        </div>
+        <div id="sidebar-color">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Color</h6>
+          <p class="text-muted">Choose a color of Sidebar.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div
+                class="form-check sidebar-setting card-radio"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseBgGradient.show"
+              >
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar"
+                  id="sidebar-color-light"
+                  value="light"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-color-light"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span
+                        class="bg-white border-end d-flex h-100 flex-column gap-1 p-1"
+                      >
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Light</h5>
+            </div>
+            <div class="col-4">
+              <div
+                class="form-check sidebar-setting card-radio"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseBgGradient.show"
+              >
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar"
+                  id="sidebar-color-dark"
+                  value="dark"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="sidebar-color-dark"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span
+                        class="bg-primary d-flex h-100 flex-column gap-1 p-1"
+                      >
+                        <span
+                          class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Dark</h5>
+            </div>
+            <div class="col-4">
+              <button
+                class="btn btn-link avatar-md w-100 p-0 overflow-hidden border collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseBgGradient"
+                aria-expanded="false"
+                aria-controls="collapseBgGradient"
+              >
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span
+                      class="bg-vertical-gradient d-flex h-100 flex-column gap-1 p-1"
+                    >
+                      <span
+                        class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                      ></span>
+                      <span
+                        class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                      ></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <h5 class="fs-13 text-center mt-2">Gradient</h5>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <div class="collapse" id="collapseBgGradient">
+            <div
+              class="d-flex gap-2 flex-wrap img-switch p-2 px-3 bg-light rounded"
+            >
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar"
+                  id="sidebar-color-gradient"
+                  value="gradient"
+                />
+                <label
+                  class="form-check-label p-0 avatar-xs rounded-circle"
+                  for="sidebar-color-gradient"
+                >
+                  <span
+                    class="avatar-title rounded-circle bg-vertical-gradient"
+                  ></span>
+                </label>
+              </div>
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar"
+                  id="sidebar-color-gradient-2"
+                  value="gradient-2"
+                />
+                <label
+                  class="form-check-label p-0 avatar-xs rounded-circle"
+                  for="sidebar-color-gradient-2"
+                >
+                  <span
+                    class="avatar-title rounded-circle bg-vertical-gradient-2"
+                  ></span>
+                </label>
+              </div>
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar"
+                  id="sidebar-color-gradient-3"
+                  value="gradient-3"
+                />
+                <label
+                  class="form-check-label p-0 avatar-xs rounded-circle"
+                  for="sidebar-color-gradient-3"
+                >
+                  <span
+                    class="avatar-title rounded-circle bg-vertical-gradient-3"
+                  ></span>
+                </label>
+              </div>
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-sidebar"
+                  id="sidebar-color-gradient-4"
+                  value="gradient-4"
+                />
+                <label
+                  class="form-check-label p-0 avatar-xs rounded-circle"
+                  for="sidebar-color-gradient-4"
+                >
+                  <span
+                    class="avatar-title rounded-circle bg-vertical-gradient-4"
+                  ></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="sidebar-img">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Images</h6>
+          <p class="text-muted">Choose a image of Sidebar.</p>
+
+          <div class="d-flex gap-2 flex-wrap img-switch">
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-sidebar-image"
+                id="sidebarimg-none"
+                value="none"
+              />
+              <label
+                class="form-check-label p-0 avatar-sm h-auto"
+                for="sidebarimg-none"
+              >
+                <span
+                  class="avatar-md w-auto bg-light d-flex align-items-center justify-content-center"
+                >
+                  <i class="ri-close-fill fs-20"></i>
+                </span>
+              </label>
+            </div>
+
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-sidebar-image"
+                id="sidebarimg-01"
+                value="img-1"
+              />
+              <label
+                class="form-check-label p-0 avatar-sm h-auto"
+                for="sidebarimg-01"
+              >
+                <img
+                  src="assets/images/sidebar/img-1.jpg"
+                  alt=""
+                  class="avatar-md w-auto object-fit-cover"
+                />
+              </label>
+            </div>
+
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-sidebar-image"
+                id="sidebarimg-02"
+                value="img-2"
+              />
+              <label
+                class="form-check-label p-0 avatar-sm h-auto"
+                for="sidebarimg-02"
+              >
+                <img
+                  src="assets/images/sidebar/img-2.jpg"
+                  alt=""
+                  class="avatar-md w-auto object-fit-cover"
+                />
+              </label>
+            </div>
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-sidebar-image"
+                id="sidebarimg-03"
+                value="img-3"
+              />
+              <label
+                class="form-check-label p-0 avatar-sm h-auto"
+                for="sidebarimg-03"
+              >
+                <img
+                  src="assets/images/sidebar/img-3.jpg"
+                  alt=""
+                  class="avatar-md w-auto object-fit-cover"
+                />
+              </label>
+            </div>
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-sidebar-image"
+                id="sidebarimg-04"
+                value="img-4"
+              />
+              <label
+                class="form-check-label p-0 avatar-sm h-auto"
+                for="sidebarimg-04"
+              >
+                <img
+                  src="assets/images/sidebar/img-4.jpg"
+                  alt=""
+                  class="avatar-md w-auto object-fit-cover"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div id="sidebar-color">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Primary Color</h6>
+          <p class="text-muted">Choose a color of Primary.</p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-theme-colors"
+                id="themeColor-01"
+                value="default"
+              />
+              <label
+                class="form-check-label avatar-xs p-0"
+                for="themeColor-01"
+              ></label>
+            </div>
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-theme-colors"
+                id="themeColor-02"
+                value="green"
+              />
+              <label
+                class="form-check-label avatar-xs p-0"
+                for="themeColor-02"
+              ></label>
+            </div>
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-theme-colors"
+                id="themeColor-03"
+                value="purple"
+              />
+              <label
+                class="form-check-label avatar-xs p-0"
+                for="themeColor-03"
+              ></label>
+            </div>
+            <div class="form-check sidebar-setting card-radio">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="data-theme-colors"
+                id="themeColor-04"
+                value="blue"
+              />
+              <label
+                class="form-check-label avatar-xs p-0"
+                for="themeColor-04"
+              ></label>
+            </div>
+          </div>
+        </div>
+
+        <div id="preloader-menu">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Preloader</h6>
+          <p class="text-muted">Choose a preloader.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-preloader"
+                  id="preloader-view-custom"
+                  value="enable"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="preloader-view-custom"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                  <!-- <div id="preloader"> -->
+                  <div
+                    id="status"
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <div
+                      class="spinner-border text-primary avatar-xxs m-auto"
+                      role="status"
+                    >
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Enable</h5>
+            </div>
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-preloader"
+                  id="preloader-view-none"
+                  value="disable"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100 material-shadow"
+                  for="preloader-view-none"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Disable</h5>
+            </div>
+          </div>
+        </div>
+        <!-- end preloader-menu -->
+
+        <div id="body-img" style="display: none">
+          <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Background Image</h6>
+          <p class="text-muted">Choose a body background image.</p>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-body-image"
+                  id="body-img-none"
+                  value="none"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100"
+                  data-body-image="none"
+                  for="body-img-none"
+                >
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span
+                          class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                        <span
+                          class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                        ></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                        <span class="bg-light d-block p-1 mt-auto"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">None</h5>
+            </div>
+            <!-- end col -->
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-body-image"
+                  id="body-img-one"
+                  value="img-1"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100"
+                  data-body-image="img-1"
+                  for="body-img-one"
+                >
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">One</h5>
+            </div>
+            <!-- end col -->
+
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-body-image"
+                  id="body-img-two"
+                  value="img-2"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100"
+                  data-body-image="img-2"
+                  for="body-img-two"
+                >
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Two</h5>
+            </div>
+            <!-- end col -->
+
+            <div class="col-4">
+              <div class="form-check sidebar-setting card-radio">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="data-body-image"
+                  id="body-img-three"
+                  value="img-3"
+                />
+                <label
+                  class="form-check-label p-0 avatar-md w-100"
+                  data-body-image="img-3"
+                  for="body-img-three"
+                >
+                </label>
+              </div>
+              <h5 class="fs-13 text-center mt-2">Three</h5>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas-footer border-top p-3 text-center">
+    <div class="row">
+      <div class="col-6">
+        <button type="button" class="btn btn-light w-100" id="reset-layout">
+          Reset
+        </button>
+      </div>
+      <div class="col-6">
+        <a
+          href="https://1.envato.market/velzon-admin"
+          target="_blank"
+          class="btn btn-primary w-100"
+          >Buy Now</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
