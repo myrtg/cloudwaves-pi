@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="058f4ed3-2e14-4375-b590-b5b464934bfe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/EvenementsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/repositories/InscriptionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/EvenementsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/services/InscriptionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/servicesImpl/EvenementServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Evenement.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Evenement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/tn/pfeconnect/pfeconnect/entities/Inscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +22,8 @@
         <option value="Enum" />
         <option value="TypeScript File" />
         <option value="HTTP Request" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,6 +66,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/souhaibbenfarhat/Desktop/cloudwaves-pi/front-end/public/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -155,7 +155,7 @@
       <workItem from="1714991845019" duration="246000" />
       <workItem from="1714994292360" duration="105000" />
       <workItem from="1714994436813" duration="9946000" />
-      <workItem from="1715089856503" duration="546000" />
+      <workItem from="1715089856503" duration="866000" />
     </task>
     <servers />
   </component>
