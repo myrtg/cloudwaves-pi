@@ -28,11 +28,10 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { MatPasswordStrengthModule } from "@angular-material-extensions/password-strength";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { ProjectsComponent } from './components/projects/projects/projects.component';
-import { MatDialog, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ViewMoreProjectComponent } from './components/view-more-project/view-more-project.component';
-
+import { AjoutCandidatureComponent } from './components/ajout-candidature/ajout-candidature.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 
 
@@ -60,9 +59,8 @@ import { ViewMoreProjectComponent } from './components/view-more-project/view-mo
     RegisterComponent,
     ActivateAccountComponent,
     ForgotPasswordComponent,
-    ProjectsComponent,
-    ViewMoreProjectComponent
-
+    AjoutCandidatureComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +73,7 @@ import { ViewMoreProjectComponent } from './components/view-more-project/view-mo
     MatPasswordStrengthModule.forRoot(),
     MatInputModule,
     MatIconModule,
-    MatDialogModule
+    FullCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

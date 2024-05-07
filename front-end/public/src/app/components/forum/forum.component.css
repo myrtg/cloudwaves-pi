@@ -1,0 +1,23 @@
+.fa {
+    font-size: 24px; /* Ajuster la taille de l'icône */
+    color: #000; /* Ajuster la couleur de l'icône */
+    cursor: pointer; /* Changer le curseur lors du survol */
+}
+/* styles.css ou styles.scss */
+.share-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .share-icon:hover {
+    transform: scale(1.1);
+  }
+  .tag-widget-container {
+    border: 1px solid #ccc; /* Définit une bordure grise */
+    padding: 20px; /* Ajoute un peu d'espace à l'intérieur du cadre */
+    margin: 10px; /* Ajoute un peu d'espace autour du cadre */
+    background-color: #f9f9f9; /* Définit une couleur d'arrière-plan légèrement plus claire que la page */
+    border-radius: 5px; /* Arrondit les coins du cadre */
+  }
+    
+  

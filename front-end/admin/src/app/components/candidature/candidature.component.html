@@ -1,0 +1,46 @@
+<app-aside></app-aside>
+<div style="margin-top: 170px; margin-left: 300px; width: 1950px;" class="row">
+    <div class="col-xl-7">
+        <div class="card card-height-100">
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table table-nowrap table-centered align-middle">
+                        <thead class="bg-light text-muted">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Phone number</th>
+                                <th scope="col">CV Name</th>
+                                <th scope="col">action</th>
+                                
+                            </tr><!-- end tr -->
+                        </thead><!-- thead -->
+
+                        <tbody *ngFor="let candidature of candidature">
+                            <tr>
+                                <td class="fw-medium">{{candidature.name}}</td>
+                                <td>
+                                    <a href="javascript: void(0);" class="text-reset">{{candidature.email}}</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-1 text-muted fs-13">{{candidature.phoneNumber}}</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        <a href="javascript: void(0);" class="text-reset">{{candidature.cvName}}</a>
+                                    </div>
+                                </td>
+                                <td class="text-muted">
+                                    <button (click)="delete(candidature.idCandidature)" class="btn btn-danger">X</button>
+                                </td>
+                            </tr><!-- end tr -->
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div>
+
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+</div>
