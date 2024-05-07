@@ -15,7 +15,6 @@ mvnw
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
 *.iws
 *.iml
 *.ipr
@@ -49,7 +48,10 @@ npm-debug.log
 yarn-error.log
 
 # IDEs and editors
+.idea
 .idea/
+.mvn/
+
 .project/
 .classpath
 .c9/
@@ -66,7 +68,7 @@ yarn-error.log
 .history/
 
 # Miscellaneous
-**/.angular/cache/*
+.angular/
 .sass-cache/
 connect.lock/
 coverage/
@@ -77,3 +79,4 @@ typings/
 # System files
 .DS_Store
 Thumbs.db
+
